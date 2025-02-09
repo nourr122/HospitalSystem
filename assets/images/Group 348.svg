@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" viewBox="0 0 66 66">
+  <g id="Group_348" data-name="Group 348" transform="translate(-65 -193)">
+    <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(65 193)" fill="none" stroke="#fff" stroke-width="1">
+      <rect width="66" height="66" rx="10" stroke="none"/>
+      <rect x="0.5" y="0.5" width="65" height="65" rx="9.5" fill="none"/>
+    </g>
+    <g id="fi-rr-user-add" transform="translate(84 212)">
+      <path id="Path_994" data-name="Path 994" d="M24.427,11.612H22.019V9.2a1.2,1.2,0,1,0-2.408,0v2.408H17.2a1.2,1.2,0,1,0,0,2.408h2.408v2.408a1.2,1.2,0,1,0,2.408,0V14.019h2.408a1.2,1.2,0,0,0,0-2.408Z" transform="translate(3.262 1.631)" fill="#fff"/>
+      <path id="Path_995" data-name="Path 995" d="M10.223,14.446A7.223,7.223,0,1,0,3,7.223a7.223,7.223,0,0,0,7.223,7.223Zm0-12.039A4.815,4.815,0,1,1,5.408,7.223a4.815,4.815,0,0,1,4.815-4.815Z" transform="translate(0.612 0)" fill="#fff"/>
+      <path id="Path_996" data-name="Path 996" d="M10.835,14A10.847,10.847,0,0,0,0,24.835a1.2,1.2,0,1,0,2.408,0,8.427,8.427,0,1,1,16.854,0,1.2,1.2,0,0,0,2.408,0A10.847,10.847,0,0,0,10.835,14Z" transform="translate(0 2.854)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
