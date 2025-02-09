@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:instant_project/core/utils/app_colors.dart';
-import 'package:instant_project/core/utils/app_assets.dart';
+import 'package:Project_instant/core/utils/app_colors.dart';
+import 'package:Project_instant/core/utils/app_assets.dart';
 
 
 class AddMedical extends StatefulWidget {
