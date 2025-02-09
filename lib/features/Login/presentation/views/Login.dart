@@ -7,10 +7,28 @@ import '../../../prototype/presentation/views/prototype.dart';
 
 class LoginPage extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
+  final String specialist; // ✅ Receive specialist
+
+  LoginPage({required this.specialist});
 }
 
 var size, height, width;
 class _LoginScreenState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _validateAndLogin() {
+    if (_formKey.currentState!.validate()) {
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => HomeDynamicScreen(specialist: widget.specialist),
+      //   ),
+      // );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -75,6 +93,7 @@ class _LoginScreenState extends State<LoginPage> {
                           const SizedBox(height: 30),
                           Flexible(
                             child: TextFormField(
+                              controller: _phoneController,
                               decoration: InputDecoration(
                                 prefixIcon: Image.asset(AppAssets.phone, height: 20),
                                 hintText: '  Phone Number',
@@ -83,11 +102,13 @@ class _LoginScreenState extends State<LoginPage> {
                                 ),
                               ),
                               keyboardType: TextInputType.phone,
+                              validator: (value) => value!.isEmpty ? 'Enter phone number' : null,
                             ),
                           ),
                           const SizedBox(height: 30),
                           Flexible(
                             child: TextFormField(
+                              controller: _passwordController,
                               obscureText: true,
                               decoration: InputDecoration(
                                 prefixIcon: Image.asset(AppAssets.lock, height: 50),
@@ -98,6 +119,7 @@ class _LoginScreenState extends State<LoginPage> {
                                 ),
                               ),
                               keyboardType: TextInputType.visiblePassword,
+                              validator: (value) => value!.isEmpty ? 'Enter password' : null,
                             ),
                           ),
                           Align(
@@ -134,15 +156,7 @@ class _LoginScreenState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  prototypePage(), // Replace with your target page
-                            ),
-                          );
-                        },
+                        onPressed: _validateAndLogin,
                       ),
                     ),
                   ],
@@ -155,5 +169,7 @@ class _LoginScreenState extends State<LoginPage> {
     );
   }
 }
+
+
 
 
