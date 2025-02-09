@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:Project_Instant/features/cases/presentation/views/caseDetails.dart';
-import 'package::Project_Instant/core/utils/app_assets.dart';
-import 'package::Project_Instant/core/utils/app_colors.dart';
+import 'package:instant_project/features/cases/presentation/views/caseDetails.dart';
+import 'package:instant_project/core/utils/app_assets.dart';
+import 'package:instant_project/core/utils/app_colors.dart';
 
 
 class Case extends StatefulWidget {
-  const Case({super.key, required this.title, required this.userRole});
-  final String userRole;
+  const Case({super.key, required this.title, required this.specialist});
+  final String specialist;
   final String title;
 
   @override
@@ -14,6 +14,7 @@ class Case extends StatefulWidget {
 }
 
 class _CaseState extends State<Case> {
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,7 @@ class _CaseState extends State<Case> {
                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                    builder: (context) => CaseDetails(title: 'Case Details',userRole:widget.userRole!)
+                    builder: (context) => CaseDetails(title: 'Case Details',specialist:widget.specialist!)
                     ),
                     );
               },
@@ -102,7 +103,7 @@ class _CaseState extends State<Case> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                    builder: (context) => CaseDetails(title: 'Case Details',userRole: widget.userRole!,),
+                    builder: (context) => CaseDetails(title: 'Case Details',specialist: widget.specialist!,),
                     ),
                     );
               },
@@ -146,7 +147,7 @@ class _CaseState extends State<Case> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                    builder: (context) => CaseDetails(title: 'Case Details',userRole: widget.userRole!,),
+                    builder: (context) => CaseDetails(title: 'Case Details',specialist: widget.specialist!,),
                     ),
                     );
               },
