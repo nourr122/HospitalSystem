@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/gradient_container.dart';
+import '../../../Login/presentation/views/Login.dart';
 
 class prototypePage extends StatefulWidget {
   prototypeState createState() => prototypeState();
@@ -66,12 +67,19 @@ class prototypeState extends State<prototypePage> {
       )
     ]));
   }
-  Widget buildCustomButton(String text, {required double widthFactor}) {
+  Widget buildCustomButton(String specialist, {required double widthFactor}) {
     return SizedBox(
       width: 100 * widthFactor,
       height: 50,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginPage(specialist: specialist),
+            ),
+          );
+        },
         style: TextButton.styleFrom(
           foregroundColor: AppColors.primaryColor,
           side: const BorderSide(color: Color(0xfff707070), width: 1.5),
@@ -79,7 +87,7 @@ class prototypeState extends State<prototypePage> {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        child: Text(text, textAlign: TextAlign.center),
+        child: Text(specialist, textAlign: TextAlign.center),
       ),
     );
   }
