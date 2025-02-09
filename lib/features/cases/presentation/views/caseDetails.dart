@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:Project_Instant/core/utils/app_assets.dart';
-import 'package:Project_Instant/core/utils/app_colors.dart';
-import 'package:Project_Instant/features/cases/presentation/views/addNurse.dart';
-import 'package:Project_Instant/features/cases/presentation/views/medical.dart';
+import 'package:instant_project/core/utils/app_assets.dart';
+import 'package:instant_project/core/utils/app_colors.dart';
+import 'package:instant_project/features/cases/presentation/views/addNurse.dart';
+import 'package:instant_project/features/cases/presentation/views/medical.dart';
 import 'addMedical.dart';
 import 'addNurse.dart';
 
 
 class CaseDetails extends StatefulWidget {
-  const CaseDetails({super.key, required this.title,required this.userRole});
-  final String userRole;
+  const CaseDetails({super.key, required this.title,required this.specialist});
+  final String specialist;
   final String title;
 
   @override
@@ -46,11 +46,11 @@ class _CaseDetailsState extends State<CaseDetails> {
       body:Expanded(
         child:  Column(
         children: [ Padding(
-        padding: EdgeInsets.all(screenwidth * 0.005),
+        padding: EdgeInsets.all(screenwidth * 0.02),
         child:Flexible(child:
           Row(
           children: [
-            widget.userRole=="Doctor"||widget.userRole=="Nurse"||widget.userRole=="Analysis Employee"||widget.userRole=="Manger"?
+            widget.specialist=="Doctor"||widget.specialist=="Nurse"||widget.specialist=="Analysis Employee"||widget.specialist=="Manger"?
             Flexible(child:
             Padding(padding: EdgeInsets.all(screenwidth*0.01)
             ,child: 
@@ -89,16 +89,16 @@ class _CaseDetailsState extends State<CaseDetails> {
               ) 
             :SizedBox(),
 
-            widget.userRole=="Doctor"||widget.userRole=="Analysis Employee"||widget.userRole=="Manger"?
+            widget.specialist=="Doctor"||widget.specialist=="Analysis Employee"||widget.specialist=="Manger"?
             Flexible(child: 
                    Padding(padding:EdgeInsets.all(screenwidth*0.01)
                    ,child:OutlinedButton(
                 onPressed: () {
-                  widget.userRole=="Analysis Employee"?
+                  widget.specialist=="Analysis Employee"?
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                    builder: (context) => AddMedical(userRole:widget.userRole)
+                    builder: (context) => AddMedical(specialist:widget.specialist)
                     ),
                     ): _changeContent("Medical Record");
                 },
@@ -131,16 +131,16 @@ class _CaseDetailsState extends State<CaseDetails> {
               ))     
               )
             :SizedBox(),
-            widget.userRole=="Manger"||widget.userRole=="Doctor"||widget.userRole=="Nurse"?
+            widget.specialist=="Manger"||widget.specialist=="Doctor"||widget.specialist=="Nurse"?
             Flexible(child:
             Padding(padding: EdgeInsets.all(screenwidth*0.01),
             child:OutlinedButton(
                 onPressed: () {
-                  widget.userRole=="Nurse"?
+                  widget.specialist=="Nurse"?
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                    builder: (context) => AddMedical(userRole:widget.userRole)
+                    builder: (context) => AddMedical(specialist:widget.specialist)
                     ),
                     ):_changeContent("Medical Measurement");
                 },
@@ -178,7 +178,7 @@ class _CaseDetailsState extends State<CaseDetails> {
         ) ,
         ) ,
       ),
-        widget.userRole=="Nurse"||widget.userRole=="Analysis Employee"?
+        widget.specialist=="Nurse"||widget.specialist=="Analysis Employee"?
         isVisible?
         Padding(padding: EdgeInsets.symmetric(horizontal:screenwidth*0.01),
         child:Card(
@@ -372,7 +372,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                         ))
         ],),
               SizedBox(height: screenheight*0.02,),
-            widget.userRole=="Doctor"?
+            widget.specialist=="Doctor"?
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -517,7 +517,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                             ),
                             side: BorderSide(color: AppColors.primaryColor, width: 2),
                             backgroundColor: AppColors.primaryColor,
-                            minimumSize: Size(double.infinity, screenheight * 0.06),
+                            minimumSize: Size(double.infinity, screenheight * 0.055),
                           ),
                           child: Text(
                             "Request",
@@ -650,7 +650,7 @@ class _CaseDetailsState extends State<CaseDetails> {
         )
         :Container(),
 
-          widget.userRole=="Receptionist"?
+          widget.specialist=="Receptionist"?
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -666,13 +666,13 @@ class _CaseDetailsState extends State<CaseDetails> {
                       width: 2,
                     ), 
                     backgroundColor: AppColors.redColor1,
-                    minimumSize: Size(screenwidth * 0.95, screenheight * 0.05), 
+                    minimumSize: Size(screenwidth * 0.96, screenheight * 0.055), 
               ),
                child:
                   Text("Logout" ,style: TextStyle(fontFamily: 'poppins',fontSize: screenwidth*0.035,color:AppColors.whiteColor1),)
                
                )
-            ],):widget.userRole=="Doctor"?
+            ],):widget.specialist=="Doctor"?
                     Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -688,14 +688,14 @@ class _CaseDetailsState extends State<CaseDetails> {
                       width: 2,
                     ), 
                     backgroundColor: AppColors.redColor1,
-                    minimumSize: Size(screenwidth * 0.95, screenheight * 0.05), 
+                    minimumSize: Size(screenwidth * 0.96, screenheight * 0.055), 
               ),
                child:
                Row(children: [
                   Text("End Case" ,style: TextStyle(fontFamily: 'poppins',fontSize: screenwidth*0.035,color:AppColors.whiteColor1),)
                ],)
                )
-            ],):widget.userRole=="Nurse"?
+            ],):widget.specialist=="Nurse"?
                 Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -711,7 +711,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                       width: 2,
                     ), 
                     backgroundColor: AppColors.primaryColor,
-                    minimumSize: Size(screenwidth * 0.95, screenheight * 0.05), 
+                    minimumSize: Size(screenwidth * 0.96, screenheight * 0.055), 
               ),
                child:
                Row(children: [
