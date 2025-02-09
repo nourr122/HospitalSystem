@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:Project_Instant/core/utils/app_colors.dart';
-import 'package:Project_Instant/core/utils/app_assets.dart';
+import 'package:instant_project/core/utils/app_colors.dart';
+import 'package:instant_project/core/utils/app_assets.dart';
 
 
 class AddMedical extends StatefulWidget {
-  const AddMedical({super.key,required this.userRole });
-  final String userRole;
+  const AddMedical({super.key,required this.specialist });
+  final String specialist;
 
   @override
   State<AddMedical> createState() => _AddMedicalState();
@@ -29,19 +29,15 @@ class _AddMedicalState extends State<AddMedical> {
     double screenwidth = MediaQuery.of(context).size.width;
     double screenheight = MediaQuery.of(context).size.height;
 
-      @override
-void initState() {
-  super.initState();
-  print("User Role: ${widget.userRole}");
-}
+
 
     return Scaffold(
       backgroundColor: AppColors.whiteColor1,
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor1,
-        title:widget.userRole=="Nurse"?
+        title:widget.specialist=="Nurse"?
               Text("Add Measurement")
-              :widget.userRole=="Analysis Employee"?
+              :widget.specialist=="Analysis Employee"?
               Text("Add Medical record")
               :Container(),
           centerTitle: true,
@@ -98,7 +94,7 @@ void initState() {
             ),
             SizedBox(height: screenheight*0.02,),
 
-            widget.userRole=="Nurse"?
+            widget.specialist=="Nurse"?
                         Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -149,7 +145,7 @@ void initState() {
                 ),
               ],
             
-            ):widget.userRole=="Analysis Employee"?
+            ):widget.specialist=="Analysis Employee"?
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -226,7 +222,7 @@ void initState() {
              SizedBox(height: screenheight * 0.02),
             Row(
               children: [
-                widget.userRole=="Nurse"?
+                widget.specialist=="Nurse"?
                 Text(
                   "Add Measurement",
                   style: TextStyle(
@@ -234,7 +230,7 @@ void initState() {
                     fontSize: screenwidth * 0.04,
                     color: AppColors.blackColor1,
                   ),
-                ):widget.userRole=="Analysis Employee"?
+                ):widget.specialist=="Analysis Employee"?
                  Text(
                   "Add Record",
                   style: TextStyle(
@@ -247,7 +243,7 @@ void initState() {
             ),
             SizedBox(height: screenheight * 0.01),
 
-            widget.userRole=="Nurse"?
+            widget.specialist=="Nurse"?
             Column(children: [
                 Row(
               children: [
@@ -412,9 +408,9 @@ void initState() {
             
              
             ],)
-            :widget.userRole=="Analysis Employee"?
+            :widget.specialist=="Analysis Employee"?
             DottedBorder(
-              dashPattern: [9,9],
+              dashPattern: [13,14],
               color: AppColors.grayColor3,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -457,10 +453,10 @@ void initState() {
               ]
             )):Container(),
               
-            widget.userRole=="Nurse"?
+            widget.specialist=="Nurse"?
             Column(
               children: [
-                SizedBox(height: screenheight*0.16,),
+                SizedBox(height: screenheight*0.165,),
                 OutlinedButton(
               onPressed: () {
               Navigator.of(context).pop(); 
@@ -471,7 +467,7 @@ void initState() {
                 ),
                 side: BorderSide(color: AppColors.primaryColor, width: 2),
                 backgroundColor: AppColors.primaryColor,
-                minimumSize: Size(screenwidth*0.96, screenheight * 0.06),
+                minimumSize: Size(screenwidth*0.96, screenheight * 0.055),
               ),
               child: Text(
                 "Add Measurement",
@@ -483,9 +479,9 @@ void initState() {
               ),
             ),  
               ],
-            ):widget.userRole=="Analysis Employee"?
+            ):widget.specialist=="Analysis Employee"?
             Column(
-              children: [SizedBox(height:screenheight*0.23),
+              children: [SizedBox(height:screenheight*0.24),
              OutlinedButton(
               onPressed: () {
               Navigator.of(context).pop(); 
@@ -496,7 +492,7 @@ void initState() {
                 ),
                 side: BorderSide(color: AppColors.primaryColor, width: 2),
                 backgroundColor: AppColors.primaryColor,
-                minimumSize: Size(screenwidth*0.96, screenheight * 0.06),
+                minimumSize: Size(screenwidth*0.96, screenheight * 0.055),
               ),
               child: Text(
                 "Add Record",
@@ -512,10 +508,8 @@ void initState() {
             )
           ],
         ), )
- 
+
         )
-        
-       
       );
       }
       }
