@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:Project_Instant/core/utils/app_assets.dart';
-import 'package:Project_Instant/core/utils/app_colors.dart';
-import 'package:Project_Instant/features/cases/data/models/datamodel.dart';
+import 'package:instant_project/core/utils/app_assets.dart';
+import 'package:instant_project/core/utils/app_colors.dart';
+import 'package:instant_project/features/cases/data/models/datamodel.dart';
 
 class SelectNurse extends StatefulWidget {
   const SelectNurse({super.key});
@@ -206,7 +206,7 @@ class _SelectNurseState extends State<SelectNurse> {
                       width: 2,
                     ), 
                     backgroundColor: AppColors.primaryColor,
-                    minimumSize: Size(screenwidth * 0.97, screenheight * 0.05), 
+                    minimumSize: Size(screenwidth * 0.96, screenheight * 0.055), 
               ),
             ),
           ),
