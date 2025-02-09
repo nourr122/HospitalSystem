@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instant_project/core/utils/app_assets.dart';
-import 'package:instant_project/core/utils/app_colors.dart';
-import 'package:instant_project/features/cases/presentation/views/addNurse.dart';
-import 'package:instant_project/features/cases/presentation/views/medical.dart';
+import 'package:Project_Instant/core/utils/app_assets.dart';
+import 'package:Project_Instant/core/utils/app_colors.dart';
+import 'package:Project_Instant/features/cases/presentation/views/addNurse.dart';
+import 'package:Project_Instant/features/cases/presentation/views/medical.dart';
 import 'addMedical.dart';
 import 'addNurse.dart';
 
