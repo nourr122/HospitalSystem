@@ -206,7 +206,7 @@ class _SelectNurseState extends State<SelectNurse> {
                       width: 2,
                     ), 
                     backgroundColor: AppColors.primaryColor,
-                    minimumSize: Size(screenwidth * 0.97, screenheight * 0.06), 
+                    minimumSize: Size(screenwidth * 0.97, screenheight * 0.05), 
               ),
             ),
           ),
