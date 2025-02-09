@@ -5,6 +5,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/widgets/gradient_container.dart';
 import '../../../Login/presentation/views/Login.dart';
+import '../../../prototype/presentation/views/prototype.dart';
 
 class Splash extends StatefulWidget{
   const Splash({super.key, required this.title});
@@ -39,7 +40,7 @@ class _Splash extends State<Splash>  with SingleTickerProviderStateMixin{
      Navigator.pushReplacement(
        context,
        MaterialPageRoute(
-         builder: (context) => LoginPage(),
+         builder: (context) => prototypePage(),
        ),
      );
    }
