@@ -19,5 +19,28 @@ class AppColors{
   static const Color blackColor1 = Color(0xFF000000);
   static const Color redColor1 = Color(0xffE63A3A);
 
-}
+  static const Color textGreenColor = Color(0xff20CCBC);
+  static const Color textDarkGrayColor = Color(0xff343434);
+  static const Color textLightGrayColor = Color(0xffFCFCFC);
+  static const Color white = Color(0xffffffff);
+  static const Color black = Color(0xff000000);
+  static const Color darkGray = Color(0xff2C2C2C);
+  static const Color lightGray = Color(0xff8E8E8E);
+  static const Color textLightGray = Color(0x00000080);
 
+
+  static const Color gradientColor1 = Color(0x0122C7B8);
+  static const Color gradientColor2 =  Color(0x60FFFFFF);
+
+  // blue colors
+  static const Color red = Color.fromARGB(255, 255, 0, 0);
+  static const Color gray = Color(0xff808080);
+  // gray to black colors
+
+
+  static const Color pageBackground = Color(0xffF5F5F5);
+  static const Color green = Color(0xff06E173);
+  static const Color orange = Color(0xffF17A12);
+  static const Color yellow = Color(0xffF9C80E);
+  static const Color blue = Color(0xff2D9CDB);
+}

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <g id="Group_4692" data-name="Group 4692" transform="translate(-32 -191)">
+    <rect id="Rectangle_1558" data-name="Rectangle 1558" width="20" height="20" rx="4" transform="translate(32 191)"
+      fill="#22c7b8" />
+    <g id="fi-rr-checkbox" transform="translate(35 194)">
+      <path id="Path_754" data-name="Path 754"
+        d="M10.989,0h-8.1A2.9,2.9,0,0,0,0,2.892v8.1a2.9,2.9,0,0,0,2.892,2.892h8.1a2.9,2.9,0,0,0,2.892-2.892v-8.1A2.9,2.9,0,0,0,10.989,0Zm1.735,10.989a1.735,1.735,0,0,1-1.735,1.735h-8.1a1.735,1.735,0,0,1-1.735-1.735v-8.1A1.735,1.735,0,0,1,2.892,1.157h8.1a1.735,1.735,0,0,1,1.735,1.735Z"
+        fill="#fff" />
+      <path id="Path_755" data-name="Path 755"
+        d="M6.961,11.895,4.694,9.628a.578.578,0,0,0-.818,0h0a.578.578,0,0,0,0,.818l2.267,2.267a1.157,1.157,0,0,0,1.636,0l5.351-5.351a.578.578,0,0,0,0-.818h0a.578.578,0,0,0-.818,0Z"
+        transform="translate(-1.563 -2.687)" fill="#fff" />
+    </g>
+  </g>
+</svg>

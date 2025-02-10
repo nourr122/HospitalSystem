@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="66" height="66" viewBox="0 0 66 66">
+  <g id="Group_4539" data-name="Group 4539" transform="translate(-245 -554)">
+    <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(245 554)" fill="none" stroke="#fff" stroke-width="1">
+      <rect width="66" height="66" rx="10" stroke="none"/>
+      <rect x="0.5" y="0.5" width="65" height="65" rx="9.5" fill="none"/>
+    </g>
+    <g id="fi-rr-shield-plus" transform="translate(264 573)">
+      <path id="Path_921" data-name="Path 921" d="M22.035,2.586,14.465.062a1.208,1.208,0,0,0-.764,0L6.131,2.586A6.033,6.033,0,0,0,2,8.317V14.5c0,9.138,11.116,14.186,11.593,14.4a1.208,1.208,0,0,0,.981,0c.476-.21,11.593-5.257,11.593-14.4V8.317a6.033,6.033,0,0,0-4.131-5.731ZM23.75,14.5c0,6.591-7.635,10.915-9.667,11.949C12.05,25.418,4.417,21.108,4.417,14.5V8.317A3.625,3.625,0,0,1,6.9,4.878l7.187-2.4,7.187,2.4A3.625,3.625,0,0,1,23.75,8.317Z" fill="#fff"/>
+      <path id="Path_922" data-name="Path 922" d="M16.458,10.625H14.042V8.208a1.208,1.208,0,1,0-2.417,0v2.417H9.208a1.208,1.208,0,0,0,0,2.417h2.417v2.417a1.208,1.208,0,0,0,2.417,0V13.042h2.417a1.208,1.208,0,0,0,0-2.417Z" transform="translate(1.25 1.458)" fill="#fff"/>
+    </g>
+  </g>
+</svg>
