@@ -6,6 +6,7 @@ class AppTextField extends StatelessWidget {
     super.key,
     required this.label,
     required this.onChanged,
+    this.onTap,
     this.icon,
     this.maxLines = 1,
     this.controller,
@@ -13,6 +14,7 @@ class AppTextField extends StatelessWidget {
 
   final String label;
   final ValueChanged<String> onChanged;
+  final VoidCallback? onTap;
   final IconData? icon;
   final int maxLines;
   final TextEditingController? controller;
@@ -25,6 +27,9 @@ class AppTextField extends StatelessWidget {
       maxLines: maxLines,
       textAlign: TextAlign.start,
       textAlignVertical: TextAlignVertical.top,
+      onTap: () {
+        onTap?.call();
+      },
       decoration: InputDecoration(
         suffixIcon: Icon(
           icon,

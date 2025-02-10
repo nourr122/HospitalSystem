@@ -84,7 +84,9 @@ class _EmployeesState extends State<EmployeesList> {
         leading: Padding(
           padding: const EdgeInsets.only(top: 20),
           child: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pop(context);
+            },
             icon: const Icon(Icons.arrow_back_outlined),
             iconSize: 25,
           ),

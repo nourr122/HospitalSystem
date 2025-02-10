@@ -5,6 +5,7 @@ import 'package:instant_project/core/ui/widgets/app_button.dart';
 import 'package:instant_project/core/ui/widgets/app_text_field.dart';
 import 'package:instant_project/core/utils/app_assets.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
+import 'package:instant_project/features/Employees/presentation/views/EmployeesList.dart';
 
 class AddTaskScreen extends StatefulWidget {
   const AddTaskScreen({
@@ -46,6 +47,13 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               AppTextField(
                 label: 'Select Employee',
                 icon: Icons.arrow_forward_ios,
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) {
+                      return const EmployeesList();
+                    },
+                  ));
+                },
                 onChanged: (value) {},
               ),
               const SizedBox(height: 15),
