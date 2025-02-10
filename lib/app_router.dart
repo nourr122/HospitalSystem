@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instant_project/features/Splash/presentation/views/Splash.dart';
 
-import 'core/ui/screens/splash_screen.dart';
 import 'features/home/presentation/views/home_screen.dart';
 import 'features/requests/presentation/views/requests_screen.dart';
 import 'features/tasks/data/models/task_model.dart';
@@ -13,7 +13,7 @@ class AppRouter {
   static Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Splash.id:
-        return MaterialPageRoute(builder: (_) => const Splash());
+        return MaterialPageRoute(builder: (_) =>  const Splash(title: 'Main',));
 
       case HomeScreen.id:
         return MaterialPageRoute(builder: (_) => const HomeScreen());

@@ -1,15 +1,10 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'app_router.dart';
 import 'core/utils/app_themes.dart';
-import 'features/reports/presentation/views/reports_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:instant_project/features/calls/doctor%20calls/presentation/views/widgets/doctor.dart';
-import 'package:instant_project/features/calls/nurse%20calls/presentation/views/widgets/nurse.dart';
-import 'package:instant_project/features/calls/specialist%20calls/presentation/views/widgets/specialist.dart';
 
 void main() {
   runApp(
@@ -36,7 +31,7 @@ class _MyAppState extends State<MyApp> {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       builder: (context, child) {
-        return  MaterialApp(
+        return MaterialApp(
           theme: isLightTheme
               ? AppTheme.light.copyWith(
                   textTheme: GoogleFonts.poppinsTextTheme(

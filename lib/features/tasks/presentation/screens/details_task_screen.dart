@@ -72,7 +72,11 @@ class _DetailsTaskScreenState extends State<DetailsTaskScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const SizedBox(width: 10),
-                              Image.asset(AppAssets.profileImage),
+                              Image.asset(
+                                AppAssets.profileImage,
+                                width: 40,
+                                height: 40,
+                              ),
                               const SizedBox(width: 15),
                               const Expanded(
                                 child: Column(
@@ -228,7 +232,11 @@ class _DetailsTaskScreenState extends State<DetailsTaskScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 const SizedBox(width: 10),
-                                Image.asset(AppAssets.profileImage),
+                                Image.asset(
+                                  AppAssets.profileImage,
+                                  width: 40,
+                                  height: 40,
+                                ),
                                 const SizedBox(width: 15),
                                 const Expanded(
                                   child: Column(
