@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:instant_project/features/attendance/presentation/views/attendancePage.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_assets.dart';

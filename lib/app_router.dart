@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instant_project/features/Splash/presentation/views/Splash.dart';
 
-import 'features/home/presentation/views/home_screen.dart';
-import 'features/requests/presentation/views/requests_screen.dart';
 import 'features/tasks/data/models/task_model.dart';
 import 'features/tasks/presentation/screens/add_task_screen.dart';
 import 'features/tasks/presentation/screens/details_task_screen.dart';
@@ -13,10 +11,10 @@ class AppRouter {
   static Route onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case Splash.id:
-        return MaterialPageRoute(builder: (_) =>  const Splash(title: 'Main',));
-
-      case HomeScreen.id:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(
+            builder: (_) => const Splash(
+                  title: 'Main',
+                ));
 
       case TasksScreen.id:
         return MaterialPageRoute(builder: (_) => const TasksScreen());
@@ -30,9 +28,6 @@ class AppRouter {
             task: routeSettings.arguments as TaskModel,
           ),
         );
-
-      case RequestsScreen.id:
-        return MaterialPageRoute(builder: (_) => const RequestsScreen());
 
       default:
         return MaterialPageRoute(

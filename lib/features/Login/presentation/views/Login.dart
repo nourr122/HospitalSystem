@@ -4,13 +4,13 @@ import 'package:instant_project/features/home/presentation/views/homeDynamicScre
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/widgets/gradient_container.dart';
-import '../../../prototype/presentation/views/prototype.dart';
 
 class LoginPage extends StatefulWidget {
+  @override
   _LoginScreenState createState() => _LoginScreenState();
   final String specialist; // ✅ Receive specialist
 
-  LoginPage({required this.specialist});
+  const LoginPage({super.key, required this.specialist});
 }
 
 var size, height, width;
@@ -59,7 +59,8 @@ class _LoginScreenState extends State<LoginPage> {
               child: GradientContainer(
                 height: 250,
                 width: 280,
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100)),
+                borderRadius:
+                    BorderRadius.only(bottomLeft: Radius.circular(100)),
                 colors: [AppColors.gradientColor1, AppColors.gradientColor2],
               ),
             ),
@@ -110,8 +111,9 @@ class _LoginScreenState extends State<LoginPage> {
                                   ),
                                 ),
                                 keyboardType: TextInputType.phone,
-                                validator: (value) =>
-                                    value!.isEmpty ? 'Enter phone number' : null,
+                                validator: (value) => value!.isEmpty
+                                    ? 'Enter phone number'
+                                    : null,
                               ),
                             ),
                             const SizedBox(height: 30),
@@ -157,10 +159,6 @@ class _LoginScreenState extends State<LoginPage> {
                         height: 60,
                         width: 380,
                         child: ElevatedButton(
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppColors.primaryColor,
                             shape: RoundedRectangleBorder(
@@ -168,6 +166,10 @@ class _LoginScreenState extends State<LoginPage> {
                             ),
                           ),
                           onPressed: _validateAndLogin,
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
                         ),
                       ),
                     ],

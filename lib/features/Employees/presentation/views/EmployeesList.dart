@@ -1,10 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:instant_project/features/profile/presentation/views/Myprofile.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets.dart';
 
 class EmployeesList extends StatefulWidget {
+  const EmployeesList({super.key});
+
+  @override
   _EmployeesState createState() => _EmployeesState();
 }
 
@@ -15,49 +18,49 @@ class _EmployeesState extends State<EmployeesList> {
     {
       "name": "Salma Ahmed",
       "specialty": "Specialist - Doctor",
-      "image": "assets/salma.jpg",
+      "image": "assets/images/salma.jpg",
       "status": "green"
     },
     {
       "name": "Helmy Fadl",
       "specialty": "Specialist - Doctor",
-      "image": "assets/helmy.jpg",
+      "image": "assets/images/helmy.jpg",
       "status": "green"
     },
     {
       "name": "Shawky Haleem",
       "specialty": "Specialist - Analysis",
-      "image": "assets/shawky.jpg",
+      "image": "assets/images/shawky.jpg",
       "status": "green"
     },
     {
       "name": "Islam Mahmoud",
       "specialty": "Specialist - HR",
-      "image": "assets/hr.jpg",
+      "image": "assets/images/hr.jpg",
       "status": "green"
     },
     {
       "name": "Ali Ahmed",
       "specialty": "Specialist - Analysis",
-      "image": "assets/hr.jpg",
+      "image": "assets/images/hr.jpg",
       "status": "orange"
     },
     {
       "name": "Hend Ali",
       "specialty": "Specialist - Doctor",
-      "image": "assets/hend.jpg",
+      "image": "assets/images/hend.jpg",
       "status": "orange"
     },
     {
       "name": "Ahmed Zain",
       "specialty": "Specialist - Doctor",
-      "image": "assets/ahmedzain.jpg",
+      "image": "assets/images/ahmedzain.jpg",
       "status": "orange"
     },
     {
       "name": "Zeyad Ali",
       "specialty": "Specialist - HR",
-      "image": "assets/hr2.jpg",
+      "image": "assets/images/hr2.jpg",
       "status": "orange"
     },
   ];
@@ -82,7 +85,7 @@ class _EmployeesState extends State<EmployeesList> {
           padding: const EdgeInsets.only(top: 20),
           child: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.arrow_back_outlined),
+            icon: const Icon(Icons.arrow_back_outlined),
             iconSize: 25,
           ),
         ),
@@ -107,7 +110,7 @@ class _EmployeesState extends State<EmployeesList> {
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -122,9 +125,9 @@ class _EmployeesState extends State<EmployeesList> {
                             borderRadius: BorderRadius.circular(5),
                           ),
                         ),
-                        child: Text('All', textAlign: TextAlign.center),
+                        child: const Text('All', textAlign: TextAlign.center),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -136,9 +139,10 @@ class _EmployeesState extends State<EmployeesList> {
                                 BorderRadius.circular(5), // Rounded edges
                           ),
                         ),
-                        child: Text('Doctor', textAlign: TextAlign.center),
+                        child:
+                            const Text('Doctor', textAlign: TextAlign.center),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -150,9 +154,9 @@ class _EmployeesState extends State<EmployeesList> {
                                 BorderRadius.circular(5), // Rounded edges
                           ),
                         ),
-                        child: Text('Nurse', textAlign: TextAlign.center),
+                        child: const Text('Nurse', textAlign: TextAlign.center),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       TextButton(
                         onPressed: () {},
                         style: TextButton.styleFrom(
@@ -164,78 +168,85 @@ class _EmployeesState extends State<EmployeesList> {
                                 BorderRadius.circular(5), // Rounded edges
                           ),
                         ),
-                        child: Text('HR Employee', textAlign: TextAlign.center),
-                      ),
-                      SizedBox(width: 10),
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.black,
-                          side: const BorderSide(
-                              color: Color(0x50707070), width: 1.2), // Border
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(5), // Rounded edges
-                          ),
-                        ),
-                        child: Text('Analysis Employee',
+                        child: const Text('HR Employee',
                             textAlign: TextAlign.center),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
+                      TextButton(
+                        onPressed: () {},
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.black,
+                          side: const BorderSide(
+                              color: Color(0x50707070), width: 1.2), // Border
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(5), // Rounded edges
+                          ),
+                        ),
+                        child: const Text('Analysis Employee',
+                            textAlign: TextAlign.center),
+                      ),
+                      const SizedBox(width: 10),
                     ],
                   ),
                 ],
               )),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Expanded(
-            child:
-            ListView.builder(
-              itemCount: people.length,
-              itemBuilder: (context, index) {
-                var person = people[index];
+              child: ListView.builder(
+            itemCount: people.length,
+            itemBuilder: (context, index) {
+              var person = people[index];
 
+              Color statusColor =
+                  person["status"] == "green" ? Colors.green : Colors.orange;
+              print(statusColor);
 
-                Color statusColor = person["status"] == "green" ? Colors.green : Colors.orange;
-                print(statusColor);
-
-                return InkWell(
-                  onTap: () {
-
-                  },
-                  child: ListTile(
-                    contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                    leading: Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 20,
-                          backgroundImage: AssetImage(person["image"]!),
-                        ),
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            width: 12,
-                            height: 12,
-                            decoration: BoxDecoration(
-                              color: statusColor,
-                              shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white, width: 2),
-                            ),
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MyProfile(
+                        isHR: false,
+                      ),
+                    ),
+                  );
+                },
+                child: ListTile(
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  leading: Stack(
+                    children: [
+                      CircleAvatar(
+                        radius: 20,
+                        backgroundImage: AssetImage(person["image"]!),
+                      ),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            color: statusColor,
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 2),
                           ),
                         ),
-                      ],
-                    ),
-                    title: Text(person["name"]!, style: TextStyle(fontSize: 14)),
-                    subtitle: Text(person["specialty"]!, style: TextStyle(fontSize: 12)),
+                      ),
+                    ],
                   ),
-                );
-              },
-            )
-
-          )
-
+                  title: Text(person["name"]!,
+                      style: const TextStyle(fontSize: 14)),
+                  subtitle: Text(person["specialty"]!,
+                      style: const TextStyle(fontSize: 12)),
+                ),
+              );
+            },
+          ))
         ],
       ),
     );

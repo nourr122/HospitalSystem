@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'create_report.dart';
+import 'package:instant_project/core/ui/widgets/date_picker_widget.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/core/utils/assets.dart';
+
+import 'create_report.dart';
 import 'report_details_screen.dart';
 
 class ReportsScreen extends StatefulWidget {
@@ -12,7 +14,7 @@ class ReportsScreen extends StatefulWidget {
 }
 
 class _ReportsScreenState extends State<ReportsScreen> {
-  List<bool> _isPressed = List.generate(5, (index) => false);
+  final List<bool> _isPressed = List.generate(5, (index) => false);
 
   @override
   Widget build(BuildContext context) {
@@ -23,62 +25,35 @@ class _ReportsScreenState extends State<ReportsScreen> {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
-        title: const Text(
-          "Reports",
-          style: TextStyle(
-            color: Color(0xFF343434),
-            fontSize: 20,
-            fontFamily: 'Poppins',
-            letterSpacing: 0,
-            height: 21,
-          ),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
         ),
-        centerTitle: true,
+        title: const Text('Reports'),
+        scrolledUnderElevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: Column(
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              margin: EdgeInsets.only(top: screenHeight * 0.02, right: screenWidth * 0.1),
-              width: screenWidth * 0.7972,
-              height: screenHeight * 0.055,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                image: DecorationImage(
-                  image: AssetImage(AppAssets.rectangleImage),
-                  fit: BoxFit.cover,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Expanded(
+                child: DatePickerWidget(
+                  onDateChanged: (date) {},
                 ),
-                border: Border.all(
-                  color: Color(0xFFD8D8D8),
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadius.circular(4),
               ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: 0,
-                    left: screenWidth * 0.69,
-                    child: Image.asset(
-                      AppAssets.iconImage,
-                      width: screenWidth * 0.12,
-                      height: screenHeight * 0.055,
-                    ),
-                  ),
-                  Positioned(
-                    top: screenHeight * 0.01,
-                    left: screenWidth * 0.05,
-                    child: Image.asset(
-                      AppAssets.dateImage,
-                      width: screenWidth * 0.2,
-                      height: screenHeight * 0.03,
-                    ),
-                  ),
-                ],
+              IconButton(
+                icon: Image.asset(AppAssets.backgroundIcon),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CreateReport()),
+                  );
+                },
               ),
-            ),
+            ],
           ),
           Expanded(
             child: ListView.builder(
@@ -92,11 +67,14 @@ class _ReportsScreenState extends State<ReportsScreen> {
                     });
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => ReportDetailsScreen()),
+                      MaterialPageRoute(
+                          builder: (context) => const ReportDetailsScreen()),
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: screenWidth * 0.04, vertical: screenHeight * 0.01),
+                    margin: EdgeInsets.symmetric(
+                        horizontal: screenWidth * 0.04,
+                        vertical: screenHeight * 0.01),
                     padding: EdgeInsets.all(screenWidth * 0.04),
                     decoration: BoxDecoration(
                       color: _isPressed[index]
@@ -107,7 +85,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.1),
                           blurRadius: 4,
-                          offset: Offset(0, 2),
+                          offset: const Offset(0, 2),
                         ),
                       ],
                     ),
@@ -162,7 +140,9 @@ class _ReportsScreenState extends State<ReportsScreen> {
                           ],
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.03, vertical: screenHeight * 0.01),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: screenWidth * 0.03,
+                              vertical: screenHeight * 0.01),
                           decoration: BoxDecoration(
                             color: index % 2 == 0
                                 ? Colors.green.withOpacity(0.2)
@@ -173,7 +153,8 @@ class _ReportsScreenState extends State<ReportsScreen> {
                             index % 2 == 0 ? "Finished" : "Process",
                             style: TextStyle(
                               fontSize: screenWidth * 0.03,
-                              color: index % 2 == 0 ? Colors.green : Colors.orange,
+                              color:
+                                  index % 2 == 0 ? Colors.green : Colors.orange,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -183,29 +164,6 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   ),
                 );
               },
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: Stack(
-        children: [
-          Positioned(
-            top: screenHeight * 0.143,
-            right: -7,
-            child: FloatingActionButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => CreateReport()),
-                );
-              },
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              child: Image.asset(
-                AppAssets.backgroundIcon,
-                width: screenWidth * 0.12,
-                height: screenHeight * 0.055,
-              ),
             ),
           ),
         ],

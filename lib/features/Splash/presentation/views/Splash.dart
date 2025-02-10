@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/widgets/gradient_container.dart';
-import '../../../Login/presentation/views/Login.dart';
 import '../../../prototype/presentation/views/prototype.dart';
 
 class Splash extends StatefulWidget {
