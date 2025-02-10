@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instant_project/features/profile/presentation/views/EditProfile.dart';
 import 'package:instant_project/features/profile/presentation/views/Myprofile.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -250,6 +251,22 @@ class _EmployeesState extends State<EmployeesList> {
             },
           ))
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: AppColors.primaryColor,
+        shape: CircleBorder(),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const EditProfile(
+
+              ),
+            ),
+          );
+        },
       ),
     );
   }
