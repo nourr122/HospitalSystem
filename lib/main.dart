@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'app_router.dart';
 import 'core/utils/app_themes.dart';
+import 'features/reports/presentation/views/reports_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
