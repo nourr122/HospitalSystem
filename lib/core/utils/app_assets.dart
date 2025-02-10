@@ -1,4 +1,4 @@
-class AppAssets {
+class AppAssets{
   static const String add = 'assets/images/add.png';
   static const String calender = 'assets/images/calender.png';
   static const String callCalender = 'assets/images/calls calender.png';
@@ -17,8 +17,22 @@ class AppAssets {
   static const String profile = 'assets/images/profile.png';
   static const String undo = 'assets/images/undo.png';
   static const String wrong = 'assets/images/wrong.png';
+  static const String nurse1 = 'assets/images/nurse1.jpg';
+  static const String nurse2 = 'assets/images/nurse2.jpg';
+  static const String nurse3 = 'assets/images/nurse3.jpg';
+  static const String nurse4 = 'assets/images/nurse4.jpg';
+  static const String nurse5 = 'assets/images/nurse5.jpg';
+  static const String nurse6 = 'assets/images/nurse6.jpg';
+  static const String Aml = 'assets/images/Aml.jpg';
+  static const String path = 'assets/images/Path.png';
+  static const String dashboard = 'assets/images/dashboard.jpg';
+  static const String treatment = 'assets/images/treatment.jpg';
+  static const String uploadImage = 'assets/images/uploadImage.jpg';
+  static const String dot = 'assets/images/dot.jpg';
 
-  static const String uploadImage = 'assets/images/upload_image.png';
+  
+
+  // static const String uploadImage = 'assets/images/upload_image.png';
   static const String noteImage = 'assets/images/note_image.png';
   static const String profileImageTask = 'assets/images/profile_image.png';
 
