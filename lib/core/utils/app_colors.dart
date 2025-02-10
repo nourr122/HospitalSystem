@@ -19,4 +19,18 @@ class AppColors{
 
   static const Color gradientColor1 = Color(0x0122C7B8);
   static const Color gradientColor2 =  Color(0x60FFFFFF);
+
+  // blue colors
+  static const Color secondColor = Color(0xff2FBEB0);
+  static const Color blueColor = Color(0xffE0F7F5);
+  static const Color red = Color.fromARGB(255, 255, 0, 0);
+  static const Color gray = Color(0xff808080);
+  // gray to black colors
+
+
+  static const Color pageBackground = Color(0xffF5F5F5);
+  static const Color green = Color(0xff06E173);
+  static const Color orange = Color(0xffF17A12);
+  static const Color yellow = Color(0xffF9C80E);
+  static const Color blue = Color(0xff2D9CDB);
 }
