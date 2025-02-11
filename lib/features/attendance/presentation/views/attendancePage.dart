@@ -43,7 +43,7 @@ class _AttendancePageState extends State<AttendancePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const MyProfile(isHR: true),
+                      builder: (BuildContext context) => const MyProfile(isHR: false),
                     ),
                   );
                 },
