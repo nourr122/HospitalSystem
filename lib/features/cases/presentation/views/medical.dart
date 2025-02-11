@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Project-Instant/core/utils/app_colors.dart';
+import 'package:instant_project/core/utils/app_colors.dart';
 
 
 class Medical extends StatefulWidget {
