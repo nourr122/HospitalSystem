@@ -6,8 +6,8 @@ import 'package:instant_project/features/cases/presentation/views/medical.dart';
 import 'addMedical.dart';
 
 class CaseDetails extends StatefulWidget {
-  const CaseDetails({super.key, required this.title, required this.specialist});
-  final String specialist;
+  const CaseDetails({super.key, required this.title, required this.role});
+  final String role;
   final String title;
 
   @override
@@ -50,10 +50,10 @@ class _CaseDetailsState extends State<CaseDetails> {
               child: Flexible(
                 child: Row(
                   children: [
-                    widget.specialist == "Doctor" ||
-                            widget.specialist == "Nurse" ||
-                            widget.specialist == "Analysis Employee" ||
-                            widget.specialist == "Manger"
+                    widget.role == "Doctor" ||
+                            widget.role == "Nurse" ||
+                            widget.role == "Analysis Employee" ||
+                            widget.role == "Manager"
                         ? Flexible(
                             child: Padding(
                             padding: EdgeInsets.all(screenwidth * 0.01),
@@ -88,22 +88,22 @@ class _CaseDetailsState extends State<CaseDetails> {
                             ),
                           ))
                         : const SizedBox(),
-                    widget.specialist == "Doctor" ||
-                            widget.specialist == "Analysis Employee" ||
-                            widget.specialist == "Manger"
+                    widget.role == "Doctor" ||
+                            widget.role == "Analysis Employee" ||
+                            widget.role == "Manger"
                         ? Flexible(
                             child: Padding(
                                 padding: EdgeInsets.all(screenwidth * 0.01),
                                 child: OutlinedButton(
                                   onPressed: () {
-                                    widget.specialist == "Analysis Employee"
+                                    widget.role == "Analysis Employee"
                                         ? Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
                                                     AddMedical(
-                                                        specialist:
-                                                            widget.specialist)),
+                                                        role:
+                                                            widget.role)),
                                           )
                                         : _changeContent("Medical Record");
                                   },
@@ -134,20 +134,20 @@ class _CaseDetailsState extends State<CaseDetails> {
                                   ),
                                 )))
                         : const SizedBox(),
-                    widget.specialist == "Manger" ||
-                            widget.specialist == "Doctor" ||
-                            widget.specialist == "Nurse"
+                    widget.role == "Manager" ||
+                            widget.role == "Doctor" ||
+                            widget.role == "Nurse"
                         ? Flexible(
                             child: Padding(
                             padding: EdgeInsets.all(screenwidth * 0.01),
                             child: OutlinedButton(
                               onPressed: () {
-                                widget.specialist == "Nurse"
+                                widget.role == "Nurse"
                                     ? Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => AddMedical(
-                                                specialist: widget.specialist)),
+                                                role: widget.role)),
                                       )
                                     : _changeContent("Medical Measurement");
                               },
@@ -184,8 +184,8 @@ class _CaseDetailsState extends State<CaseDetails> {
                 ),
               ),
             ),
-            widget.specialist == "Nurse" ||
-                    widget.specialist == "Analysis Employee"
+            widget.role == "Nurse" ||
+                    widget.role == "Analysis Employee"
                 ? isVisible
                     ? Padding(
                         padding: EdgeInsets.symmetric(
@@ -523,7 +523,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                         SizedBox(
                           height: screenheight * 0.02,
                         ),
-                        widget.specialist == "Doctor"
+                        widget.role == "Doctor"
                             ? Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
@@ -1089,7 +1089,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                             ),
                           ))
                         : Container(),
-            widget.specialist == "Receptionist"
+            widget.role == "Receptionist"
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -1118,7 +1118,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                           ))
                     ],
                   )
-                : widget.specialist == "Doctor"
+                : widget.role== "Doctor"
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -1151,7 +1151,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                               ))
                         ],
                       )
-                    : widget.specialist == "Nurse"
+                    : widget.role== "Nurse"
                         ? Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
