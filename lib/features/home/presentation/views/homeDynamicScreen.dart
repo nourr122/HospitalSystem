@@ -30,7 +30,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               onTap: (BuildContext context) {
                 return Case(
                   title: 'Cases',
-                  specialist: role,
+                  role:role,
                 );
               }),
           HomeItemModel(
@@ -174,7 +174,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               onTap: (BuildContext context) {
                 return Case(
                   title: 'Cases',
-                  specialist: role,
+                  role: role,
                 );
               }),
         ],
@@ -218,7 +218,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
             onTap: (BuildContext context) {
               return Case(
                 title: 'Cases',
-                specialist: role,
+                role :role,
               );
             },
           ),
@@ -235,7 +235,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               onTap: (BuildContext context) {
                 return Case(
                   title: 'Cases',
-                  specialist: role,
+                  role: role,
                 );
               }),
           HomeItemModel(
