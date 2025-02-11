@@ -26,7 +26,7 @@ class _LoginScreenState extends State<LoginPage> {
         context,
         MaterialPageRoute(
           builder: (context) => HomeDynamicScreen(
-            spcialist: widget.specialist,
+            userRole: widget.specialist,
           ),
         ),
       );
