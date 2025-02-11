@@ -213,7 +213,7 @@ class _EmployeesState extends State<EmployeesList> {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const MyProfile(
-                        isHR: false,
+                        isHR: true,
                       ),
                     ),
                   );

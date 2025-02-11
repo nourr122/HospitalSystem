@@ -87,7 +87,7 @@ class _MyProfileState extends State<MyProfile> {
                     top: profileSize / 1.5,
                     child: Container(
                       width: screenWidth * 0.9,
-                      height: screenHeight * 0.61,
+                      height: screenHeight * 0.66,
                       padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.04, vertical: screenHeight * 0.015),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -170,7 +170,7 @@ class _MyProfileState extends State<MyProfile> {
                   ),
                   if (widget.isHR)
                     Positioned(
-                      bottom: profileSize * 0.9,
+                      bottom: screenHeight * 0.062,
                       left: 0,
                       right: 0,
                       child: InkWell(
