@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:instant_project/features/cases/presentation/views/caseDetails.dart';
-import 'package:instant_project/core/utils/app_assets.dart';
-import 'package:instant_project/core/utils/app_colors.dart';
+import 'package:Project-Instant/features/cases/presentation/views/caseDetails.dart';
+import 'package:Project-Instant/core/utils/app_assets.dart';
+import 'package:Project-Instant/core/utils/app_colors.dart';
 
 class Case extends StatefulWidget {
   const Case({super.key, required this.title, required this.specialist});
