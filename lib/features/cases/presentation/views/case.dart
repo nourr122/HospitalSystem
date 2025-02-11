@@ -4,8 +4,8 @@ import 'package:instant_project/core/utils/app_assets.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
 
 class Case extends StatefulWidget {
-  const Case({super.key, required this.title, required this.specialist});
-  final String specialist;
+  const Case({super.key, required this.title, required this.role});
+  final String role;
   final String title;
 
   @override
@@ -69,7 +69,7 @@ class _CaseState extends State<Case> {
                           MaterialPageRoute(
                               builder: (context) => CaseDetails(
                                   title: 'Case Details',
-                                  specialist: widget.specialist)),
+                                  role: widget.role)),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -136,7 +136,7 @@ class _CaseState extends State<Case> {
                           MaterialPageRoute(
                             builder: (context) => CaseDetails(
                               title: 'Case Details',
-                              specialist: widget.specialist,
+                              role: widget.role,
                             ),
                           ),
                         );
@@ -205,7 +205,7 @@ class _CaseState extends State<Case> {
                           MaterialPageRoute(
                             builder: (context) => CaseDetails(
                               title: 'Case Details',
-                              specialist: widget.specialist,
+                              role: widget.role,
                             ),
                           ),
                         );
