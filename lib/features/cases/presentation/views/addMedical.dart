@@ -5,8 +5,8 @@ import 'package:instant_project/core/utils/app_assets.dart';
 
 
 class AddMedical extends StatefulWidget {
-  const AddMedical({super.key,required this.specialist });
-  final String specialist;
+  const AddMedical({super.key,required this.role });
+  final String role;
 
   @override
   State<AddMedical> createState() => _AddMedicalState();
@@ -35,9 +35,9 @@ class _AddMedicalState extends State<AddMedical> {
       backgroundColor: AppColors.whiteColor1,
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor1,
-        title:widget.specialist=="Nurse"?
+        title:widget.role=="Nurse"?
               Text("Add Measurement")
-              :widget.specialist=="Analysis Employee"?
+              :widget.role=="Analysis Employee"?
               Text("Add Medical record")
               :Container(),
           centerTitle: true,
@@ -94,7 +94,7 @@ class _AddMedicalState extends State<AddMedical> {
             ),
             SizedBox(height: screenheight*0.02,),
 
-            widget.specialist=="Nurse"?
+            widget.role=="Nurse"?
                         Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -145,7 +145,7 @@ class _AddMedicalState extends State<AddMedical> {
                 ),
               ],
             
-            ):widget.specialist=="Analysis Employee"?
+            ):widget.role=="Analysis Employee"?
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -222,7 +222,7 @@ class _AddMedicalState extends State<AddMedical> {
              SizedBox(height: screenheight * 0.02),
             Row(
               children: [
-                widget.specialist=="Nurse"?
+                widget.role=="Nurse"?
                 Text(
                   "Add Measurement",
                   style: TextStyle(
@@ -230,7 +230,7 @@ class _AddMedicalState extends State<AddMedical> {
                     fontSize: screenwidth * 0.04,
                     color: AppColors.blackColor1,
                   ),
-                ):widget.specialist=="Analysis Employee"?
+                ):widget.role=="Analysis Employee"?
                  Text(
                   "Add Record",
                   style: TextStyle(
@@ -243,7 +243,7 @@ class _AddMedicalState extends State<AddMedical> {
             ),
             SizedBox(height: screenheight * 0.01),
 
-            widget.specialist=="Nurse"?
+            widget.role=="Nurse"?
             Column(children: [
                 Row(
               children: [
@@ -408,7 +408,7 @@ class _AddMedicalState extends State<AddMedical> {
             
              
             ],)
-            :widget.specialist=="Analysis Employee"?
+            :widget.role=="Analysis Employee"?
             DottedBorder(
               dashPattern: [13,14],
               color: AppColors.grayColor3,
@@ -453,7 +453,7 @@ class _AddMedicalState extends State<AddMedical> {
               ]
             )):Container(),
               
-            widget.specialist=="Nurse"?
+            widget.role=="Nurse"?
             Column(
               children: [
                 SizedBox(height: screenheight*0.165,),
@@ -479,7 +479,7 @@ class _AddMedicalState extends State<AddMedical> {
               ),
             ),  
               ],
-            ):widget.specialist=="Analysis Employee"?
+            ):widget.role=="Analysis Employee"?
             Column(
               children: [SizedBox(height:screenheight*0.24),
              OutlinedButton(
