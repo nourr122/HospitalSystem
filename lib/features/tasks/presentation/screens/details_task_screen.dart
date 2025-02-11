@@ -113,10 +113,8 @@ class _DetailsTaskScreenState extends State<DetailsTaskScreen> {
                           const SizedBox(height: 10),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Expanded(
-                              child: Text(
-                                'Details Note: ${widget.task.description}',
-                              ),
+                            child: Text(
+                              'Details Note: ${widget.task.description}',
                             ),
                           ),
                           SizedBox(
@@ -274,10 +272,8 @@ class _DetailsTaskScreenState extends State<DetailsTaskScreen> {
                             const SizedBox(height: 10),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Expanded(
-                                child: Text(
-                                  'Details Note: ${widget.task.description}',
-                                ),
+                              child: Text(
+                                'Details Note: ${widget.task.description}',
                               ),
                             ),
                           ],

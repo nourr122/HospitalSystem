@@ -14,7 +14,7 @@ class ReportDetailsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: Colors.transparent,
         title: const Text(
           "Report Details",
           style: TextStyle(color: AppColors.textColor),
@@ -210,7 +210,7 @@ class ReportDetailsScreen extends StatelessWidget {
               width: width * 0.8,  // 80% من العرض
               height: height * 0.05,  // 5% من الارتفاع
               decoration: BoxDecoration(
-                image: DecorationImage(
+                image: const DecorationImage(
                   image: AssetImage(AppAssets.SendIcon),
                   fit: BoxFit.cover,
                 ),

@@ -24,14 +24,11 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
         'profile': AppAssets.hrProfile,
         'items': [
           HomeItemModel(
-              title: 'Cases',
-              iconUrl: AppAssets.casesIcon,
-              containerColor: const Color.fromRGBO(95, 158, 220, 1),
+              title: 'Employee',
+              iconUrl: AppAssets.employeesIcon,
+              containerColor: const Color.fromRGBO(220, 145, 95, 1),
               onTap: (BuildContext context) {
-                return Case(
-                  title: 'Cases',
-                  role:role,
-                );
+                return EmployeesList();
               }),
           HomeItemModel(
               title: 'Tasks',
@@ -53,13 +50,6 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               containerColor: const Color.fromRGBO(95, 220, 220, 1),
               onTap: (BuildContext context) {
                 return const AttendancePage();
-              }),
-          HomeItemModel(
-              title: 'Employee',
-              iconUrl: AppAssets.employeesIcon,
-              containerColor: const Color.fromRGBO(220, 145, 95, 1),
-              onTap: (BuildContext context) {
-                return EmployeesList();
               }),
         ],
       },
@@ -103,11 +93,14 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
         'profile': AppAssets.mangerProfile,
         'items': [
           HomeItemModel(
-              title: 'Employee',
-              iconUrl: AppAssets.employeesIcon,
-              containerColor: const Color.fromRGBO(220, 145, 95, 1),
+              title: 'Cases',
+              iconUrl: AppAssets.casesIcon,
+              containerColor: const Color.fromRGBO(95, 158, 220, 1),
               onTap: (BuildContext context) {
-                return EmployeesList();
+                return Case(
+                  title: 'Cases',
+                  role:role,
+                );
               }),
           HomeItemModel(
               title: 'Tasks',
@@ -129,6 +122,13 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               containerColor: const Color.fromRGBO(95, 220, 220, 1),
               onTap: (BuildContext context) {
                 return const AttendancePage();
+              }),
+          HomeItemModel(
+              title: 'Employee',
+              iconUrl: AppAssets.employeesIcon,
+              containerColor: const Color.fromRGBO(220, 145, 95, 1),
+              onTap: (BuildContext context) {
+                return EmployeesList();
               }),
         ],
       },
