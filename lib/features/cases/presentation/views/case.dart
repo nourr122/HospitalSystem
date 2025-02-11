@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:Project-Instant/features/cases/presentation/views/caseDetails.dart';
+import 'caseDetails.dart';
 import 'package:Project-Instant/core/utils/app_assets.dart';
 import 'package:Project-Instant/core/utils/app_colors.dart';
 
