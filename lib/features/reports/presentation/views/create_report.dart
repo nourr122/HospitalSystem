@@ -1,122 +1,160 @@
 import 'package:flutter/material.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
-import 'package:instant_project/core/utils/assets.dart';
-import 'reports_screen.dart';
+import 'package:instant_project/core/utils/app_assets.dart';
+import 'package:dotted_border/dotted_border.dart';
+import 'package:instant_project/features/reports/presentation/views/report_details_screen.dart';
 
-class CreateReport extends StatelessWidget {
+
+
+class CreateReport extends StatefulWidget {
   const CreateReport({super.key});
+
+
+  @override
+  State<CreateReport> createState() => _CreateReportState();
+}
+
+class _CreateReportState extends State<CreateReport> {
+  TextEditingController textController1 = TextEditingController();
+    TextEditingController textController2 = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
+    double screenwidth = MediaQuery.of(context).size.width;
+    double screenheight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
+      backgroundColor: AppColors.whiteColor1,
       appBar: AppBar(
-        backgroundColor: AppColors.backgroundColor,
+        backgroundColor: AppColors.whiteColor1,
         title: Text(
           'Create Report',
-          style: TextStyle(color: AppColors.TitleColor),
+          style: TextStyle(color: AppColors.grayColor2),
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      body: 
+        Padding(padding: EdgeInsets.all(screenwidth*0.03),
+        child: ListView(
           children: [
-            const SizedBox(height: 16),
-
-
-            Container(
-              width: double.infinity,
-              height: 50,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(AppAssets.NameReport),
-                  fit: BoxFit.cover,
-                ),
-                border: Border.all(
-                  color: const Color(0xFFD8D8D8),
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              alignment: Alignment.centerLeft,
-              child: Image.asset(AppAssets.ReportName),
-            ),
-
-            const SizedBox(height: 16),
-
-
-            Container(
-              width: double.infinity,
-              height: 100,
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(AppAssets.DescriptionReport),
-                  fit: BoxFit.cover,
-                ),
-                border: Border.all(
-                  color: const Color(0xFFD8D8D8),
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              alignment: Alignment.topLeft,
-             child: Image.asset(AppAssets.InputText),
-            ),
-            SizedBox(height: 18),
-            Container(
-              width: double.infinity,
-              height: 220,
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(AppAssets.UploadImage),
-
-                ),
-
-                borderRadius: BorderRadius.circular(4),
+            TextField(
+                    controller: textController1,
+                    cursorColor: AppColors.grayColor3,
+                    decoration: InputDecoration(
+                      fillColor: AppColors.whiteColor1,
+                      filled: true,
+                      hintText: "Report Name",
+                      hintStyle: TextStyle(fontSize: screenwidth*0.035,fontFamily: 'poppins',color: AppColors.grayColor2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(width: screenwidth*0.001,color: AppColors.grayColor3),
+                      ),
+                      focusedBorder: OutlineInputBorder( 
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(
+                width: screenwidth * 0.001,
+                color: AppColors.grayColor3,
               ),
             ),
-            SizedBox(height: 140,),
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Material(
-                color: Colors.transparent,
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ReportsScreen()),
-                    );
+                      contentPadding: EdgeInsets.symmetric(vertical: screenheight*0.02, horizontal: screenwidth*0.02), 
+                    ),
+                  ),
+                  SizedBox(height:screenwidth*0.03),
+                  TextField(
+                    controller: textController2,
+                    decoration: InputDecoration(
+                      fillColor: AppColors.whiteColor1,
+                      filled: true,
+                      hintText: "Description",
+                      hintStyle: TextStyle(fontSize: screenwidth*0.035,fontFamily: 'poppins',color: AppColors.grayColor2),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(width: screenwidth*0.001,color: AppColors.grayColor3),
+                      ),
+                      focusedBorder: OutlineInputBorder( 
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: BorderSide(
+                width: screenwidth * 0.001,
+                color: AppColors.grayColor3,
+              ),
+            ),
+                      contentPadding: EdgeInsets.symmetric(vertical: screenheight*0.06, horizontal: screenwidth*0.02), 
+                    ),
+                  ),
+                  SizedBox(height:screenheight*0.03),
+                              DottedBorder(
+              dashPattern: [13,14],
+              color: AppColors.grayColor3,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+              children:[
+                SizedBox(height:screenheight*0.02),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [Image.asset(AppAssets.uploadImage),],
+                  ),
+                SizedBox(height:screenheight*0.02),
+                Row(mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                  OutlinedButton(
+                  onPressed: () {
+                     
                   },
-                  borderRadius: BorderRadius.circular(4),
-                  splashColor: Colors.teal.withOpacity(0.3),
-                  highlightColor: Colors.blueGrey.withOpacity(0.2),
-                  child: Container(
-                    margin: EdgeInsets.only(top: 16),
-                    width: 305,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage(AppAssets.CreateReport),
-                        fit: BoxFit.cover,
-                      ),
-                      border: Border.all(
-                        color: Color(0xFFD8D8D8),
-                        width: 0.5,
-                      ),
-                      borderRadius: BorderRadius.circular(4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.add,color: AppColors.primaryColor,),Text(
+                    "Upload Image",
+                    style: TextStyle(
+                      fontFamily: 'poppins',
+                      fontSize: screenwidth * 0.04,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),],),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: screenheight*0.015,horizontal: screenwidth*0.05),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    side: BorderSide(
+                      color: AppColors.primaryColor,
+                      width: 1,
                     ),
                   ),
                 ),
+                ],),
+                SizedBox(height:screenheight*0.02),
+                                 
+              ]
+            )),
+            SizedBox(height: screenheight*0.28,),
+            OutlinedButton(
+              onPressed: () {
+              Navigator.of(context).pop(); 
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                side: BorderSide(color: AppColors.primaryColor, width: 2),
+                backgroundColor: AppColors.primaryColor,
+                minimumSize: Size(screenwidth*0.96, screenheight * 0.065),
               ),
-            ),
+              child: Text(
+                "Create Report",
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: screenwidth * 0.035,
+                  color: AppColors.whiteColor1,
+                ),
+              ),
+            ),  
+
+
+
           ],
-        ),
-      ),
+        )
+        ,)
     );
   }
 }
