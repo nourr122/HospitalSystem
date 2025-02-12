@@ -7,223 +7,183 @@ class ReportDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.backgroundColor,
         title: const Text(
           "Report Details",
           style: TextStyle(color: AppColors.textColor),
         ),
         centerTitle: true,
       ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 16.0),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+
+        Container(
+        decoration: BoxDecoration(
+        border: Border.all(color: AppColors.grayColor3),
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Row(
         children: [
-          Align(
-            alignment: Alignment.topCenter,
-            child: Container(
-              margin: EdgeInsets.only(top: 16),
-              width: width * 0.8,
-              height: height * 0.05,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                image: DecorationImage(
-                  image: AssetImage(AppAssets.Rectangleimage),
-                  fit: BoxFit.cover,
-                ),
-                border: Border.all(
-                  color: Color(0xFFD8D8D8),
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    right: 0,
-                    top: 0,
-                    bottom: 0,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(4),
-                        bottomRight: Radius.circular(4),
-                        topLeft: Radius.circular(4),
-                        bottomLeft: Radius.circular(4),
-                      ),
-                      child: Image.asset(
-                        AppAssets.GroupIcon,
-                        width: width * 0.18,
-                        height: height * 0.05,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              child: SizedBox(
+                height: 48, 
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: "Report Name",
+                    border: InputBorder.none,
+                    contentPadding: EdgeInsets.zero,
                   ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 16),
-                      child: Image.asset(
-                        AppAssets.ReportName,
-                        width: width * 0.26,
-                        height: height * 0.03,
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ),
-          SizedBox(height: height * 0.02),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Image.asset(AppAssets.LeadingImage),
-                  SizedBox(width: width * 0.02),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(AppAssets.EbrahemImage),
-                          SizedBox(width: width * 0.4),
-                          Image.asset(AppAssets.ShawkyDate),
-                        ],
-                      ),
-                      SizedBox(height: height * 0.01),
-                      Image.asset(AppAssets.SubtitleImage),
-                    ],
-                  )
-                ],
-              ),
-              SizedBox(height: height * 0.02),
-              Image.asset(AppAssets.reportDetails)
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 20.0),
-            child: Row(
-              children: [
-                Image.asset(AppAssets.ReplayManager),
-              ],
+
+
+          Container(
+            height: 48,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(8))
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.asset(AppAssets.LineImage),
-              SizedBox(width: width * 0.02),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset(AppAssets.ShawkyImage),
-                      SizedBox(width: width * 0.02),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(AppAssets.ShawkyName),
-                          SizedBox(height: height * 0.01),
-                          Image.asset(AppAssets.ShawkySpecialist),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: height * 0.01),
-                  Image.asset(AppAssets.reportDetails),
-                  SizedBox(height: height * 0.01),
-                  Image.asset(AppAssets.hospitalImage),
-                ],
+            child: TextButton(
+              onPressed: () {},
+              style: TextButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                minimumSize: Size(0, 48),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
-              Expanded(
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 5, right: 6),
-                    child: Image.asset(AppAssets.ShawkyDate),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: height * 0.03),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              margin: EdgeInsets.only(top: 16),
-              width: width * 0.8,
-              height: height * 0.05,
-              decoration: BoxDecoration(
-                color: Colors.transparent,
-                image: DecorationImage(
-                  image: AssetImage(AppAssets.Rectangle2Image),
-                  fit: BoxFit.cover,
-                ),
-                border: Border.all(
-                  color: Color(0xFFD8D8D8),
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadius.circular(4),
-              ),
-              child: Stack(
-                children: [
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 0),
-                      child: Image.asset(
-                        AppAssets.ic_fileImage,
-                        width: width * 0.26,
-                        height: height * 0.03,
-                      ),
-                    ),
-                  ),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 16),
-                      child: Image.asset(
-                        AppAssets.ReplayImage,
-                        width: width * 0.26,  // 26% من العرض
-                        height: height * 0.03,  // 3% من الارتفاع
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SizedBox(height: 0),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              margin: EdgeInsets.only(top: 16),
-              width: width * 0.8,  // 80% من العرض
-              height: height * 0.05,  // 5% من الارتفاع
-              decoration: BoxDecoration(
-                image: const DecorationImage(
-                  image: AssetImage(AppAssets.SendIcon),
-                  fit: BoxFit.cover,
-                ),
-                border: Border.all(
-                  color: Color(0xFFD8D8D8),
-                  width: 0.5,
-                ),
-                borderRadius: BorderRadius.circular(4),
+              child: Text(
+                "End",
+                style: TextStyle(color: Colors.white, fontSize: 14),
               ),
             ),
           ),
         ],
       ),
+    ),
+            SizedBox(height: 16),
+
+
+            Expanded(
+              child: ListView(
+                keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+                children: [
+                  _buildCommentTile(
+                    imagePath: AppAssets.LeadingImage,
+                    name: "Ebrahem Elzainy",
+                    specialization: "Specialist - Doctor",
+                    dateTime: "13 Mar 2020 ",
+                    comment: "Details note: Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+                  ),
+                  SizedBox(height: 16),
+                  _buildCommentTile(
+                    imagePath: AppAssets.ShawkyImage,
+                    name: "Shawky Ahmed",
+                    specialization: "Specialist - Doctor",
+                    dateTime: "13 Mar 2020 ",
+                    comment: "Details note: Lorem Ipsum is simply dummy text of the printing and typesetting industry...",
+                    imageAttachment: AppAssets.hospitalImage,
+                  ),
+                ],
+              ),
+            ),
+
+
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Type your reply...",
+                        border: InputBorder.none,
+                        filled: true,
+                        fillColor: Colors.transparent,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.upload, color: AppColors.grayColor2),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 8),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primaryColor,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  minimumSize: Size(double.infinity, 50),
+                ),
+                onPressed: () {},
+                child: Text("Send", style: TextStyle(color: Colors.white)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCommentTile({
+    required String imagePath,
+    required String name,
+    required String specialization,
+    required String comment,
+    required String dateTime,
+    String? imageAttachment,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(imagePath, width: 40, height: 40),
+            SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
+                Text(specialization, style: TextStyle(color: Colors.teal)),
+              ],
+            ),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.only(top: 5),
+              child: Text(dateTime, style: TextStyle(color: Colors.grey, fontSize: 12)),
+            ),
+          ],
+        ),
+        SizedBox(height: 5),
+        Padding(
+          padding: const EdgeInsets.only(left: 50),
+          child: Text(comment),
+        ),
+        if (imageAttachment != null) ...[
+          SizedBox(height: 8),
+          Padding(
+            padding: const EdgeInsets.only(left: 50),
+            child: Image.asset(imageAttachment, width: 200),
+          ),
+        ],
+      ],
     );
   }
 }
