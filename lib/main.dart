@@ -1,15 +1,12 @@
-
 import 'package:flutter/material.dart';
-
+import 'package:instant_project/core/utils/app_colors.dart';
 import 'app_router.dart';
 import 'core/utils/app_themes.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(
-    const MyApp(),
-  );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -31,22 +28,34 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp(
           theme: isLightTheme
               ? AppTheme.light.copyWith(
-                  textTheme: GoogleFonts.poppinsTextTheme(
-                    Theme.of(context).textTheme,
-                  ),
-                )
+            textTheme: GoogleFonts.poppinsTextTheme(
+              Theme.of(context).textTheme,
+            ),
+            textSelectionTheme: TextSelectionThemeData(
+              cursorColor: AppColors.primaryColor,
+              selectionColor: AppColors.secondColor,
+              selectionHandleColor: AppColors.primaryColor,
+            ),
+            primaryColor: AppColors.blackColor1,
+            focusColor: AppColors.blackColor1,
+          )
               : AppTheme.dark.copyWith(
-                  textTheme: GoogleFonts.poppinsTextTheme(
-                    Theme.of(context).textTheme,
-                  ),
-                ),
+              textTheme: GoogleFonts.poppinsTextTheme(
+              Theme.of(context).textTheme,
+            ),
+            textSelectionTheme: TextSelectionThemeData(
+              cursorColor: AppColors.primaryColor,
+              selectionColor: AppColors.secondColor,
+              selectionHandleColor: AppColors.primaryColor,
+            ),
+            primaryColor: AppColors.blackColor1,
+            focusColor: AppColors.blackColor1,
+          ),
           onGenerateRoute: AppRouter.onGenerateRoute,
           debugShowCheckedModeBanner: false,
-          // home: Specialist(),
-          //home: Doctor(),
-          //home: Nurse(),
         );
       },
     );
   }
 }
+
