@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instant_project/core/utils/app_assets.dart';
-import 'package:instant_project/features/notifications/presentation/views/notification.dart';
-import 'package:instant_project/features/profile/presentation/views/Myprofile.dart';
-
+import 'package:instant_project/features/profile/data/model/user_model.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../profile/presentation/views/Myprofile.dart';
 import 'customCard.dart';
 
-class AttendancePage extends StatefulWidget {
-  const AttendancePage({super.key});
+class AttendancePage extends StatelessWidget {
+  final UserModel user;
+  const AttendancePage({super.key, required this.user});
 
-  @override
-  State<AttendancePage> createState() => _AttendancePageState();
-}
-
-class _AttendancePageState extends State<AttendancePage> {
   @override
   Widget build(BuildContext context) {
     double appBarHeight = MediaQuery.of(context).size.height * 0.09;
@@ -33,33 +27,33 @@ class _AttendancePageState extends State<AttendancePage> {
                 icon: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.asset(
-                    AppAssets.receptionistProfile,
+                    user.gender == "Female"? AppAssets.femaleIcon : AppAssets.maleIcon,
                     fit: BoxFit.cover,
                     width: 50,
                     height: 50,
                   ),
                 ),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute<void>(
-                      builder: (BuildContext context) => const MyProfile(isHR: false),
-                    ),
-                  );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (BuildContext context) => UserProfile(user: user,),
+                  ),
+                );
                 },
               ),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Ebrahem Elzainy",
+                    "${user.firstName} ${user.lastName}",
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
                   Text(
-                    "Specialist, Doctor",
+                    "Specialist, ${user.specialist}",
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -68,7 +62,7 @@ class _AttendancePageState extends State<AttendancePage> {
                   ),
                 ],
               ),
-              actions: [
+              /*actions: [
                 IconButton(
                   icon: SvgPicture.asset(AppAssets.notificationIcon),
                   onPressed: () {
@@ -80,7 +74,7 @@ class _AttendancePageState extends State<AttendancePage> {
                     );
                   },
                 ),
-              ],
+              ],*/
               backgroundColor: Colors.transparent,
               elevation: 0,
               pinned: true,

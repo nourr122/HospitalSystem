@@ -117,4 +117,7 @@ class AppAssets{
   static const String attendanceIcon = '${basePath}Group 345.svg';
   static const String employeesIcon = '${basePath}Group 349.svg';
 
+  static const String femaleIcon = '${basePath}female.png';
+  static const String maleIcon = '${basePath}male.png';
+
 }

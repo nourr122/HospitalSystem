@@ -20,6 +20,10 @@ dependencies:
   syncfusion_flutter_datepicker: ^28.1.41
   flutter_svg: ^2.0.17
   dotted_border: ^2.1.0
+  dio:
+  flutter_bloc:
+  fluttertoast:
+  equatable:
 
 dev_dependencies:
   flutter_test:

@@ -1,33 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instant_project/features/profile/data/model/user_model.dart';
-import 'package:instant_project/features/profile/presentation/views/customEditWidget.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_assets.dart';
-import 'EditProfile.dart';
 import 'customTileWidget.dart';
 
-class MyProfile extends StatefulWidget {
-  final bool isHR;
-  const MyProfile({super.key, required this.isHR});
-
-  @override
-  State<MyProfile> createState() => _MyProfileState();
-}
-
-class _MyProfileState extends State<MyProfile> {
-  final UserModel user = UserModel(
-    firstName: 'Ebrahem',
-    lastName: 'Elzainy',
-    specialist: 'Specialist - Doctor',
-    gender: 'Male',
-    statues: 'Single',
-    phone: '096521145523',
-    email: 'ebrahemelzainy@gmail.com',
-    address: 'Mansoura, Shirben',
-    dateOfBirth: '29-03-1997',
-  );
+class UserProfile extends StatelessWidget {
+  final UserModel? user;
+  const UserProfile({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +90,7 @@ class _MyProfileState extends State<MyProfile> {
                               physics: const BouncingScrollPhysics(),
                               children: [
                                 Text(
-                                  '${user.firstName} ${user.lastName}',
+                                  '${user?.firstName} ${user?.lastName}',
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.poppins(
                                     fontSize: screenWidth * 0.045,
@@ -118,13 +99,13 @@ class _MyProfileState extends State<MyProfile> {
                                   ),
                                 ),
                                 SizedBox(height: screenHeight * 0.02),
-                                CustomTileWidget(specialist: user.specialist, iconPath: AppAssets.specialistIcon, iconSize: iconSize),
-                                CustomTileWidget(specialist: user.gender, iconPath: AppAssets.genderIcon, iconSize: iconSize),
-                                CustomTileWidget(specialist: user.dateOfBirth, iconPath: AppAssets.dateIcon, iconSize: iconSize),
-                                CustomTileWidget(specialist: user.address, iconPath: AppAssets.locationIcon, iconSize: iconSize),
-                                CustomTileWidget(specialist: user.statues, iconPath: AppAssets.statuesIcon, iconSize: iconSize),
-                                CustomTileWidget(specialist: user.email, iconPath: AppAssets.emailIcon, iconSize: iconSize),
-                                CustomTileWidget(specialist: user.phone, iconPath: AppAssets.phoneIcon, iconSize: iconSize),
+                                CustomTileWidget(specialist: user!.specialist, iconPath: AppAssets.specialistIcon, iconSize: iconSize),
+                                CustomTileWidget(specialist: user!.gender, iconPath: AppAssets.genderIcon, iconSize: iconSize),
+                                CustomTileWidget(specialist: user!.birthday, iconPath: AppAssets.dateIcon, iconSize: iconSize),
+                                CustomTileWidget(specialist: user!.address, iconPath: AppAssets.locationIcon, iconSize: iconSize),
+                                CustomTileWidget(specialist: user!.status, iconPath: AppAssets.statuesIcon, iconSize: iconSize),
+                                CustomTileWidget(specialist: user!.email, iconPath: AppAssets.emailIcon, iconSize: iconSize),
+                                CustomTileWidget(specialist: user!.mobile, iconPath: AppAssets.phoneIcon, iconSize: iconSize),
                               ],
                             ),
                           ),
@@ -163,34 +144,17 @@ class _MyProfileState extends State<MyProfile> {
                         ),
                         CircleAvatar(
                           radius: profileSize / 2,
-                          backgroundImage: const AssetImage(AppAssets.profileImage),
+                          backgroundImage: user!.gender == 'Female' ? const AssetImage(AppAssets.femaleIcon) : const AssetImage(AppAssets.maleIcon)
                         ),
                       ],
                     ),
                   ),
-                  if (widget.isHR)
-                    Positioned(
-                      bottom: screenHeight * 0.062,
-                      left: 0,
-                      right: 0,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute<void>(
-                              builder: (BuildContext context) => EditProfile(user: user),
-                            ),
-                          );
-                        },
-                        child: const CustomEditWidget(),
-                      ),
-                    ),
                 ],
               ),
             ),
           ],
         ),
-      ),
+      )
     );
   }
 }
