@@ -4,10 +4,12 @@ import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/features/cases/presentation/views/addNurse.dart';
 import 'package:instant_project/features/cases/presentation/views/medical.dart';
 import 'addMedical.dart';
+import '../../data/models/caseShow.dart';
+import '../../data/models/apiServer.dart';
 
 class CaseDetails extends StatefulWidget {
-  const CaseDetails({super.key, required this.title, required this.role});
-  final String role;
+  const CaseDetails({super.key, required this.title, required this.specialist});
+  final String specialist;
   final String title;
 
   @override
@@ -19,6 +21,32 @@ class _CaseDetailsState extends State<CaseDetails> {
   String content = 'Case';
   String selectedOption = '';
   bool isVisible = true;
+  List<dynamic> data = [];
+  CaseShow l=CaseShow();
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    print("Fetching data...");
+
+    List<dynamic> fetchedData = await ApiServer().fetchData(state: "all");
+
+    print("Fetched Data: $fetchedData");
+
+    if (fetchedData.isNotEmpty) {
+      setState(() {
+        data = fetchedData;
+      });
+    } else {
+      print("!No data received!");
+    }
+  }
+
+
 
   void _changeContent(String newText) {
     setState(() {
@@ -45,16 +73,14 @@ class _CaseDetailsState extends State<CaseDetails> {
         body: Column(
                   children: [
         Padding(
-          padding: EdgeInsets.all(screenwidth * 0.02),
+          padding: EdgeInsets.all(screenwidth * 0.015),
           child: Row(
             children: [
-              widget.role == "Doctor" ||
-                      widget.role == "Nurse" ||
-                      widget.role == "Analysis Employee" ||
-                      widget.role == "Manager"
-                  ? Padding(
-                  padding: EdgeInsets.all(screenwidth * 0.01),
-                  child: OutlinedButton(
+              widget.specialist == "Doctor" ||
+                      widget.specialist == "Nurse" ||
+                      widget.specialist == "Analysis Employee" ||
+                      widget.specialist == "Manager"
+                  ? OutlinedButton(
                     onPressed: () {
                       _changeContent("Case");
                     },
@@ -82,24 +108,23 @@ class _CaseDetailsState extends State<CaseDetails> {
                               : AppColors.blackColor1),
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                                      )
+                  )
                   : const SizedBox(),
-              widget.role == "Doctor" ||
-                      widget.role == "Analysis Employee" ||
-                      widget.role == "Manager"
+              widget.specialist == "Doctor" ||
+                      widget.specialist == "Analysis Employee" ||
+                      widget.specialist == "Manager"
                   ? Padding(
-                      padding: EdgeInsets.all(screenwidth * 0.01),
+                      padding: EdgeInsets.all(screenwidth * 0.004),
                       child: OutlinedButton(
                         onPressed: () {
-                          widget.role == "Analysis Employee"
+                          widget.specialist == "Analysis Employee"
                               ? Navigator.push(
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
                                           AddMedical(
                                               role:
-                                                  widget.role)),
+                                                  widget.specialist)),
                                 )
                               : _changeContent("Medical Record");
                         },
@@ -130,19 +155,17 @@ class _CaseDetailsState extends State<CaseDetails> {
                         ),
                       ))
                   : const SizedBox(),
-              widget.role == "Manager" ||
-                      widget.role == "Doctor" ||
-                      widget.role == "Nurse"
-                  ? Padding(
-                  padding: EdgeInsets.all(screenwidth * 0.01),
-                  child: OutlinedButton(
+              widget.specialist == "Manager" ||
+                      widget.specialist == "Doctor" ||
+                      widget.specialist == "Nurse"
+                  ? OutlinedButton(
                     onPressed: () {
-                      widget.role == "Nurse"
+                      widget.specialist == "Nurse"
                           ? Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => AddMedical(
-                                      role: widget.role)),
+                                      role: widget.specialist)),
                             )
                           : _changeContent("Medical Measurement");
                     },
@@ -172,14 +195,13 @@ class _CaseDetailsState extends State<CaseDetails> {
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                                      )
+                  )
                   : const SizedBox()
             ],
           ),
         ),
-        widget.role == "Nurse" ||
-                widget.role == "Analysis Employee"
+        widget.specialist == "Nurse" ||
+                widget.specialist== "Analysis Employee"
             ? isVisible
                 ? Padding(
                     padding: EdgeInsets.symmetric(
@@ -286,7 +308,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                         width: screenwidth * 0.26,
                       ),
                       Text(
-                        "Ebrahim Khaled",
+                        data.//['patient_name'],
                         style: TextStyle(
                             fontFamily: 'poppins',
                             fontSize: screenwidth * 0.04,
@@ -517,7 +539,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                     SizedBox(
                       height: screenheight * 0.02,
                     ),
-                    widget.role == "Doctor"
+                    widget.specialist == "Doctor"
                         ? Row(
                             mainAxisAlignment:
                                 MainAxisAlignment.spaceEvenly,
@@ -1083,7 +1105,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                         ),
                       ))
                     : Container(),
-        widget.role == "Receptionist"
+        widget.specialist == "Receptionist"
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -1112,7 +1134,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                       ))
                 ],
               )
-            : widget.role== "Doctor"
+            : widget.specialist== "Doctor"
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -1145,7 +1167,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                           ))
                     ],
                   )
-                : widget.role== "Nurse"
+                : widget.specialist== "Nurse"
                     ? Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
