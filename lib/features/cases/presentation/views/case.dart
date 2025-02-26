@@ -69,7 +69,7 @@ class _CaseState extends State<Case> {
                           MaterialPageRoute(
                               builder: (context) => CaseDetails(
                                   title: 'Case Details',
-                                  role: widget.role)),
+                                  specialist: widget.role)),
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -136,7 +136,7 @@ class _CaseState extends State<Case> {
                           MaterialPageRoute(
                             builder: (context) => CaseDetails(
                               title: 'Case Details',
-                              role: widget.role,
+                              specialist: widget.role,
                             ),
                           ),
                         );
@@ -205,7 +205,7 @@ class _CaseState extends State<Case> {
                           MaterialPageRoute(
                             builder: (context) => CaseDetails(
                               title: 'Case Details',
-                              role: widget.role,
+                              specialist: widget.role,
                             ),
                           ),
                         );

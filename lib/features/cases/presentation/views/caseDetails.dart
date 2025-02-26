@@ -21,7 +21,7 @@ class _CaseDetailsState extends State<CaseDetails> {
   String content = 'Case';
   String selectedOption = '';
   bool isVisible = true;
-  List<dynamic> data = [];
+  Case? data;
   CaseShow l=CaseShow();
 
   @override
@@ -33,11 +33,11 @@ class _CaseDetailsState extends State<CaseDetails> {
   getData() async {
     print("Fetching data...");
 
-    List<dynamic> fetchedData = await ApiServer().fetchData(state: "all");
+    Case fetchedData = await ApiServer().fetchData(state: "all");
 
     print("Fetched Data: $fetchedData");
 
-    if (fetchedData.isNotEmpty) {
+    if (fetchedData != null) {
       setState(() {
         data = fetchedData;
       });
@@ -308,7 +308,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                         width: screenwidth * 0.26,
                       ),
                       Text(
-                        data.//['patient_name'],
+                        data!.patientName!,//'patient_name'],
                         style: TextStyle(
                             fontFamily: 'poppins',
                             fontSize: screenwidth * 0.04,
