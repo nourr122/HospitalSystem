@@ -64,7 +64,7 @@ class TaskItem extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 Text(
-                  formateDate(task.date),
+                  formateDate(task.createdAt),
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
