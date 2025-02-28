@@ -38,7 +38,7 @@ class _Splash extends State<Splash> with SingleTickerProviderStateMixin {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => prototypePage(),
+              builder: (context) => const prototypePage(),
             ),
           );
         }
@@ -95,13 +95,13 @@ class _Splash extends State<Splash> with SingleTickerProviderStateMixin {
                     width: width * 0.8,
                     child: LinearProgressIndicator(
                       value: _animation.value,
-                      backgroundColor: const Color(0xFFF4F6466),
+                      backgroundColor: const Color(0xfff4f6466),
                       valueColor:
                           const AlwaysStoppedAnimation(AppColors.primaryColor),
                       minHeight: 5,
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   // Loading Text
                   const Text(
                     'Loading...',
