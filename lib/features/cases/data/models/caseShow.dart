@@ -1,7 +1,7 @@
 class CaseShow {
   int? status;
   String? message;
-  List<Case>? data;
+  List<CaseModel>? data;
 
   CaseShow({this.status, this.message, this.data});
 
@@ -10,7 +10,7 @@ class CaseShow {
       status: json['status'] ?? 0,
       message: json['message'] ?? "",
       data: json['data'] != null
-          ? List<Case>.from(json['data'].map((v) => Case.fromJson(v)))
+          ? List<CaseModel>.from(json['data'].map((v) => CaseModel.fromJson(v)))
           : [],
     );
   }
@@ -22,7 +22,7 @@ class CaseShow {
   };
 }
 
-class Case {
+class CaseModel {
   int? id;
   String? patientName;
   String? createdAt;
@@ -41,7 +41,7 @@ class Case {
   String? image;
   String? medicalRecordNote;
 
-  Case({
+  CaseModel({
     this.id,
     this.patientName,
     this.createdAt,
@@ -61,8 +61,8 @@ class Case {
     this.medicalRecordNote,
   });
 
-  factory Case.fromJson(Map<String, dynamic> json) {
-    return Case(
+  factory CaseModel.fromJson(Map<String, dynamic> json) {
+    return CaseModel(
       id: json['id'] ?? 0,
       patientName: json['patient_name'] ?? "",
       createdAt: json['created_at'] ?? "",
