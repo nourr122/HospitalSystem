@@ -4,7 +4,7 @@ import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/features/cases/presentation/views/addNurse.dart';
 import 'package:instant_project/features/cases/presentation/views/medical.dart';
 import 'addMedical.dart';
-import '../../data/models/caseShow.dart';
+import '../../data/models/caseModel.dart';
 import '../../data/models/apiServer.dart';
 
 class CaseDetails extends StatefulWidget {
@@ -21,8 +21,8 @@ class _CaseDetailsState extends State<CaseDetails> {
   String content = 'Case';
   String selectedOption = '';
   bool isVisible = true;
-  Case? data;
   CaseShow l=CaseShow();
+  CaseModel? data;
 
   @override
   void initState() {
@@ -33,7 +33,7 @@ class _CaseDetailsState extends State<CaseDetails> {
   getData() async {
     print("Fetching data...");
 
-    Case fetchedData = await ApiServer().fetchData(state: "all");
+    CaseModel fetchedData = await ApiServer().showCase(state: "all");
 
     print("Fetched Data: $fetchedData");
 
@@ -70,7 +70,10 @@ class _CaseDetailsState extends State<CaseDetails> {
           ),
           centerTitle: true,
         ),
-        body: Column(
+        body:
+          data== null?
+          Center(child: CircularProgressIndicator(color: AppColors.primaryColor,))
+            : Column(
                   children: [
         Padding(
           padding: EdgeInsets.all(screenwidth * 0.015),
@@ -305,10 +308,10 @@ class _CaseDetailsState extends State<CaseDetails> {
                             color: AppColors.grayColor3),
                       ),
                       SizedBox(
-                        width: screenwidth * 0.26,
+                        width: screenwidth * 0.31,
                       ),
                       Text(
-                        data!.patientName!,//'patient_name'],
+                        data!.patientName!,
                         style: TextStyle(
                             fontFamily: 'poppins',
                             fontSize: screenwidth * 0.04,
@@ -333,10 +336,10 @@ class _CaseDetailsState extends State<CaseDetails> {
                             color: AppColors.grayColor3),
                       ),
                       SizedBox(
-                        width: screenwidth * 0.5,
+                        width: screenwidth * 0.7,
                       ),
                       Text(
-                        "24 Years",
+                        data!.age!,
                         style: TextStyle(
                           fontFamily: 'poppins',
                           fontSize: screenwidth * 0.04,
@@ -360,10 +363,10 @@ class _CaseDetailsState extends State<CaseDetails> {
                               fontSize: screenwidth * 0.04,
                               color: AppColors.grayColor3)),
                       SizedBox(
-                        width: screenwidth * 0.3,
+                        width: screenwidth * 0.34,
                       ),
                       Text(
-                        "24897030210",
+                        data!.phone!,
                         style: TextStyle(
                             fontFamily: 'poppins',
                             fontSize: screenwidth * 0.04,
@@ -388,10 +391,10 @@ class _CaseDetailsState extends State<CaseDetails> {
                             color: AppColors.grayColor3),
                       ),
                       SizedBox(
-                        width: screenwidth * 0.5,
+                        width: screenwidth * 0.55,
                       ),
                       Text(
-                        "24 . 4 . 2021",
+                        data!.createdAt!,
                         style: TextStyle(
                             fontFamily: 'poppins',
                             fontSize: screenwidth * 0.04,
@@ -416,10 +419,10 @@ class _CaseDetailsState extends State<CaseDetails> {
                             color: AppColors.grayColor3),
                       ),
                       SizedBox(
-                        width: screenwidth * 0.45,
+                        width: screenwidth * 0.2,
                       ),
                       Text(
-                        "Salma Ahmed",
+                        data!.doctorId!,
                         style: TextStyle(
                           fontFamily: 'poppins',
                           fontSize: screenwidth * 0.04,
@@ -446,10 +449,10 @@ class _CaseDetailsState extends State<CaseDetails> {
                         ),
                       ),
                       SizedBox(
-                        width: screenwidth * 0.5,
+                        width: screenwidth * 0.17,
                       ),
                       Text(
-                        "Ali Islam",
+                        data!.nurseId!,
                         style: TextStyle(
                           fontFamily: 'poppins',
                           fontSize: screenwidth * 0.04,
@@ -481,7 +484,8 @@ class _CaseDetailsState extends State<CaseDetails> {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text("Process",
+                          Text(
+                              data!.status!,
                               style: TextStyle(
                                   fontFamily: 'poppins',
                                   fontSize: screenwidth * 0.04,
@@ -525,7 +529,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                         ),
                         Expanded(
                             child: Text(
-                          "Details Note : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy ",
+                           data!.description!,
                           style: TextStyle(
                             fontFamily: 'poppins',
                             fontSize: screenwidth * 0.04,
@@ -873,7 +877,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                           children: [
                             ListTile(
                                 trailing: Text(
-                                  "15 Mar 2021",
+                                  data!.createdAt!,
                                   style: TextStyle(
                                     fontFamily: 'poppins',
                                     fontSize: screenwidth * 0.03,
@@ -887,14 +891,14 @@ class _CaseDetailsState extends State<CaseDetails> {
                                   child: Image.asset(AppAssets.Aml),
                                 ),
                                 title: Text(
-                                  "Aml Ezzat",
+                                  data!.doctorId!,
                                   style: TextStyle(
                                       fontFamily: 'poppins',
                                       color: AppColors.blackColor1,
                                       fontSize: screenwidth * 0.04),
                                 ),
                                 subtitle: Text(
-                                  "Specialist - Analysis employee",
+                                  data!.analysisId!,
                                   style: TextStyle(
                                       fontFamily: 'poppins',
                                       color: AppColors.primaryColor,
@@ -989,7 +993,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                               children: [
                                 ListTile(
                                     trailing: Text(
-                                      "15 Mar 2021",
+                                      data!.createdAt!,
                                       style: TextStyle(
                                         fontFamily: 'poppins',
                                         fontSize: screenwidth * 0.03,
@@ -1004,14 +1008,14 @@ class _CaseDetailsState extends State<CaseDetails> {
                                       child: Image.asset(AppAssets.Aml),
                                     ),
                                     title: Text(
-                                      "Aml Ezzat",
+                                      data!.patientName!,
                                       style: TextStyle(
                                           fontFamily: 'poppins',
                                           color: AppColors.blackColor1,
                                           fontSize: screenwidth * 0.04),
                                     ),
                                     subtitle: Text(
-                                      "Specialist - Analysis employee",
+                                      data!.analysisId!,
                                       style: TextStyle(
                                           fontFamily: 'poppins',
                                           color: AppColors.primaryColor,
@@ -1065,7 +1069,13 @@ class _CaseDetailsState extends State<CaseDetails> {
                                             SizedBox(
                                               width: screenwidth * 0.42,
                                             ),
-                                            const Text("120-129")
+                                             Text(data!.bloodPressure!,style: TextStyle(
+                                               fontFamily: 'poppins',
+                                               fontSize:
+                                               screenwidth * 0.04,
+                                               color:
+                                               AppColors.blackColor1,
+                                             ))
                                           ],
                                         )
                                       ],
@@ -1092,7 +1102,13 @@ class _CaseDetailsState extends State<CaseDetails> {
                                             SizedBox(
                                               width: screenwidth * 0.42,
                                             ),
-                                            const Text("120-129")
+                                             Text(data!.sugarAnalysis!,style: TextStyle(
+                                               fontFamily: 'poppins',
+                                               fontSize:
+                                               screenwidth * 0.04,
+                                               color:
+                                               AppColors.blackColor1,
+                                             ))
                                           ],
                                         )
                                       ],
