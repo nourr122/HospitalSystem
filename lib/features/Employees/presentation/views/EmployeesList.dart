@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:instant_project/features/profile/presentation/views/EditProfile.dart';
+import 'package:instant_project/features/profile/presentation/views/Register.dart';
 import 'package:instant_project/features/profile/presentation/views/Myprofile.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -115,9 +115,8 @@ class _EmployeesState extends State<EmployeesList> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MyProfile(
-                        isHR: true,
-                        //employeeId: employee["id"],
+                      builder: (context) =>  UserProfile(
+                        id: employee["id"],
                       ),
                     ),
                   );
@@ -151,7 +150,7 @@ class _EmployeesState extends State<EmployeesList> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const EditProfile(
+              builder: (context) => const Register(
 
               ),
             ),

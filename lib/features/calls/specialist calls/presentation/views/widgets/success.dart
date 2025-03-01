@@ -46,14 +46,14 @@ class Success extends StatelessWidget {
             const Spacer(),
             CustomButton(
               onPressed: () {
-                Navigator.push(
+                /*Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const HomeDynamicScreen(
-                      userRole: 'Receptionist',
+                      userRole: 'Receptionist', // send id of user
                     ),
                   ),
-                );
+                );*/
               },
               buttonBody: Text('Back To Home',
                   style: TextStyles.stylePoppinsRegular14Hint
