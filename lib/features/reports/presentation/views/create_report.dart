@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/core/utils/app_assets.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:instant_project/features/reports/presentation/views/report_details_screen.dart';
 
 
 
@@ -26,7 +27,7 @@ class _CreateReportState extends State<CreateReport> {
       backgroundColor: AppColors.whiteColor1,
       appBar: AppBar(
         backgroundColor: AppColors.whiteColor1,
-        title: const Text(
+        title: Text(
           'Create Report',
           style: TextStyle(color: AppColors.grayColor2),
         ),
@@ -82,7 +83,7 @@ class _CreateReportState extends State<CreateReport> {
                   ),
                   SizedBox(height:screenheight*0.03),
                               DottedBorder(
-              dashPattern: const [13,14],
+              dashPattern: [13,14],
               color: AppColors.grayColor3,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -99,20 +100,10 @@ class _CreateReportState extends State<CreateReport> {
                   onPressed: () {
                      
                   },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: screenheight*0.015,horizontal: screenwidth*0.05),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    side: const BorderSide(
-                      color: AppColors.primaryColor,
-                      width: 1,
-                    ),
-                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Icon(Icons.add,color: AppColors.primaryColor,),Text(
+                      Icon(Icons.add,color: AppColors.primaryColor,),Text(
                     "Upload Image",
                     style: TextStyle(
                       fontFamily: 'poppins',
@@ -120,6 +111,16 @@ class _CreateReportState extends State<CreateReport> {
                       color: AppColors.primaryColor,
                     ),
                   ),],),
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.symmetric(vertical: screenheight*0.015,horizontal: screenwidth*0.05),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    side: BorderSide(
+                      color: AppColors.primaryColor,
+                      width: 1,
+                    ),
+                  ),
                 ),
                 ],),
                 SizedBox(height:screenheight*0.02),
@@ -135,7 +136,7 @@ class _CreateReportState extends State<CreateReport> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                side: const BorderSide(color: AppColors.primaryColor, width: 2),
+                side: BorderSide(color: AppColors.primaryColor, width: 2),
                 backgroundColor: AppColors.primaryColor,
                 minimumSize: Size(screenwidth*0.96, screenheight * 0.065),
               ),

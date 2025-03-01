@@ -33,7 +33,7 @@ class _MedicalState extends State<Medical> {
         title: Text(widget.selectedOption,style: TextStyle(fontFamily: 'Poppins', fontSize: screenwidth * 0.055),),
         centerTitle: true,
                 leading: IconButton(
-          icon: const Icon(
+          icon: Icon(
             Icons.close, 
             color: AppColors.blackColor1,
           ),
@@ -53,11 +53,11 @@ class _MedicalState extends State<Medical> {
           children: [
             SizedBox(width: screenwidth*0.02,),
             Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: isSelected1 ? AppColors.primaryColor: AppColors.whiteColor1, 
             borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(color: AppColors.blackColor1, blurRadius: 2),
             ],
           ),
@@ -88,11 +88,11 @@ class _MedicalState extends State<Medical> {
         ),
         SizedBox(width: screenwidth*0.02,),
             Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: isSelected2 ? AppColors.primaryColor: AppColors.whiteColor1, 
             borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(color: AppColors.blackColor1, blurRadius: 2),
             ],
           ),
@@ -127,11 +127,11 @@ class _MedicalState extends State<Medical> {
           children: [
             SizedBox(width: screenwidth*0.02,),
             Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isSelected1 ? AppColors.primaryColor : AppColors.whiteColor1, 
             borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(color: AppColors.blackColor1, blurRadius: 2),
             ],
           ),
@@ -162,11 +162,11 @@ class _MedicalState extends State<Medical> {
         ),
         SizedBox(width: screenwidth*0.01,),
             Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isSelected2 ? AppColors.primaryColor : AppColors.whiteColor1, 
             borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(color: AppColors.blackColor1, blurRadius: 2),
             ],
           ),
@@ -198,11 +198,11 @@ class _MedicalState extends State<Medical> {
                 SizedBox(width: screenwidth*0.01,),
 
                     Container(
-          padding: const EdgeInsets.all(8),
+          padding: EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: isSelected3 ? AppColors.primaryColor : AppColors.whiteColor1, 
             borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(color: AppColors.blackColor1, blurRadius: 2),
             ],
           ),
@@ -239,11 +239,11 @@ class _MedicalState extends State<Medical> {
           children: [
             SizedBox(width: screenwidth*0.02,),
             Container(
-          padding: const EdgeInsets.all(10),
+          padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: isSelected4 ? AppColors.primaryColor : AppColors.whiteColor1, 
             borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
+            boxShadow: [
               BoxShadow(color: AppColors.blackColor1, blurRadius: 2),
             ],
           ),
@@ -313,7 +313,7 @@ class _MedicalState extends State<Medical> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                side: const BorderSide(color: AppColors.primaryColor, width: 2),
+                side: BorderSide(color: AppColors.primaryColor, width: 2),
                 backgroundColor: AppColors.primaryColor,
                 minimumSize: Size(screenwidth*0.96, screenheight * 0.06),
               ),

@@ -254,8 +254,9 @@ class _EmployeesState extends State<EmployeesList> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
         backgroundColor: AppColors.primaryColor,
-        shape: const CircleBorder(),
+        shape: CircleBorder(),
         onPressed: () {
           Navigator.push(
             context,
@@ -266,7 +267,6 @@ class _EmployeesState extends State<EmployeesList> {
             ),
           );
         },
-        child: const Icon(Icons.add),
       ),
     );
   }

@@ -1,6 +1,6 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=D:\flutter_windows_3.24.0-stable\flutter
-FLUTTER_APPLICATION_PATH=D:\my project\API\Project-Instant
+FLUTTER_ROOT=C:\flutter
+FLUTTER_APPLICATION_PATH=D:\courses\Flutter\apps\Project-Instant
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
 FLUTTER_BUILD_NAME=1.0.0

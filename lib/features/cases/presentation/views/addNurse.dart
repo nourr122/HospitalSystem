@@ -194,20 +194,20 @@ class _SelectNurseState extends State<SelectNurse> {
                   Navigator.pop(context, selectedNurse);
                 }
               },
+              child: Text('Select Nurse',
+                  style:TextStyle(fontFamily: 'poppins',
+                        fontSize: screenwidth * 0.04,
+                        color: AppColors.whiteColor1,)),
               style:  ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),),
-                    side: const BorderSide(
+                    side: BorderSide(
                       color: AppColors.primaryColor, 
                       width: 2,
                     ), 
                     backgroundColor: AppColors.primaryColor,
                     minimumSize: Size(screenwidth * 0.96, screenheight * 0.055), 
               ),
-              child: Text('Select Nurse',
-                  style:TextStyle(fontFamily: 'poppins',
-                        fontSize: screenwidth * 0.04,
-                        color: AppColors.whiteColor1,)),
             ),
           ),
         ],
