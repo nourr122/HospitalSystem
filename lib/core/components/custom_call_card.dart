@@ -4,9 +4,9 @@ import 'package:instant_project/core/utils/text_styles.dart';
 
 class CustomCallCard extends StatelessWidget {
   const CustomCallCard(
-      {super.key, required this.doctorName, required this.callTime, this.doc, this.icon, this.onTap, this.buttons});
+      {super.key, required this.name, required this.callTime, this.doc, this.icon, this.onTap, this.buttons});
 
-  final String doctorName;
+  final String name;
   final String callTime;
   final Widget? doc; 
   final Widget? icon;
@@ -48,7 +48,7 @@ class CustomCallCard extends StatelessWidget {
                       width: width / 20,
                     ),
                     Text(
-                      doctorName,
+                      name,
                       style: TextStyles.stylePoppinsMedium14Title,
                     ),
                     const Spacer(),

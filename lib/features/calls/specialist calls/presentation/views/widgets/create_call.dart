@@ -4,6 +4,7 @@ import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/core/utils/form_validation.dart';
 import 'package:instant_project/core/utils/text_styles.dart';
 import 'package:instant_project/core/components/custom_button.dart';
+import 'package:instant_project/features/calls/specialist%20calls/Services/post_create_call_service.dart';
 import 'package:instant_project/features/calls/specialist%20calls/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:instant_project/features/calls/specialist%20calls/presentation/views/widgets/select_doctor.dart';
 import 'package:instant_project/features/calls/specialist%20calls/presentation/views/widgets/success.dart';
@@ -18,7 +19,10 @@ class _CreateCallState extends State<CreateCall> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? selectedDoctorName;
-
+  TextEditingController nameController = TextEditingController();
+  TextEditingController ageController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController descController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -50,6 +54,7 @@ class _CreateCallState extends State<CreateCall> {
                     return FormValidation.emptyValueValidation(value);
                   },
                   hintStyle: TextStyles.stylePoppinsRegular14Hint,
+                  controller: nameController,
                 ),
                 SizedBox(height: height / 67),
                 CustomTextFormField(
@@ -59,6 +64,7 @@ class _CreateCallState extends State<CreateCall> {
                     return FormValidation.emptyValueValidation(value);
                   },
                   hintStyle: TextStyles.stylePoppinsRegular14Hint,
+                  controller: ageController,
                 ),
                 SizedBox(height: height / 67),
                 CustomTextFormField(
@@ -68,6 +74,7 @@ class _CreateCallState extends State<CreateCall> {
                     return FormValidation.phoneNumberValidation(value);
                   },
                   hintStyle: TextStyles.stylePoppinsRegular14Hint,
+                  controller: phoneController,
                 ),
                 SizedBox(height: height / 67),
                 CustomTextFormField(
@@ -100,9 +107,10 @@ class _CreateCallState extends State<CreateCall> {
                   keyboardType: TextInputType.text,
                   maxLines: 8,
                   validator: (value) {
-                    return FormValidation.optionalField(value);
+                    return FormValidation.emptyValueValidation(value);
                   },
                   hintStyle: TextStyles.stylePoppinsRegular14Hint,
+                  controller: descController,
                 ),
                 
                 Padding(
@@ -119,6 +127,13 @@ class _CreateCallState extends State<CreateCall> {
                     ),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
+                        PostCreateCallService().addCall(
+                          patientName: nameController.text, 
+                          doctorId: '2', 
+                          description: descController.text, 
+                          phone: phoneController.text, 
+                          age: ageController.text, 
+                          context: context);
                         Navigator.push(
                           context,
                           MaterialPageRoute(

@@ -6,6 +6,9 @@ import '../../../../core/widgets/gradient_container.dart';
 import '../../../Login/presentation/views/Login.dart';
 
 class prototypePage extends StatefulWidget {
+  const prototypePage({super.key});
+
+  @override
   prototypeState createState() => prototypeState();
 }
 

@@ -3,10 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/core/utils/text_styles.dart';
 import 'package:instant_project/core/components/custom_button.dart';
+import 'package:instant_project/features/calls/doctor%20calls/presentation/services/accept_reject_call_service.dart';
 
 class CustomCallsButtons extends StatelessWidget {
-  const CustomCallsButtons({super.key});
-
+  const CustomCallsButtons({super.key, required this.id, required this.token});
+  final int id;
+  final String token;
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -31,7 +33,14 @@ class CustomCallsButtons extends StatelessWidget {
           ),
           width: width / 2.9,
           color: AppColors.color1,
-          onPressed: () {},
+          onPressed: () {
+            AcceptRejectCallService().putService(
+              status: 'accept', 
+              context: context,
+              id: id,
+              token: token
+            );
+          },
         ),
         SizedBox(
           width: width / 26,
@@ -54,7 +63,14 @@ class CustomCallsButtons extends StatelessWidget {
           ),
           width: width / 2.9,
           color: AppColors.color2,
-          onPressed: () {},
+          onPressed: () {
+            AcceptRejectCallService().putService(
+              status: 'reject', 
+              context: context,
+              id: id,
+              token: token
+            );
+          },
         )
       ],
     );

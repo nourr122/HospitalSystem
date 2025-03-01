@@ -4,6 +4,7 @@ import 'package:instant_project/features/profile/presentation/views/Myprofile.da
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets.dart';
+import '../../data/repositories/service.dart';
 
 class EmployeesList extends StatefulWidget {
   const EmployeesList({super.key});
@@ -15,57 +16,36 @@ class EmployeesList extends StatefulWidget {
 var size, height, width;
 
 class _EmployeesState extends State<EmployeesList> {
-  List<Map<String, String>> people = [
-    {
-      "name": "Salma Ahmed",
-      "specialty": "Specialist - Doctor",
-      "image": "assets/images/salma.jpg",
-      "status": "green"
-    },
-    {
-      "name": "Helmy Fadl",
-      "specialty": "Specialist - Doctor",
-      "image": "assets/images/helmy.jpg",
-      "status": "green"
-    },
-    {
-      "name": "Shawky Haleem",
-      "specialty": "Specialist - Analysis",
-      "image": "assets/images/shawky.jpg",
-      "status": "green"
-    },
-    {
-      "name": "Islam Mahmoud",
-      "specialty": "Specialist - HR",
-      "image": "assets/images/hr.jpg",
-      "status": "green"
-    },
-    {
-      "name": "Ali Ahmed",
-      "specialty": "Specialist - Analysis",
-      "image": "assets/images/hr.jpg",
-      "status": "orange"
-    },
-    {
-      "name": "Hend Ali",
-      "specialty": "Specialist - Doctor",
-      "image": "assets/images/hend.jpg",
-      "status": "orange"
-    },
-    {
-      "name": "Ahmed Zain",
-      "specialty": "Specialist - Doctor",
-      "image": "assets/images/ahmedzain.jpg",
-      "status": "orange"
-    },
-    {
-      "name": "Zeyad Ali",
-      "specialty": "Specialist - HR",
-      "image": "assets/images/hr2.jpg",
-      "status": "orange"
-    },
-  ];
+  final APIService apiService = APIService();
+  List<dynamic> employees = [];
+  final String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDZiNjZkZDhkOWY2NGYzMjEzYzY4OGMyOGEzMTQ4OTAyMGJjM2U3MDcxMGI2NTUyNjVhZmJkZjI1Mjk2OGFiNmMwNjNhY2YwZTY2MjVkNjAiLCJpYXQiOjE3NDAxNzQ5NjQuODI1ODM1LCJuYmYiOjE3NDAxNzQ5NjQuODI1ODM2LCJleHAiOjE3NzE3MTA5NjQuODI0OTMxLCJzdWIiOiIxNyIsInNjb3BlcyI6W119.ExHcpHRqAoeKwG4RPARSy9dhLGSg0jgyRF_vKbzfYJjOnhvcqQmLWmQqgJlVJpxWN4zZ--0eZqAuQ_Ev0Hp0FSQ0tJNnT2tLcHQAefwggiaCzbs8RZoNfYUgDzZWEtjhSzbRfjv_w167WOYW3piLJ2ZjpCLAUHO2IGisXsZ_43C6H1E7wJof9uhwU2gxbzdQ_UfEvb1OFjVvEmKPNrLfyfDmaGj2F-kW2L_8Y5G6JdfoKKnSTqmYgN4NcfGQIvIijk0rmmarrGIGa4l4Q29QiAtBPa9fvkEwq2WHbCocaQdmfGYk-dq0UVtcFH578rYAC7SjXkcjy50_pmhWSdKITXJIzZUNXuWFQTKIQ171oTstIns5sSZFi_-kb18sEcBq-Po7oE39OokBrRT4wHtYIUZUSGryBHz-5rjna-UR2ZWItDvyhXv7WI8WGkVykDMD1q3SeJQcfLRJavE4iNm0Mn32THyPrc6L3JZ6679PvXYgXwPyxBye-Tl_rr97-Pgi5QmTQ0LmcMmRntlwmGlrWSt0ARTB30H1kv6qv7zZzHhuCEYmAVxVRfMUE63tEi-RGIm7ri47pni4X6ZXC4BPnl9vj6X4XQG4_PqWuh1rAqErsApGfEuqajG9o1e01rLIhs3oUALCbOJ0xilszQGbNajNfFyB_uTBYO_poVU46Bw";
+  String selectedCategory = "all";
+  @override
+  void initState() {
+    super.initState();
+   fetchEmployees(selectedCategory);
+  }
+  void fetchEmployees(String type) async {
+    setState(() {
+      employees = [];
+      selectedCategory = type;
+    });
+    if (type == "all") {
+      List<dynamic> doctors = await apiService.fetchEmployeesByType("doctor", token);
+      List<dynamic> nurses = await apiService.fetchEmployeesByType("nurse", token);
+      List<dynamic> hrEmployees = await apiService.fetchEmployeesByType("hr", token);
+      List<dynamic> analysts = await apiService.fetchEmployeesByType("analysis", token);
 
+      setState(() {
+        employees = [...doctors, ...nurses, ...hrEmployees, ...analysts];
+      });
+    } else {
+      List<dynamic> data = await apiService.fetchEmployeesByType(type, token);
+      setState(() {
+        employees = data;
+      });
+    }
+  }
   final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -114,84 +94,11 @@ class _EmployeesState extends State<EmployeesList> {
                 scrollDirection: Axis.horizontal,
                 children: [
                   const SizedBox(width: 10),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          backgroundColor: AppColors.primaryColor,
-                          foregroundColor: Colors.white,
-                          side: const BorderSide(
-                              color: Color(0x50707070), width: 1.2),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                        ),
-                        child: const Text('All', textAlign: TextAlign.center),
-                      ),
-                      const SizedBox(width: 10),
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.black,
-                          side: const BorderSide(
-                              color: Color(0x50707070), width: 1.2), // Border
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(5), // Rounded edges
-                          ),
-                        ),
-                        child:
-                            const Text('Doctor', textAlign: TextAlign.center),
-                      ),
-                      const SizedBox(width: 10),
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.black,
-                          side: const BorderSide(
-                              color: Color(0x50707070), width: 1.2), // Border
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(5), // Rounded edges
-                          ),
-                        ),
-                        child: const Text('Nurse', textAlign: TextAlign.center),
-                      ),
-                      const SizedBox(width: 10),
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.black,
-                          side: const BorderSide(
-                              color: Color(0x50707070), width: 1.2), // Border
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(5), // Rounded edges
-                          ),
-                        ),
-                        child: const Text('HR Employee',
-                            textAlign: TextAlign.center),
-                      ),
-                      const SizedBox(width: 10),
-                      TextButton(
-                        onPressed: () {},
-                        style: TextButton.styleFrom(
-                          foregroundColor: Colors.black,
-                          side: const BorderSide(
-                              color: Color(0x50707070), width: 1.2), // Border
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(5), // Rounded edges
-                          ),
-                        ),
-                        child: const Text('Analysis Employee',
-                            textAlign: TextAlign.center),
-                      ),
-                      const SizedBox(width: 10),
-                    ],
-                  ),
+                  category("all", "All"),
+                  category("doctor", "Doctor"),
+                  category("nurse", "Nurse"),
+                  category("hr", "HR Employee"),
+                  category("analysis", "Analysis Employee"),
                 ],
               )),
           const SizedBox(
@@ -199,13 +106,9 @@ class _EmployeesState extends State<EmployeesList> {
           ),
           Expanded(
               child: ListView.builder(
-            itemCount: people.length,
+            itemCount: employees.length,
             itemBuilder: (context, index) {
-              var person = people[index];
-
-              Color statusColor =
-                  person["status"] == "green" ? Colors.green : Colors.orange;
-              print(statusColor);
+              var employee = employees[index];
 
               return InkWell(
                 onTap: () {
@@ -214,6 +117,7 @@ class _EmployeesState extends State<EmployeesList> {
                     MaterialPageRoute(
                       builder: (context) => const MyProfile(
                         isHR: true,
+                        //employeeId: employee["id"],
                       ),
                     ),
                   );
@@ -225,26 +129,13 @@ class _EmployeesState extends State<EmployeesList> {
                     children: [
                       CircleAvatar(
                         radius: 20,
-                        backgroundImage: AssetImage(person["image"]!),
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        right: 0,
-                        child: Container(
-                          width: 12,
-                          height: 12,
-                          decoration: BoxDecoration(
-                            color: statusColor,
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.white, width: 2),
-                          ),
-                        ),
+                        backgroundImage:  NetworkImage(employee["avatar"]),
                       ),
                     ],
                   ),
-                  title: Text(person["name"]!,
+                  title: Text(employee["first_name"]!,
                       style: const TextStyle(fontSize: 14)),
-                  subtitle: Text(person["specialty"]!,
+                  subtitle: Text("Specialist - ${employee["type"]}"!,
                       style: const TextStyle(fontSize: 12)),
                 ),
               );
@@ -254,9 +145,8 @@ class _EmployeesState extends State<EmployeesList> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         backgroundColor: AppColors.primaryColor,
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         onPressed: () {
           Navigator.push(
             context,
@@ -267,7 +157,30 @@ class _EmployeesState extends State<EmployeesList> {
             ),
           );
         },
+        child: const Icon(Icons.add),
       ),
     );
   }
-}
+
+  Widget category(String type, String btn) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: TextButton(
+        onPressed: () {
+          fetchEmployees(type);
+        },
+        style: TextButton.styleFrom(
+          backgroundColor:
+          selectedCategory == type ? AppColors.primaryColor : Colors.transparent,
+          foregroundColor: selectedCategory == type ? Colors.white : Colors.black,
+          side: const BorderSide(color: Color(0x50707070), width: 1.2),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+        ),
+        child: Text(btn, textAlign: TextAlign.center),
+      ),
+    );
+  }
+  }
+

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:instant_project/core/utils/app_colors.dart';
 import 'app_router.dart';
 import 'core/utils/app_themes.dart';
@@ -6,7 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp()
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -31,7 +33,7 @@ class _MyAppState extends State<MyApp> {
             textTheme: GoogleFonts.poppinsTextTheme(
               Theme.of(context).textTheme,
             ),
-            textSelectionTheme: TextSelectionThemeData(
+            textSelectionTheme: const TextSelectionThemeData(
               cursorColor: AppColors.primaryColor,
               selectionColor: AppColors.secondColor,
               selectionHandleColor: AppColors.primaryColor,
@@ -43,7 +45,7 @@ class _MyAppState extends State<MyApp> {
               textTheme: GoogleFonts.poppinsTextTheme(
               Theme.of(context).textTheme,
             ),
-            textSelectionTheme: TextSelectionThemeData(
+            textSelectionTheme: const TextSelectionThemeData(
               cursorColor: AppColors.primaryColor,
               selectionColor: AppColors.secondColor,
               selectionHandleColor: AppColors.primaryColor,
