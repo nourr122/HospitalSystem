@@ -1,7 +1,7 @@
 class ReportDetail {
   final int status;
   final String message;
-  final Data? data; // استخدام ? لأن البيانات قد تكون غير موجودة
+  final Data? data; 
 
   ReportDetail({required this.status, required this.message, this.data});
 
