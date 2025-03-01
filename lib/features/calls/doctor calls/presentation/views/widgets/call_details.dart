@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:instant_project/core/utils/app_assets.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/core/utils/text_styles.dart';
 import 'package:instant_project/core/components/custom_calls_buttons.dart';
+import 'package:instant_project/features/calls/constants.dart';
+import 'package:instant_project/features/calls/doctor%20calls/cubits/Show%20Call%20Details/show_call_details_cubit.dart';
 
 class CallDetails extends StatelessWidget {
   const CallDetails({
     super.key,
-    required this.titleName,
-    required this.subtitle,
-    required this.body,
+    //required this.body,
+    //required this.id,
   });
 
-  final String titleName;
-  final String subtitle;
-  final Widget body;
-
+  //final Widget body;
+  //final int id;
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -30,63 +30,78 @@ class CallDetails extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: width/25, vertical: height/50),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+      body: BlocBuilder<ShowCallDetailsCubit, ShowCallDetailsState>(
+        builder: (context, state) {
+         if(state is ShowCallDetailsLoading){
+          return const Center(child: CircularProgressIndicator(),);
+         }else if (state is ShowCallDetailsLoaded){
+          return Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: width / 25, vertical: height / 50),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  AppAssets.human,
-                  height: height/16,
-                  width: width/8,
-                  fit: BoxFit.cover,
-                ),
-                
-                SizedBox(width: width/39),
-                
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Row(
+                  children: [
+                    Image.asset(
+                      AppAssets.human,
+                      height: height / 16,
+                      width: width / 8,
+                      fit: BoxFit.cover,
+                    ),
+                    SizedBox(width: width / 39),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Expanded(
-                            child: Text(
-                              titleName,
-                              style: TextStyles.stylePoppinsMedium14Title,
-                              overflow: TextOverflow.ellipsis,
-                            ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  state.callDetails.doctorId,
+                                  style: TextStyles.stylePoppinsMedium14Title,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Text(
+                                state.callDetails.createdAt,
+                                style: TextStyles.stylePoppinsRegular12Subtitle,
+                              ),
+                            ],
                           ),
                           Text(
-                            '13 Mar 2020',
-                            style: TextStyles.stylePoppinsRegular12Subtitle,
+                            'Specialist - Manager',
+                            style: TextStyles.stylePoppinsRegular12Subtitle
+                                .copyWith(color: AppColors.primaryColor),
                           ),
                         ],
                       ),
-
-                      
-                      Text(
-                        subtitle,
-                        style: TextStyles.stylePoppinsRegular12Subtitle
-                            .copyWith(color: AppColors.primaryColor),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
+                SizedBox(height: height / 67),
+                //body,
+                Text(
+                            state.callDetails.description,
+                            style: TextStyles.stylePoppinsMedium14Title
+                                .copyWith(color: AppColors.black),
+                          ),
+                SizedBox(height: height / 50),
+                 CustomCallsButtons(
+                  id: state.callDetails.id,
+                  token: doctorToken,
+                  ),
               ],
             ),
-            SizedBox(height: height/67),
-            body,
-            SizedBox(height: height/50),
-            const CustomCallsButtons(),
-          ],
-        ),
+          );
+          }else if(state is ShowCallDetailsError){
+            return Text(state.errorMessage);
+          }else{
+            return const SizedBox();
+          }
+        },
       ),
     );
   }
 }
-
-

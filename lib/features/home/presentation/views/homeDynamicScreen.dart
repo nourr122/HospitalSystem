@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:instant_project/features/Employees/presentation/views/EmployeesList.dart';
 import 'package:instant_project/features/attendance/presentation/views/attendancePage.dart';
 import 'package:instant_project/features/calls/doctor%20calls/presentation/views/doctor_calls_view.dart';
 import 'package:instant_project/features/calls/nurse%20calls/presentation/views/nurse_calls_view.dart';
+import 'package:instant_project/features/calls/specialist%20calls/cubits/Get%20All%20Calls%20Cubit/get_all_calls_cubit.dart';
 import 'package:instant_project/features/calls/specialist%20calls/presentation/views/specialist_calls_view.dart';
 import 'package:instant_project/features/cases/presentation/views/case.dart';
 import 'package:instant_project/features/home/data/model/homeItemModel.dart';
@@ -62,6 +64,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               iconUrl: AppAssets.callsIcon,
               containerColor: const Color.fromRGBO(95, 158, 220, 1),
               onTap: (BuildContext context) {
+                context.read<GetAllCallsCubit>().getAllCalls();
                 return const SpecialistCallsView();
               }),
           HomeItemModel(
@@ -398,6 +401,7 @@ class HomeDynamicScreen extends StatelessWidget {
                       ],
                     ),
                   ),
+                  
                   if (items.length == 5)
                     GestureDetector(
                       onTap: () =>
