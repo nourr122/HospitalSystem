@@ -30,7 +30,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               iconUrl: AppAssets.employeesIcon,
               containerColor: const Color.fromRGBO(220, 145, 95, 1),
               onTap: (BuildContext context) {
-                return EmployeesList();
+                return const EmployeesList();
               }),
           HomeItemModel(
               title: 'Tasks',
@@ -131,7 +131,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               iconUrl: AppAssets.employeesIcon,
               containerColor: const Color.fromRGBO(220, 145, 95, 1),
               onTap: (BuildContext context) {
-                return EmployeesList();
+                return const EmployeesList();
               }),
         ],
       },

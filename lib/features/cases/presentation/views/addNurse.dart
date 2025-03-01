@@ -94,10 +94,7 @@ class _SelectNurseState extends State<SelectNurse> {
                         selectedNurse = newValue;
                       });
                     },
-                    ),
-              )
-            ],
-          )
+
     );
   }
 }
