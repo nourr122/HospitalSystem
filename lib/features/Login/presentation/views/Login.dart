@@ -25,8 +25,8 @@ class _LoginScreenState extends State<LoginPage> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => HomeDynamicScreen(
-            userRole: widget.specialist,
+          builder: (context) => const HomeDynamicScreen(
+            id: 88,
           ),
         ),
       );

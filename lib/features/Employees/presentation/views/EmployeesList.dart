@@ -212,7 +212,7 @@ class _EmployeesState extends State<EmployeesList> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const UserProfile(user: null,), // send real user to display it's data
+                      builder: (context) => const UserProfile(id: 88,), //send id of emp
                     ),
                   );
                 },

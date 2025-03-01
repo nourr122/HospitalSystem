@@ -37,7 +37,7 @@ class AttendancePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute<void>(
-                    builder: (BuildContext context) => UserProfile(user: user,),
+                    builder: (BuildContext context) => UserProfile(id: user.id!,),
                   ),
                 );
                 },

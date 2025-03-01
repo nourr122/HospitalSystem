@@ -82,7 +82,7 @@ class _RegisterState extends State<Register> {
                     fontSize: 16.0,
                   );
                   clearTextFields();
-                  //Navigator.pop(context);
+                  Navigator.pop(context);
                 } else if (state is RegisterFailure) {
                   Fluttertoast.showToast(
                     msg: state.error,

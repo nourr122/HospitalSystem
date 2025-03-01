@@ -14,9 +14,9 @@ import 'customContainer.dart';
 
 
 class HomeDynamicScreen extends StatefulWidget {
-  final String userRole;
-  //final int id;
-  const HomeDynamicScreen({super.key, required this.userRole});
+  //final String userRole;
+  final int id;
+  const HomeDynamicScreen({super.key, required this.id});
 
   @override
   State<HomeDynamicScreen> createState() => _HomeDynamicScreenState();
@@ -36,14 +36,14 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AuthenticationCubit>().fetchUserProfile(99);// widget.id or shared pref
+    context.read<AuthenticationCubit>().fetchUserProfile(widget.id);
   }
 
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    context.read<AuthenticationCubit>().fetchUserProfile(99);// widget.id or shared pref
+    context.read<AuthenticationCubit>().fetchUserProfile(widget.id);
   }
 
   @override
@@ -54,31 +54,40 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
       backgroundColor: AppColors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
-        child: CustomScrollView(
-          slivers: [
-            const SliverToBoxAdapter(child: SizedBox(height: 20)),
+        child: BlocBuilder<AuthenticationCubit, AuthenticationState>(
+          builder: (context, state) {
+            if (state is ProfileLoading) {
+              return const Center(
+                child: CircularProgressIndicator(color: AppColors.primaryColor),
+              );
+            } else if (state is ProfileFailure) {
+              return Center(
+                child: Text(
+                  "Error: ${state.error}",
+                  style: const TextStyle(color: Colors.red),
+                ),
+              );
+            } else if (state is ProfileSuccess) {
+              // Extract user once for reuse
+              final user = state.user;
+              final String userName = "${user.firstName} ${user.lastName}";
+              final String profile = user.gender == 'Female' ? AppAssets.femaleIcon : AppAssets.maleIcon;
+              final String userRole = user.specialist;
 
-            BlocBuilder<AuthenticationCubit, AuthenticationState>(
-              builder: (context, state) {
-                if (state is ProfileLoading) {
-                  return const SliverToBoxAdapter(
-                    child: Center(child: CircularProgressIndicator(color: AppColors.primaryColor,)),
-                  );
-                } else if (state is ProfileFailure) {
-                  return SliverToBoxAdapter(
-                    child: Center(
-                      child: Text(
-                        "Error: ${state.error}",
-                        style: const TextStyle(color: Colors.red),
-                      ),
-                    ),
-                  );
-                } else if (state is ProfileSuccess) {
-                  String userName = "${state.user.firstName} ${state.user.lastName}";
-                  String profile = state.user.gender == 'Female' ? AppAssets.femaleIcon : AppAssets.maleIcon;
-                  String userRole = state.user.specialist;
+              final String userType = user.type.name;
 
-                  return SliverAppBar(
+              List<HomeItemModel> items = [];
+              final roleData = roleBasedContent(userType)[userType];
+              if (roleData != null) {
+                items = roleData['items'] ?? [];
+              }
+
+              return CustomScrollView(
+                slivers: [
+                  const SliverToBoxAdapter(child: SizedBox(height: 20)),
+
+                  // SliverAppBar for profile section
+                  SliverAppBar(
                     leading: IconButton(
                       icon: ClipRRect(
                         borderRadius: BorderRadius.circular(8),
@@ -92,7 +101,9 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => UserProfile(user: state.user,)),
+                          MaterialPageRoute(
+                            builder: (context) => UserProfile(id: user.id!),
+                          ),
                         );
                       },
                     ),
@@ -116,52 +127,17 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                         ),
                       ],
                     ),
-                    /*actions: [
-                      IconButton(
-                        icon: SvgPicture.asset(AppAssets.notificationIcon),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => NotificationPage()),
-                          );
-                        },
-                      ),
-                    ],*/
                     backgroundColor: Colors.transparent,
                     elevation: 0,
                     pinned: true,
                     expandedHeight: appBarHeight,
                     flexibleSpace: const FlexibleSpaceBar(background: SizedBox()),
-                  );
-                }
-                return const SliverToBoxAdapter(child: SizedBox.shrink());
-              },
-            ),
+                  ),
 
-            const SliverToBoxAdapter(child: SizedBox(height: 25)),
+                  const SliverToBoxAdapter(child: SizedBox(height: 25)),
 
-            BlocBuilder<AuthenticationCubit, AuthenticationState>(
-              builder: (context, state) {
-                if (state is ProfileLoading) {
-                  return const SliverToBoxAdapter(
-                    child: Center(child: CircularProgressIndicator(color: AppColors.primaryColor,)),
-                  );
-                } else if (state is ProfileFailure) {
-                  return const SliverToBoxAdapter(
-                    child: Center(child: Text("Failed to load home")),
-                  );
-                } else if (state is ProfileSuccess) {
-                  String userRole = state.user.type.name;
-                  List<HomeItemModel> items =[];
-                  final roleData = roleBasedContent(userRole)[userRole];
-                  if (roleData != null) {
-                    items = roleData['items'] ?? [];
-                  } else {
-                    items = [];
-                  }
-
-
-                  return SliverList(
+                  // Content Section
+                  SliverList(
                     delegate: SliverChildListDelegate(
                       [
                         if (items.isNotEmpty)
@@ -176,7 +152,7 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                                     children: [
                                       for (int i = 0; i < 2 && i < items.length; i++)
                                         GestureDetector(
-                                          onTap: () => _navigationTo(context, items[i].onTap,state.user),
+                                          onTap: () => _navigationTo(context, items[i].onTap, user),
                                           child: CustomContainer(item: items[i], height: i == 0 ? 220 : 180),
                                         ),
                                     ],
@@ -187,7 +163,7 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                                     children: [
                                       for (int i = 2; i < 4 && i < items.length; i++)
                                         GestureDetector(
-                                          onTap: () => _navigationTo(context, items[i].onTap,state.user),
+                                          onTap: () => _navigationTo(context, items[i].onTap, user),
                                           child: CustomContainer(item: items[i], height: i == 2 ? 180 : 220),
                                         ),
                                     ],
@@ -198,17 +174,19 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                           ),
                         if (items.length == 5)
                           GestureDetector(
-                            onTap: () => _navigationTo(context, items[4].onTap,state.user),
+                            onTap: () => _navigationTo(context, items[4].onTap, user),
                             child: CustomFullContainer(item: items[4]),
                           ),
                       ],
                     ),
-                  );
-                }
-                return const SliverToBoxAdapter(child: SizedBox.shrink());
-              },
-            ),
-          ],
+                  ),
+                ],
+              );
+            }
+
+            // Default empty state (optional)
+            return const SizedBox.shrink();
+          },
         ),
       ),
     );
