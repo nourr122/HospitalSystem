@@ -115,9 +115,8 @@ class _EmployeesState extends State<EmployeesList> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MyProfile(
-                        isHR: true,
-                        //employeeId: employee["id"],
+                      builder: (context) =>  UserProfile(
+                        id: employee["id"],
                       ),
                     ),
                   );

@@ -24,7 +24,6 @@ class _LoginScreenState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
   final AuthRepository _authRepository = AuthRepository();
 
-  
   void _validateAndLogin() {
     if (_formKey.currentState!.validate()) {
       Navigator.pushReplacement(
@@ -32,6 +31,11 @@ class _LoginScreenState extends State<LoginPage> {
         MaterialPageRoute(
           builder: (context) => const HomeDynamicScreen(
             id: 88,
+          ),
+        ),
+      );
+    }
+  }
 
   bool isLoading = false;
   UserModel? user;
@@ -63,7 +67,7 @@ class _LoginScreenState extends State<LoginPage> {
           context,
           MaterialPageRoute(
             builder: (context) => HomeDynamicScreen(
-              userRole: widget.specialist,
+              id: user.id,
             ),
           ),
         );
@@ -80,7 +84,6 @@ class _LoginScreenState extends State<LoginPage> {
 
     setState(() => isLoading = false);
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +112,7 @@ class _LoginScreenState extends State<LoginPage> {
                 height: 250,
                 width: 280,
                 borderRadius:
-                BorderRadius.only(bottomLeft: Radius.circular(100)),
+                    BorderRadius.only(bottomLeft: Radius.circular(100)),
                 colors: [AppColors.gradientColor1, AppColors.gradientColor2],
               ),
             ),
@@ -149,8 +152,7 @@ class _LoginScreenState extends State<LoginPage> {
                             ),
                             const SizedBox(height: 30),
                             Flexible(
-                              child:
-                              TextFormField(
+                              child: TextFormField(
                                 controller: emailController,
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -161,7 +163,10 @@ class _LoginScreenState extends State<LoginPage> {
                                   return null;
                                 },
                                 decoration: InputDecoration(
-                                  prefixIcon: Icon(Icons.mail_outline, color: AppColors.primaryColor,),
+                                  prefixIcon: Icon(
+                                    Icons.mail_outline,
+                                    color: AppColors.primaryColor,
+                                  ),
                                   hintText: '  Email',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -177,9 +182,9 @@ class _LoginScreenState extends State<LoginPage> {
                                 obscureText: true,
                                 decoration: InputDecoration(
                                   prefixIcon:
-                                  Image.asset(AppAssets.lock, height: 50),
+                                      Image.asset(AppAssets.lock, height: 50),
                                   suffixIcon:
-                                  Image.asset(AppAssets.eye, height: 50),
+                                      Image.asset(AppAssets.eye, height: 50),
                                   hintText: '  Password',
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
@@ -187,7 +192,7 @@ class _LoginScreenState extends State<LoginPage> {
                                 ),
                                 keyboardType: TextInputType.visiblePassword,
                                 validator: (value) =>
-                                value!.isEmpty ? 'Enter password' : null,
+                                    value!.isEmpty ? 'Enter password' : null,
                               ),
                             ),
                             Align(
@@ -219,7 +224,7 @@ class _LoginScreenState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                           ),
-                          onPressed:  isLoading ? null : login,
+                          onPressed: isLoading ? null : login,
                           child: const Text(
                             'Login',
                             style: TextStyle(color: Colors.white, fontSize: 20),

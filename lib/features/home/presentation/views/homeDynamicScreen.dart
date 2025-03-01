@@ -11,6 +11,8 @@ import 'package:instant_project/features/calls/specialist%20calls/presentation/v
 import 'package:instant_project/features/cases/presentation/views/case.dart';
 import 'package:instant_project/features/home/data/model/homeItemModel.dart';
 import 'package:instant_project/features/home/presentation/views/customFullContainer.dart';
+import 'package:instant_project/features/reports/presentation/views/reports_screen.dart';
+import 'package:instant_project/features/tasks/presentation/screens/tasks_screen.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/role_based_content.dart';
@@ -18,7 +20,6 @@ import '../../../profile/data/model/user_model.dart';
 import '../../../profile/presentation/viewModel/authenticationCubit/authentication_cubit.dart';
 import '../../../profile/presentation/views/Myprofile.dart';
 import 'customContainer.dart';
-
 
 Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
       "HR": {
@@ -29,29 +30,31 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               title: 'Employee',
               iconUrl: AppAssets.employeesIcon,
               containerColor: const Color.fromRGBO(220, 145, 95, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const EmployeesList();
               }),
           HomeItemModel(
               title: 'Tasks',
               iconUrl: AppAssets.tasksIcon,
               containerColor: const Color.fromRGBO(95, 220, 137, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const TasksScreen();
               }),
           HomeItemModel(
               title: 'Reports',
               iconUrl: AppAssets.reportsIcon,
               containerColor: const Color.fromRGBO(145, 95, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const ReportsScreen();
               }),
           HomeItemModel(
               title: 'Attendance - Leaving',
               iconUrl: AppAssets.attendanceIcon,
               containerColor: const Color.fromRGBO(95, 220, 220, 1),
-              onTap: (BuildContext context) {
-                return const AttendancePage();
+              onTap: (BuildContext context, UserModel user) {
+                return AttendancePage(
+                  user: user,
+                );
               }),
         ],
       },
@@ -63,7 +66,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               title: 'Calls',
               iconUrl: AppAssets.callsIcon,
               containerColor: const Color.fromRGBO(95, 158, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 context.read<GetAllCallsCubit>().getAllCalls();
                 return const SpecialistCallsView();
               }),
@@ -71,22 +74,24 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               title: 'Tasks',
               iconUrl: AppAssets.tasksIcon,
               containerColor: const Color.fromRGBO(95, 220, 137, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const TasksScreen();
               }),
           HomeItemModel(
               title: 'Reports',
               iconUrl: AppAssets.reportsIcon,
               containerColor: const Color.fromRGBO(145, 95, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const ReportsScreen();
               }),
           HomeItemModel(
             title: 'Attendance - Leaving',
             iconUrl: AppAssets.attendanceIcon,
             containerColor: const Color.fromRGBO(95, 220, 220, 1),
-            onTap: (BuildContext context) {
-              return const AttendancePage();
+            onTap: (BuildContext context, UserModel user) {
+              return AttendancePage(
+                user: user,
+              );
             },
           ),
         ],
@@ -99,38 +104,40 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               title: 'Cases',
               iconUrl: AppAssets.casesIcon,
               containerColor: const Color.fromRGBO(95, 158, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return Case(
                   title: 'Cases',
-                  role:role,
+                  specialist: role,
                 );
               }),
           HomeItemModel(
               title: 'Tasks',
               iconUrl: AppAssets.tasksIcon,
               containerColor: const Color.fromRGBO(95, 220, 137, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const TasksScreen();
               }),
           HomeItemModel(
               title: 'Reports',
               iconUrl: AppAssets.reportsIcon,
               containerColor: const Color.fromRGBO(145, 95, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const ReportsScreen();
               }),
           HomeItemModel(
               title: 'Attendance - Leaving',
               iconUrl: AppAssets.attendanceIcon,
               containerColor: const Color.fromRGBO(95, 220, 220, 1),
-              onTap: (BuildContext context) {
-                return const AttendancePage();
+              onTap: (BuildContext context, UserModel user) {
+                return AttendancePage(
+                  user: user,
+                );
               }),
           HomeItemModel(
               title: 'Employee',
               iconUrl: AppAssets.employeesIcon,
               containerColor: const Color.fromRGBO(220, 145, 95, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const EmployeesList();
               }),
         ],
@@ -144,7 +151,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               description: 'You have new +1 Request',
               iconUrl: AppAssets.callsIcon,
               containerColor: const Color.fromRGBO(95, 158, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const DoctorCallsView();
               }),
           HomeItemModel(
@@ -152,7 +159,7 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               description: 'You have new +1 task',
               iconUrl: AppAssets.tasksIcon,
               containerColor: const Color.fromRGBO(95, 220, 137, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const TasksScreen();
               }),
           HomeItemModel(
@@ -160,24 +167,26 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               description: 'You have new +3 Reports',
               iconUrl: AppAssets.reportsIcon,
               containerColor: const Color.fromRGBO(145, 95, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const ReportsScreen();
               }),
           HomeItemModel(
               title: 'Attendance - Leaving',
               iconUrl: AppAssets.attendanceIcon,
               containerColor: const Color.fromRGBO(95, 220, 220, 1),
-              onTap: (BuildContext context) {
-                return const AttendancePage();
+              onTap: (BuildContext context, UserModel user) {
+                return AttendancePage(
+                  user: user,
+                );
               }),
           HomeItemModel(
               title: 'Cases',
               iconUrl: AppAssets.casesIcon,
               containerColor: const Color.fromRGBO(220, 145, 95, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return Case(
                   title: 'Cases',
-                  role: role,
+                  specialist: role,
                 );
               }),
         ],
@@ -190,38 +199,40 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               title: 'Calls',
               iconUrl: AppAssets.callsIcon,
               containerColor: const Color.fromRGBO(95, 158, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const NurseCallsView();
               }),
           HomeItemModel(
               title: 'Tasks',
               iconUrl: AppAssets.tasksIcon,
               containerColor: const Color.fromRGBO(95, 220, 137, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const TasksScreen();
               }),
           HomeItemModel(
               title: 'Reports',
               iconUrl: AppAssets.reportsIcon,
               containerColor: const Color.fromRGBO(145, 95, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const ReportsScreen();
               }),
           HomeItemModel(
               title: 'Attendance - Leaving',
               iconUrl: AppAssets.attendanceIcon,
               containerColor: const Color.fromRGBO(95, 220, 220, 1),
-              onTap: (BuildContext context) {
-                return const AttendancePage();
+              onTap: (BuildContext context, UserModel user) {
+                return AttendancePage(
+                  user: user,
+                );
               }),
           HomeItemModel(
             title: 'Cases',
             iconUrl: AppAssets.casesIcon,
             containerColor: const Color.fromRGBO(220, 145, 95, 1),
-            onTap: (BuildContext context) {
+            onTap: (BuildContext context, UserModel user) {
               return Case(
                 title: 'Cases',
-                role :role,
+                specialist: role,
               );
             },
           ),
@@ -235,37 +246,38 @@ Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
               title: 'Cases',
               iconUrl: AppAssets.casesIcon,
               containerColor: const Color.fromRGBO(95, 158, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return Case(
                   title: 'Cases',
-                  role: role,
+                  specialist: role,
                 );
               }),
           HomeItemModel(
               title: 'Tasks',
               iconUrl: AppAssets.tasksIcon,
               containerColor: const Color.fromRGBO(95, 220, 137, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const TasksScreen();
               }),
           HomeItemModel(
               title: 'Reports',
               iconUrl: AppAssets.reportsIcon,
               containerColor: const Color.fromRGBO(145, 95, 220, 1),
-              onTap: (BuildContext context) {
+              onTap: (BuildContext context, UserModel user) {
                 return const ReportsScreen();
               }),
           HomeItemModel(
               title: 'Attendance - Leaving',
               iconUrl: AppAssets.attendanceIcon,
               containerColor: const Color.fromRGBO(95, 220, 220, 1),
-              onTap: (BuildContext context) {
-                return const AttendancePage();
+              onTap: (BuildContext context, UserModel user) {
+                return AttendancePage(
+                  user: user,
+                );
               }),
         ],
       }
     };
-
 
 class HomeDynamicScreen extends StatefulWidget {
   //final String userRole;
@@ -277,7 +289,8 @@ class HomeDynamicScreen extends StatefulWidget {
 }
 
 class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
-  void _navigationTo(BuildContext context, Widget Function(BuildContext, UserModel) screen, UserModel user) {
+  void _navigationTo(BuildContext context,
+      Widget Function(BuildContext, UserModel) screen, UserModel user) {
     Navigator.push(
       context,
       MaterialPageRoute<void>(
@@ -286,13 +299,11 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
     );
   }
 
-
   @override
   void initState() {
     super.initState();
     context.read<AuthenticationCubit>().fetchUserProfile(widget.id);
   }
-
 
   @override
   void didChangeDependencies() {
@@ -325,7 +336,9 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
               // Extract user once for reuse
               final user = state.user;
               final String userName = "${user.firstName} ${user.lastName}";
-              final String profile = user.gender == 'Female' ? AppAssets.femaleIcon : AppAssets.maleIcon;
+              final String profile = user.gender == 'Female'
+                  ? AppAssets.femaleIcon
+                  : AppAssets.maleIcon;
               final String userRole = user.specialist;
 
               final String userType = user.type.name;
@@ -385,8 +398,9 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                     elevation: 0,
                     pinned: true,
                     expandedHeight: appBarHeight,
-                    flexibleSpace: const FlexibleSpaceBar(background: SizedBox()),
-                
+                    flexibleSpace:
+                        const FlexibleSpaceBar(background: SizedBox()),
+                  ),
 
                   const SliverToBoxAdapter(child: SizedBox(height: 25)),
 
@@ -404,10 +418,15 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                                 Expanded(
                                   child: Column(
                                     children: [
-                                      for (int i = 0; i < 2 && i < items.length; i++)
+                                      for (int i = 0;
+                                          i < 2 && i < items.length;
+                                          i++)
                                         GestureDetector(
-                                          onTap: () => _navigationTo(context, items[i].onTap, user),
-                                          child: CustomContainer(item: items[i], height: i == 0 ? 220 : 180),
+                                          onTap: () => _navigationTo(
+                                              context, items[i].onTap, user),
+                                          child: CustomContainer(
+                                              item: items[i],
+                                              height: i == 0 ? 220 : 180),
                                         ),
                                     ],
                                   ),
@@ -415,10 +434,15 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                                 Expanded(
                                   child: Column(
                                     children: [
-                                      for (int i = 2; i < 4 && i < items.length; i++)
+                                      for (int i = 2;
+                                          i < 4 && i < items.length;
+                                          i++)
                                         GestureDetector(
-                                          onTap: () => _navigationTo(context, items[i].onTap, user),
-                                          child: CustomContainer(item: items[i], height: i == 2 ? 180 : 220),
+                                          onTap: () => _navigationTo(
+                                              context, items[i].onTap, user),
+                                          child: CustomContainer(
+                                              item: items[i],
+                                              height: i == 2 ? 180 : 220),
                                         ),
                                     ],
                                   ),
@@ -428,12 +452,12 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                           ),
                         if (items.length == 5)
                           GestureDetector(
-                            onTap: () => _navigationTo(context, items[4].onTap, user),
+                            onTap: () =>
+                                _navigationTo(context, items[4].onTap, user),
                             child: CustomFullContainer(item: items[4]),
                           ),
                       ],
-                  
-              
+                    ),
                   ),
                 ],
               );

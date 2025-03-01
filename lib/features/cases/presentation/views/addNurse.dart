@@ -15,7 +15,6 @@ class _SelectNurseState extends State<SelectNurse> {
   TextEditingController searchController = TextEditingController();
   CaseModel? data;
 
-
   @override
   void initState() {
     super.initState();
@@ -38,7 +37,6 @@ class _SelectNurseState extends State<SelectNurse> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     final double screenheight = MediaQuery.of(context).size.height;
@@ -50,7 +48,8 @@ class _SelectNurseState extends State<SelectNurse> {
         backgroundColor: Colors.white,
         title: Text(
           "Select Nurse",
-          style:TextStyle(fontFamily: 'Poppins', fontSize: screenwidth * 0.055),
+          style:
+              TextStyle(fontFamily: 'Poppins', fontSize: screenwidth * 0.055),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -60,46 +59,51 @@ class _SelectNurseState extends State<SelectNurse> {
             },
             icon: const Icon(Icons.close)),
       ),
-      body: data == null?
-          Center(
-            child: Text("Don't Have Nurses",
-                style:TextStyle(fontFamily: 'Poppins', fontSize: screenwidth * 0.055) ,),
-          )
-          :// لا يوجد data فى ال api
-           //قمت بعمل نفس الشئ ولكن ببيانات caseModel
+      body: data == null
+          ? Center(
+              child: Text(
+                "Don't Have Nurses",
+                style: TextStyle(
+                    fontFamily: 'Poppins', fontSize: screenwidth * 0.055),
+              ),
+            )
+          : // لا يوجد data فى ال api
+          //قمت بعمل نفس الشئ ولكن ببيانات caseModel
           ListView(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(screenheight *0.02),
-                child: TextField(
-                  controller: searchController,
-                  decoration: InputDecoration(
-                    hintText: "Search for nurse",
-                    hintStyle: TextStyle(fontFamily: 'Poppins', fontSize: screenwidth * 0.04),
-                    prefixIcon: const Icon(Icons.search),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(screenheight * 0.02),
+                  child: TextField(
+                    controller: searchController,
+                    decoration: InputDecoration(
+                      hintText: "Search for nurse",
+                      hintStyle: TextStyle(
+                          fontFamily: 'Poppins', fontSize: screenwidth * 0.04),
+                      prefixIcon: const Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              ListTile(
-                title: Text(data!.nurseId!),
-                subtitle:Text(data!.analysisId!) ,
-                trailing: CustomRadioButton(
-                    value:data!.nurseId!,
+                ListTile(
+                  title: Text(data!.nurseId!),
+                  subtitle: Text(data!.analysisId!),
+                  trailing: CustomRadioButton(
+                    value: data!.nurseId!,
                     groupValue: data!.analysisId!,
-                    onChanged:  (newValue) {
+                    onChanged: (newValue) {
                       setState(() {
                         selectedNurse = newValue;
                       });
                     },
-
+                  ),
+                ),
+              ],
+            ),
     );
   }
 }
-
-
 
 class CustomRadioButton extends StatelessWidget {
   final String value;
@@ -120,16 +124,16 @@ class CustomRadioButton extends StatelessWidget {
     return GestureDetector(
       onTap: () => onChanged(value),
       child: Container(
-        width: MediaQuery.of(context).size.width/16,
-        height: MediaQuery.of(context).size.height/34,
+        width: MediaQuery.of(context).size.width / 16,
+        height: MediaQuery.of(context).size.height / 34,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.grey.shade300,
         ),
         child: Center(
           child: Container(
-            width: MediaQuery.of(context).size.width/28,
-            height: MediaQuery.of(context).size.height/58,
+            width: MediaQuery.of(context).size.width / 28,
+            height: MediaQuery.of(context).size.height / 58,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: isSelected ? AppColors.primaryColor : Colors.grey.shade400,
