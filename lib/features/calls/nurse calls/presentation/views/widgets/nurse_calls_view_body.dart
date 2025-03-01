@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:instant_project/features/calls/constants.dart';
 import 'package:instant_project/features/calls/nurse%20calls/presentation/views/widgets/custom_nurse_card_list_view.dart';
 
 class NurseCallsViewBody extends StatelessWidget {
@@ -8,7 +9,7 @@ class NurseCallsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
-        CustomNurseCardListView(doctorName: 'Dr. Salma Ali',)
+        CustomNurseCardListView(doctorName: 'Dr. Salma Ali', token: nurseToken,)
       ],
     );
   }

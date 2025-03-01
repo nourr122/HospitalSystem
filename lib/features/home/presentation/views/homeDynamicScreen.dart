@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:instant_project/features/Employees/presentation/views/EmployeesList.dart';
+import 'package:instant_project/features/attendance/presentation/views/attendancePage.dart';
+import 'package:instant_project/features/calls/doctor%20calls/presentation/views/doctor_calls_view.dart';
+import 'package:instant_project/features/calls/nurse%20calls/presentation/views/nurse_calls_view.dart';
+import 'package:instant_project/features/calls/specialist%20calls/cubits/Get%20All%20Calls%20Cubit/get_all_calls_cubit.dart';
+import 'package:instant_project/features/calls/specialist%20calls/presentation/views/specialist_calls_view.dart';
+import 'package:instant_project/features/cases/presentation/views/case.dart';
 import 'package:instant_project/features/home/data/model/homeItemModel.dart';
 import 'package:instant_project/features/home/presentation/views/customFullContainer.dart';
 import '../../../../core/utils/app_assets.dart';
@@ -11,6 +19,252 @@ import '../../../profile/presentation/viewModel/authenticationCubit/authenticati
 import '../../../profile/presentation/views/Myprofile.dart';
 import 'customContainer.dart';
 
+
+Map<String, Map<String, dynamic>> roleBasedContent(String role) => {
+      "HR": {
+        'name': 'Ebrahem Elzainy',
+        'profile': AppAssets.hrProfile,
+        'items': [
+          HomeItemModel(
+              title: 'Employee',
+              iconUrl: AppAssets.employeesIcon,
+              containerColor: const Color.fromRGBO(220, 145, 95, 1),
+              onTap: (BuildContext context) {
+                return const EmployeesList();
+              }),
+          HomeItemModel(
+              title: 'Tasks',
+              iconUrl: AppAssets.tasksIcon,
+              containerColor: const Color.fromRGBO(95, 220, 137, 1),
+              onTap: (BuildContext context) {
+                return const TasksScreen();
+              }),
+          HomeItemModel(
+              title: 'Reports',
+              iconUrl: AppAssets.reportsIcon,
+              containerColor: const Color.fromRGBO(145, 95, 220, 1),
+              onTap: (BuildContext context) {
+                return const ReportsScreen();
+              }),
+          HomeItemModel(
+              title: 'Attendance - Leaving',
+              iconUrl: AppAssets.attendanceIcon,
+              containerColor: const Color.fromRGBO(95, 220, 220, 1),
+              onTap: (BuildContext context) {
+                return const AttendancePage();
+              }),
+        ],
+      },
+      "Receptionist": {
+        'name': 'Ebrahem Elzainy',
+        'profile': AppAssets.receptionistProfile,
+        'items': [
+          HomeItemModel(
+              title: 'Calls',
+              iconUrl: AppAssets.callsIcon,
+              containerColor: const Color.fromRGBO(95, 158, 220, 1),
+              onTap: (BuildContext context) {
+                context.read<GetAllCallsCubit>().getAllCalls();
+                return const SpecialistCallsView();
+              }),
+          HomeItemModel(
+              title: 'Tasks',
+              iconUrl: AppAssets.tasksIcon,
+              containerColor: const Color.fromRGBO(95, 220, 137, 1),
+              onTap: (BuildContext context) {
+                return const TasksScreen();
+              }),
+          HomeItemModel(
+              title: 'Reports',
+              iconUrl: AppAssets.reportsIcon,
+              containerColor: const Color.fromRGBO(145, 95, 220, 1),
+              onTap: (BuildContext context) {
+                return const ReportsScreen();
+              }),
+          HomeItemModel(
+            title: 'Attendance - Leaving',
+            iconUrl: AppAssets.attendanceIcon,
+            containerColor: const Color.fromRGBO(95, 220, 220, 1),
+            onTap: (BuildContext context) {
+              return const AttendancePage();
+            },
+          ),
+        ],
+      },
+      "Manager": {
+        'name': 'Mohamed Ahmed',
+        'profile': AppAssets.mangerProfile,
+        'items': [
+          HomeItemModel(
+              title: 'Cases',
+              iconUrl: AppAssets.casesIcon,
+              containerColor: const Color.fromRGBO(95, 158, 220, 1),
+              onTap: (BuildContext context) {
+                return Case(
+                  title: 'Cases',
+                  role:role,
+                );
+              }),
+          HomeItemModel(
+              title: 'Tasks',
+              iconUrl: AppAssets.tasksIcon,
+              containerColor: const Color.fromRGBO(95, 220, 137, 1),
+              onTap: (BuildContext context) {
+                return const TasksScreen();
+              }),
+          HomeItemModel(
+              title: 'Reports',
+              iconUrl: AppAssets.reportsIcon,
+              containerColor: const Color.fromRGBO(145, 95, 220, 1),
+              onTap: (BuildContext context) {
+                return const ReportsScreen();
+              }),
+          HomeItemModel(
+              title: 'Attendance - Leaving',
+              iconUrl: AppAssets.attendanceIcon,
+              containerColor: const Color.fromRGBO(95, 220, 220, 1),
+              onTap: (BuildContext context) {
+                return const AttendancePage();
+              }),
+          HomeItemModel(
+              title: 'Employee',
+              iconUrl: AppAssets.employeesIcon,
+              containerColor: const Color.fromRGBO(220, 145, 95, 1),
+              onTap: (BuildContext context) {
+                return const EmployeesList();
+              }),
+        ],
+      },
+      "Doctor": {
+        'name': 'Mahmoud Ahmed',
+        'profile': AppAssets.doctorProfile,
+        'items': [
+          HomeItemModel(
+              title: 'Calls',
+              description: 'You have new +1 Request',
+              iconUrl: AppAssets.callsIcon,
+              containerColor: const Color.fromRGBO(95, 158, 220, 1),
+              onTap: (BuildContext context) {
+                return const DoctorCallsView();
+              }),
+          HomeItemModel(
+              title: 'Tasks',
+              description: 'You have new +1 task',
+              iconUrl: AppAssets.tasksIcon,
+              containerColor: const Color.fromRGBO(95, 220, 137, 1),
+              onTap: (BuildContext context) {
+                return const TasksScreen();
+              }),
+          HomeItemModel(
+              title: 'Reports',
+              description: 'You have new +3 Reports',
+              iconUrl: AppAssets.reportsIcon,
+              containerColor: const Color.fromRGBO(145, 95, 220, 1),
+              onTap: (BuildContext context) {
+                return const ReportsScreen();
+              }),
+          HomeItemModel(
+              title: 'Attendance - Leaving',
+              iconUrl: AppAssets.attendanceIcon,
+              containerColor: const Color.fromRGBO(95, 220, 220, 1),
+              onTap: (BuildContext context) {
+                return const AttendancePage();
+              }),
+          HomeItemModel(
+              title: 'Cases',
+              iconUrl: AppAssets.casesIcon,
+              containerColor: const Color.fromRGBO(220, 145, 95, 1),
+              onTap: (BuildContext context) {
+                return Case(
+                  title: 'Cases',
+                  role: role,
+                );
+              }),
+        ],
+      },
+      "Nurse": {
+        'name': 'Salma Ali',
+        'profile': AppAssets.nurseProfile,
+        'items': [
+          HomeItemModel(
+              title: 'Calls',
+              iconUrl: AppAssets.callsIcon,
+              containerColor: const Color.fromRGBO(95, 158, 220, 1),
+              onTap: (BuildContext context) {
+                return const NurseCallsView();
+              }),
+          HomeItemModel(
+              title: 'Tasks',
+              iconUrl: AppAssets.tasksIcon,
+              containerColor: const Color.fromRGBO(95, 220, 137, 1),
+              onTap: (BuildContext context) {
+                return const TasksScreen();
+              }),
+          HomeItemModel(
+              title: 'Reports',
+              iconUrl: AppAssets.reportsIcon,
+              containerColor: const Color.fromRGBO(145, 95, 220, 1),
+              onTap: (BuildContext context) {
+                return const ReportsScreen();
+              }),
+          HomeItemModel(
+              title: 'Attendance - Leaving',
+              iconUrl: AppAssets.attendanceIcon,
+              containerColor: const Color.fromRGBO(95, 220, 220, 1),
+              onTap: (BuildContext context) {
+                return const AttendancePage();
+              }),
+          HomeItemModel(
+            title: 'Cases',
+            iconUrl: AppAssets.casesIcon,
+            containerColor: const Color.fromRGBO(220, 145, 95, 1),
+            onTap: (BuildContext context) {
+              return Case(
+                title: 'Cases',
+                role :role,
+              );
+            },
+          ),
+        ],
+      },
+      "Analysis Employee": {
+        'name': 'Fayez Bahgt',
+        'profile': AppAssets.analysisEmployeeProfile,
+        'items': [
+          HomeItemModel(
+              title: 'Cases',
+              iconUrl: AppAssets.casesIcon,
+              containerColor: const Color.fromRGBO(95, 158, 220, 1),
+              onTap: (BuildContext context) {
+                return Case(
+                  title: 'Cases',
+                  role: role,
+                );
+              }),
+          HomeItemModel(
+              title: 'Tasks',
+              iconUrl: AppAssets.tasksIcon,
+              containerColor: const Color.fromRGBO(95, 220, 137, 1),
+              onTap: (BuildContext context) {
+                return const TasksScreen();
+              }),
+          HomeItemModel(
+              title: 'Reports',
+              iconUrl: AppAssets.reportsIcon,
+              containerColor: const Color.fromRGBO(145, 95, 220, 1),
+              onTap: (BuildContext context) {
+                return const ReportsScreen();
+              }),
+          HomeItemModel(
+              title: 'Attendance - Leaving',
+              iconUrl: AppAssets.attendanceIcon,
+              containerColor: const Color.fromRGBO(95, 220, 220, 1),
+              onTap: (BuildContext context) {
+                return const AttendancePage();
+              }),
+        ],
+      }
+    };
 
 
 class HomeDynamicScreen extends StatefulWidget {
@@ -132,7 +386,7 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                     pinned: true,
                     expandedHeight: appBarHeight,
                     flexibleSpace: const FlexibleSpaceBar(background: SizedBox()),
-                  ),
+                
 
                   const SliverToBoxAdapter(child: SizedBox(height: 25)),
 
@@ -178,7 +432,8 @@ class _HomeDynamicScreenState extends State<HomeDynamicScreen> {
                             child: CustomFullContainer(item: items[4]),
                           ),
                       ],
-                    ),
+                  
+              
                   ),
                 ],
               );

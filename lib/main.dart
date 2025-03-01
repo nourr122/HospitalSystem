@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:instant_project/features/attendance/presentation/viewModel/attendanceCubit/attendance_cubit.dart';
 import 'package:instant_project/features/profile/presentation/viewModel/authenticationCubit/authentication_cubit.dart';
 
+import 'package:instant_project/core/utils/app_colors.dart';
 import 'app_router.dart';
 import 'core/utils/app_themes.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,8 +13,7 @@ import 'features/attendance/data/attendanceRepo.dart';
 import 'features/profile/data/repository/registerRepo.dart';
 
 void main() {
-  runApp(
-    const MyApp(),
+  runApp(const MyApp()
   );
 }
 
@@ -60,8 +60,10 @@ class _MyAppState extends State<MyApp> {
             //home: Doctor(),
             //home: Nurse(),
           ),
+
         );
       },
     );
   }
 }
+
