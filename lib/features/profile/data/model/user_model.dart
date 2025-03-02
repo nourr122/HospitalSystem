@@ -63,6 +63,8 @@ extension UserTypeExtension on UserType {
     switch (type.toLowerCase()) {
       case 'doctor':
         return UserType.doctor;
+      case 'docotr':
+        return UserType.doctor;
       case 'hr':
         return UserType.hr;
       case 'receptionist':

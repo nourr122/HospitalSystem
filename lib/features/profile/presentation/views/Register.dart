@@ -5,9 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:instant_project/core/utils/app_assets.dart';
 import 'package:instant_project/features/profile/data/model/user_model.dart';
 import 'package:instant_project/features/profile/presentation/views/customTextField.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../core/helper/validators.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../../home/presentation/views/homeDynamicScreen.dart';
 import '../viewModel/authenticationCubit/authentication_cubit.dart';
 import 'editProfileBG.dart';
 
@@ -59,7 +61,10 @@ class _RegisterState extends State<Register> {
     addressController.clear();
     passwordController.clear();
   }
-
+  Future<int?> getID() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt('userID');
+  }
   @override
   Widget build(BuildContext context) {
     double appBarHeight = MediaQuery.of(context).size.height * 0.09;
@@ -71,7 +76,7 @@ class _RegisterState extends State<Register> {
           children: [
             const EditProfileBG(),
             BlocConsumer<AuthenticationCubit, AuthenticationState>(
-              listener: (context, state) {
+              listener: (context, state) async {
                 if (state is RegisterSuccess) {
                   Fluttertoast.showToast(
                     msg: 'User registered successfully!',
@@ -82,7 +87,11 @@ class _RegisterState extends State<Register> {
                     fontSize: 16.0,
                   );
                   clearTextFields();
-                  Navigator.pop(context);
+                  int? id = await getID();
+                  Navigator.pushReplacement(context, MaterialPageRoute<void>(
+                    builder: (BuildContext context) => HomeDynamicScreen(id: id!),
+                  ),
+                  );
                 } else if (state is RegisterFailure) {
                   Fluttertoast.showToast(
                     msg: state.error,

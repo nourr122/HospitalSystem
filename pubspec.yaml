@@ -21,6 +21,7 @@ dependencies:
   syncfusion_flutter_datepicker: ^28.1.41
   flutter_svg: ^2.0.17
   dotted_border: ^2.1.0
+  shared_preferences:
   fluttertoast: ^8.2.12
   dio: ^5.8.0+1
   pretty_dio_logger: ^1.4.0

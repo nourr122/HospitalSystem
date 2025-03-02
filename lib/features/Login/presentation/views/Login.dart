@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:instant_project/features/home/presentation/views/homeDynamicScreen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/widgets/gradient_container.dart';
@@ -24,18 +22,6 @@ class _LoginScreenState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
   final AuthRepository _authRepository = AuthRepository();
 
-  void _validateAndLogin() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomeDynamicScreen(
-            id: 88,
-          ),
-        ),
-      );
-    }
-  }
 
   bool isLoading = false;
   UserModel? user;
