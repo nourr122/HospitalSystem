@@ -79,10 +79,10 @@ class _CaseDetailsState extends State<CaseDetails> {
           padding: EdgeInsets.all(screenwidth * 0.015),
           child: Row(
             children: [
-              widget.specialist == "Doctor" ||
+              widget.specialist == "doctor" ||
                       widget.specialist == "Nurse" ||
-                      widget.specialist == "Analysis Employee" ||
-                      widget.specialist == "Manager"
+                      widget.specialist == "Analysis" ||
+                      widget.specialist == "manger"
                   ? OutlinedButton(
                     onPressed: () {
                       _changeContent("Case");
@@ -113,14 +113,14 @@ class _CaseDetailsState extends State<CaseDetails> {
                     ),
                   )
                   : const SizedBox(),
-              widget.specialist == "Doctor" ||
-                      widget.specialist == "Analysis Employee" ||
-                      widget.specialist == "Manager"
+              widget.specialist == "doctor" ||
+                      widget.specialist == "Analysis" ||
+                      widget.specialist == "manger"
                   ? Padding(
                       padding: EdgeInsets.all(screenwidth * 0.004),
                       child: OutlinedButton(
                         onPressed: () {
-                          widget.specialist == "Analysis Employee"
+                          widget.specialist == "Analysis"
                               ? Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -158,8 +158,8 @@ class _CaseDetailsState extends State<CaseDetails> {
                         ),
                       ))
                   : const SizedBox(),
-              widget.specialist == "Manager" ||
-                      widget.specialist == "Doctor" ||
+              widget.specialist == "manger" ||
+                      widget.specialist == "doctor" ||
                       widget.specialist == "Nurse"
                   ? OutlinedButton(
                     onPressed: () {
@@ -204,7 +204,7 @@ class _CaseDetailsState extends State<CaseDetails> {
           ),
         ),
         widget.specialist == "Nurse" ||
-                widget.specialist== "Analysis Employee"
+                widget.specialist== "Analysis"
             ? isVisible
                 ? Padding(
                     padding: EdgeInsets.symmetric(
@@ -543,7 +543,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                     SizedBox(
                       height: screenheight * 0.02,
                     ),
-                    widget.specialist == "Doctor"
+                    widget.specialist == "doctor"
                         ? Row(
                             mainAxisAlignment:
                                 MainAxisAlignment.spaceEvenly,
@@ -1121,7 +1121,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                         ),
                       ))
                     : Container(),
-        widget.specialist == "Receptionist"
+        widget.specialist == "receptionist"
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -1150,7 +1150,7 @@ class _CaseDetailsState extends State<CaseDetails> {
                       ))
                 ],
               )
-            : widget.specialist== "Doctor"
+            : widget.specialist== "doctor"
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

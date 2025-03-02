@@ -10,6 +10,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'features/attendance/data/attendanceRepo.dart';
+import 'features/calls/doctor calls/cubits/Get All Calls Doctos Cubit/get_all_calls_doctors_cubit.dart';
+import 'features/calls/nurse calls/cubits/Get All Calls Nurse/get_all_calls_nurse_cubit.dart';
 import 'features/profile/data/repository/registerRepo.dart';
 
 void main() {
@@ -38,6 +40,8 @@ class _MyAppState extends State<MyApp> {
             BlocProvider(create: (context) => AuthenticationCubit(AuthenticationRepository())),
             BlocProvider(create: (context) => AttendanceCubit(AttendanceRepository())),
             BlocProvider(create: (context) => GetAllCallsCubit()),
+            BlocProvider(create: (context) => GetAllCallsNurseCubit()),
+            BlocProvider(create: (context) => GetAllCallsDoctorsCubit()),
           ],
           child: MaterialApp(
             theme: isLightTheme
@@ -67,4 +71,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
