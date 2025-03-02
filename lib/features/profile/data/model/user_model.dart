@@ -62,7 +62,6 @@ extension UserTypeExtension on UserType {
   static UserType fromString(String type) {
     switch (type.toLowerCase()) {
       case 'doctor':
-        return UserType.doctor;
       case 'docotr':
         return UserType.doctor;
       case 'hr':
@@ -72,6 +71,7 @@ extension UserTypeExtension on UserType {
       case 'analysis':
         return UserType.analysis;
       case 'manager':
+      case 'manger':
         return UserType.manager;
       case 'nurse':
         return UserType.nurse;

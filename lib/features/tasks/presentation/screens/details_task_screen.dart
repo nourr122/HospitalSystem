@@ -107,7 +107,7 @@ class __DetailsTaskScreenState extends State<_DetailsTaskScreen> {
                                     height: 40,
                                   ),
                                   const SizedBox(width: 15),
-                                  const Expanded(
+                                  Expanded(
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       crossAxisAlignment:
@@ -116,7 +116,7 @@ class __DetailsTaskScreenState extends State<_DetailsTaskScreen> {
                                           MainAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Shawky Ahmend',
+                                          state.task?.user?.firstName ?? '',
                                           style: TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold,
@@ -124,7 +124,7 @@ class __DetailsTaskScreenState extends State<_DetailsTaskScreen> {
                                         ),
                                         SizedBox(height: 1),
                                         Text(
-                                          'Specialist - Manger',
+                                          'Specialist - ${state.task?.user?.specialist}',
                                           style: TextStyle(
                                             fontSize: 12,
                                             color: AppColors.primaryColor,

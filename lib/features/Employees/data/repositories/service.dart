@@ -1,20 +1,12 @@
-
 import 'package:dio/dio.dart';
-class APIService {
-  Future<List<dynamic>> fetchEmployeesByType(String type, String token) async {
-    Dio dio = Dio();
-    final String apiUrl = 'https://hospital.elhossiny.net/api/v1/doctors';
+import 'package:instant_project/core/network/dio_manager.dart';
 
+class APIService {
+  Future<List<dynamic>> fetchEmployeesByType(String type) async {
     try {
-      Response response = await dio.get(
-        apiUrl,
-        queryParameters: {'type': type},
-        options: Options(
-          headers: {
-            'Authorization': 'Bearer $token',
-            'Content-Type': 'application/json',
-          },
-        ),
+      Response response = await DioManager.instance.get(
+        '/doctors',
+        query: {'type': type},
       );
 
       if (response.statusCode == 200) {

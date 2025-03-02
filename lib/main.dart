@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:instant_project/features/attendance/presentation/viewModel/attendanceCubit/attendance_cubit.dart';
+import 'package:instant_project/features/calls/specialist%20calls/cubits/Get%20All%20Calls%20Cubit/get_all_calls_cubit.dart';
 import 'package:instant_project/features/profile/presentation/viewModel/authenticationCubit/authentication_cubit.dart';
 
-import 'package:instant_project/core/utils/app_colors.dart';
 import 'app_router.dart';
 import 'core/utils/app_themes.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,6 +37,7 @@ class _MyAppState extends State<MyApp> {
           providers: [
             BlocProvider(create: (context) => AuthenticationCubit(AuthenticationRepository())),
             BlocProvider(create: (context) => AttendanceCubit(AttendanceRepository())),
+            BlocProvider(create: (context) => GetAllCallsCubit()),
           ],
           child: MaterialApp(
             theme: isLightTheme

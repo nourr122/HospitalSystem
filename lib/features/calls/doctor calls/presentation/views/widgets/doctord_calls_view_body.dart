@@ -8,7 +8,11 @@ class DoctordCallsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [CustomDoctorCardListView(token: doctorToken,)],
+      children: [
+        CustomDoctorCardListView(
+          token: doctorToken,
+        )
+      ],
     );
   }
 }

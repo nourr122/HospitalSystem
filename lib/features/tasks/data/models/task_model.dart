@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
+import 'package:instant_project/features/reports/data/models/show_report.dart';
 import 'package:instant_project/features/tasks/data/models/todo_model.dart';
 
 class TaskModel {
@@ -10,6 +11,7 @@ class TaskModel {
   final List<TodoModel>? toDoList;
   final DateTime createdAt;
   final TaskStatus status;
+  final User? user;
 
   TaskModel({
     required this.id,
@@ -19,6 +21,7 @@ class TaskModel {
     required this.toDoList,
     required this.createdAt,
     required this.status,
+    required this.user,
   });
 
   factory TaskModel.fromMap(Map<String, dynamic> map) {
@@ -34,6 +37,7 @@ class TaskModel {
             ),
       createdAt: DateTime.parse(map['created_at']),
       status: TaskStatus.parse(map['status']),
+      user: User.fromJson(map['user']),
     );
   }
 }

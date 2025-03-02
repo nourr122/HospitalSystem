@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:instant_project/features/profile/presentation/views/Register.dart';
-import 'package:instant_project/features/profile/presentation/views/Myprofile.dart';
 
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/assets.dart';
 import '../../data/repositories/service.dart';
 
-class EmployeesList extends StatefulWidget {
-  const EmployeesList({super.key});
+class SelectEmploye extends StatefulWidget {
+  const SelectEmploye({
+    super.key,
+    required this.onEmployeeSelected,
+  });
+
+  final void Function(dynamic) onEmployeeSelected;
 
   @override
-  _EmployeesState createState() => _EmployeesState();
+  State createState() => _EmployeesState();
 }
 
-var size, height, width;
-
-class _EmployeesState extends State<EmployeesList> {
+class _EmployeesState extends State<SelectEmploye> {
   final APIService apiService = APIService();
   List<dynamic> employees = [];
-  final String token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDZiNjZkZDhkOWY2NGYzMjEzYzY4OGMyOGEzMTQ4OTAyMGJjM2U3MDcxMGI2NTUyNjVhZmJkZjI1Mjk2OGFiNmMwNjNhY2YwZTY2MjVkNjAiLCJpYXQiOjE3NDAxNzQ5NjQuODI1ODM1LCJuYmYiOjE3NDAxNzQ5NjQuODI1ODM2LCJleHAiOjE3NzE3MTA5NjQuODI0OTMxLCJzdWIiOiIxNyIsInNjb3BlcyI6W119.ExHcpHRqAoeKwG4RPARSy9dhLGSg0jgyRF_vKbzfYJjOnhvcqQmLWmQqgJlVJpxWN4zZ--0eZqAuQ_Ev0Hp0FSQ0tJNnT2tLcHQAefwggiaCzbs8RZoNfYUgDzZWEtjhSzbRfjv_w167WOYW3piLJ2ZjpCLAUHO2IGisXsZ_43C6H1E7wJof9uhwU2gxbzdQ_UfEvb1OFjVvEmKPNrLfyfDmaGj2F-kW2L_8Y5G6JdfoKKnSTqmYgN4NcfGQIvIijk0rmmarrGIGa4l4Q29QiAtBPa9fvkEwq2WHbCocaQdmfGYk-dq0UVtcFH578rYAC7SjXkcjy50_pmhWSdKITXJIzZUNXuWFQTKIQ171oTstIns5sSZFi_-kb18sEcBq-Po7oE39OokBrRT4wHtYIUZUSGryBHz-5rjna-UR2ZWItDvyhXv7WI8WGkVykDMD1q3SeJQcfLRJavE4iNm0Mn32THyPrc6L3JZ6679PvXYgXwPyxBye-Tl_rr97-Pgi5QmTQ0LmcMmRntlwmGlrWSt0ARTB30H1kv6qv7zZzHhuCEYmAVxVRfMUE63tEi-RGIm7ri47pni4X6ZXC4BPnl9vj6X4XQG4_PqWuh1rAqErsApGfEuqajG9o1e01rLIhs3oUALCbOJ0xilszQGbNajNfFyB_uTBYO_poVU46Bw";
   String selectedCategory = "all";
   @override
   void initState() {
     super.initState();
-   fetchEmployees(selectedCategory);
+    fetchEmployees(selectedCategory);
   }
+
   void fetchEmployees(String type) async {
     setState(() {
       employees = [];
@@ -34,7 +36,8 @@ class _EmployeesState extends State<EmployeesList> {
       List<dynamic> doctors = await apiService.fetchEmployeesByType("doctor");
       List<dynamic> nurses = await apiService.fetchEmployeesByType("nurse");
       List<dynamic> hrEmployees = await apiService.fetchEmployeesByType("hr");
-      List<dynamic> analysts = await apiService.fetchEmployeesByType("analysis");
+      List<dynamic> analysts =
+          await apiService.fetchEmployeesByType("analysis");
 
       setState(() {
         employees = [...doctors, ...nurses, ...hrEmployees, ...analysts];
@@ -46,18 +49,16 @@ class _EmployeesState extends State<EmployeesList> {
       });
     }
   }
+
   final _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    size = MediaQuery.of(context).size;
-    height = size.height;
-    width = size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
           padding: EdgeInsets.only(top: 20),
           child: Text(
-            'Employee',
+            'Select Employee',
             style: TextStyle(color: Color(0xfff343434), fontSize: 25),
           ),
         ),
@@ -89,7 +90,7 @@ class _EmployeesState extends State<EmployeesList> {
             ),
           ),
           SizedBox(
-              height: height / 25,
+              height: MediaQuery.of(context).size.height / 25,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -112,14 +113,7 @@ class _EmployeesState extends State<EmployeesList> {
 
               return InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>  UserProfile(
-                        id: employee["id"],
-                      ),
-                    ),
-                  );
+                  widget.onEmployeeSelected(employee);
                 },
                 child: ListTile(
                   contentPadding:
@@ -128,13 +122,13 @@ class _EmployeesState extends State<EmployeesList> {
                     children: [
                       CircleAvatar(
                         radius: 20,
-                        backgroundImage:  NetworkImage(employee["avatar"]),
+                        backgroundImage: NetworkImage(employee["avatar"]),
                       ),
                     ],
                   ),
                   title: Text(employee["first_name"]!,
                       style: const TextStyle(fontSize: 14)),
-                  subtitle: Text("Specialist - ${employee["type"]}"!,
+                  subtitle: Text("Specialist - ${employee["type"]}",
                       style: const TextStyle(fontSize: 12)),
                 ),
               );
@@ -150,9 +144,7 @@ class _EmployeesState extends State<EmployeesList> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const Register(
-
-              ),
+              builder: (context) => const Register(),
             ),
           );
         },
@@ -169,9 +161,11 @@ class _EmployeesState extends State<EmployeesList> {
           fetchEmployees(type);
         },
         style: TextButton.styleFrom(
-          backgroundColor:
-          selectedCategory == type ? AppColors.primaryColor : Colors.transparent,
-          foregroundColor: selectedCategory == type ? Colors.white : Colors.black,
+          backgroundColor: selectedCategory == type
+              ? AppColors.primaryColor
+              : Colors.transparent,
+          foregroundColor:
+              selectedCategory == type ? Colors.white : Colors.black,
           side: const BorderSide(color: Color(0x50707070), width: 1.2),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
@@ -181,5 +175,4 @@ class _EmployeesState extends State<EmployeesList> {
       ),
     );
   }
-  }
-
+}

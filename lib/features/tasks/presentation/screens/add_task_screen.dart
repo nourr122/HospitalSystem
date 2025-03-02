@@ -11,7 +11,7 @@ import 'package:instant_project/core/ui/widgets/app_button.dart';
 import 'package:instant_project/core/ui/widgets/app_text_field.dart';
 import 'package:instant_project/core/utils/app_assets.dart';
 import 'package:instant_project/core/utils/app_colors.dart';
-import 'package:instant_project/features/Employees/presentation/views/EmployeesList.dart';
+import 'package:instant_project/features/Employees/presentation/views/select_employe.dart';
 import 'package:instant_project/features/tasks/logic/add_task/add_task_cubit.dart';
 
 class AddTaskScreen extends StatelessWidget {
@@ -36,6 +36,8 @@ class _AddTaskScreen extends StatefulWidget {
 
 class __AddTaskScreenState extends State<_AddTaskScreen> {
   final Map<int, String> _toDoList = <int, String>{};
+
+  TextEditingController employeeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -66,11 +68,20 @@ class __AddTaskScreenState extends State<_AddTaskScreen> {
                   const SizedBox(height: 15),
                   AppTextField(
                     label: 'Select Employee',
+                    controller: employeeController,
                     icon: Icons.arrow_forward_ios,
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) {
-                          return const EmployeesList();
+                        builder: (_) {
+                          return SelectEmploye(
+                            onEmployeeSelected: (p0) {
+                              employeeController.text = p0['first_name'];
+                              context.read<AddTaskCubit>().onEmployeeSelected(
+                                    p0['id'].toString(),
+                                  );
+                              Navigator.pop(context);
+                            },
+                          );
                         },
                       ));
                     },
