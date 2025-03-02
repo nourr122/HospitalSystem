@@ -5,10 +5,14 @@ import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/core/utils/text_styles.dart';
 import 'package:instant_project/core/components/custom_button.dart';
 import 'package:instant_project/features/home/presentation/views/homeDynamicScreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Success extends StatelessWidget {
   const Success({super.key});
-
+  Future<int?> getID() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt('userID');
+  }
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -45,15 +49,16 @@ class Success extends StatelessWidget {
             )),
             const Spacer(),
             CustomButton(
-              onPressed: () {
-                /*Navigator.push(
+              onPressed: () async {
+                int? id = await getID();
+                Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const HomeDynamicScreen(
-                      userRole: 'Receptionist', // send id of user
+                    builder: (context) => HomeDynamicScreen(
+                      id: id!,
                     ),
                   ),
-                );*/
+                );
               },
               buttonBody: Text('Back To Home',
                   style: TextStyles.stylePoppinsRegular14Hint
