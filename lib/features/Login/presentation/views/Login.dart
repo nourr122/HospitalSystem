@@ -154,8 +154,13 @@ class _LoginScreenState extends State<LoginPage> {
                                     color: AppColors.primaryColor,
                                   ),
                                   hintText: '  Email',
-                                  border: OutlineInputBorder(
+                                  enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: AppColors.grayColor1, width: 1),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
                                   ),
                                 ),
                                 keyboardType: TextInputType.emailAddress,
@@ -172,8 +177,13 @@ class _LoginScreenState extends State<LoginPage> {
                                   suffixIcon:
                                       Image.asset(AppAssets.eye, height: 50),
                                   hintText: '  Password',
-                                  border: OutlineInputBorder(
+                                  enabledBorder: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: AppColors.grayColor1, width: 1),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                    borderSide: BorderSide(color: AppColors.primaryColor, width: 2),
                                   ),
                                 ),
                                 keyboardType: TextInputType.visiblePassword,
