@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:instant_project/core/utils/app_colors.dart';
 import 'package:instant_project/features/attendance/presentation/viewModel/attendanceCubit/attendance_cubit.dart';
 import 'package:instant_project/features/calls/specialist%20calls/cubits/Get%20All%20Calls%20Cubit/get_all_calls_cubit.dart';
 import 'package:instant_project/features/profile/presentation/viewModel/authenticationCubit/authentication_cubit.dart';
@@ -43,24 +44,18 @@ class _MyAppState extends State<MyApp> {
             BlocProvider(create: (context) => GetAllCallsNurseCubit()),
             BlocProvider(create: (context) => GetAllCallsDoctorsCubit()),
           ],
-          child: MaterialApp(
-            theme: isLightTheme
-                ? AppTheme.light.copyWith(
-              textTheme: GoogleFonts.poppinsTextTheme(
-                Theme
-                    .of(context)
-                    .textTheme,
-              ),
-            )
-                : AppTheme.dark.copyWith(
-              textTheme: GoogleFonts.poppinsTextTheme(
-                Theme
-                    .of(context)
-                    .textTheme,
-              ),
-            ),
-            onGenerateRoute: AppRouter.onGenerateRoute,
+          child:MaterialApp(
             debugShowCheckedModeBanner: false,
+            theme: ThemeData.light().copyWith(
+                scaffoldBackgroundColor: AppColors.whiteColor1,
+                focusColor: AppColors.primaryColor,
+                textSelectionTheme: TextSelectionThemeData(
+                  cursorColor: AppColors.primaryColor,
+                  selectionColor: AppColors.primaryColor,
+                  selectionHandleColor: AppColors.primaryColor,
+                ),
+                primaryColor: AppColors.blackColor1),
+            onGenerateRoute: AppRouter.onGenerateRoute,
             // home: Specialist(),
             //home: Doctor(),
             //home: Nurse(),
