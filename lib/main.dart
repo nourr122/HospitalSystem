@@ -40,9 +40,22 @@ class _MyAppState extends State<MyApp> {
           providers: [
             BlocProvider(create: (context) => AuthenticationCubit(AuthenticationRepository())),
             BlocProvider(create: (context) => AttendanceCubit(AttendanceRepository())),
-            BlocProvider(create: (context) => GetAllCallsCubit()),
-            BlocProvider(create: (context) => GetAllCallsNurseCubit()),
-            BlocProvider(create: (context) => GetAllCallsDoctorsCubit()),
+            // BlocProvider(create: (context) => GetAllCallsCubit()),
+            // BlocProvider(create: (context) => GetAllCallsNurseCubit()),
+            // BlocProvider(create: (context) => GetAllCallsDoctorsCubit()),
+             BlocProvider<GetAllCallsCubit>(
+              create: (BuildContext context) => GetAllCallsCubit(),
+            ),
+            BlocProvider<GetAllCallsDoctorsCubit>(
+              create: (BuildContext context) => GetAllCallsDoctorsCubit()..getAllCalls(),
+            ),
+            BlocProvider<GetAllCallsNurseCubit>(
+              create: (BuildContext context) => GetAllCallsNurseCubit()..getAllCalls(),
+            ),
+            BlocProvider<GetAllDoctorsCubit>(
+              create: (BuildContext context) => GetAllDoctorsCubit()..getAllDoctors(),
+            ),
+                        
           ],
           child:MaterialApp(
             debugShowCheckedModeBanner: false,
