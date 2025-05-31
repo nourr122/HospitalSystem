@@ -1,0 +1,1613 @@
+{
+  "info": {
+    "_postman_id": "470b3f43-cf6f-43f1-ba4d-6af5cd98f178",
+    "name": "hospital V1.1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "6395625"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "admin9@gmail.com",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678",
+                  "type": "text"
+                },
+                {
+                  "key": "first_name",
+                  "value": "test 1 ",
+                  "type": "text"
+                },
+                {
+                  "key": "last_name",
+                  "value": "test2 ",
+                  "type": "text"
+                },
+                {
+                  "key": "gender",
+                  "value": "male",
+                  "type": "text"
+                },
+                {
+                  "key": "specialist",
+                  "value": "docotr",
+                  "type": "text"
+                },
+                {
+                  "key": "birthday",
+                  "value": "2020-08-08",
+                  "type": "text"
+                },
+                {
+                  "key": "status",
+                  "value": "singal",
+                  "type": "text"
+                },
+                {
+                  "key": "address",
+                  "value": "egypt",
+                  "type": "text"
+                },
+                {
+                  "key": "mobile",
+                  "value": "12331232",
+                  "type": "text"
+                },
+                {
+                  "key": "specialist",
+                  "value": "docotr",
+                  "type": "text"
+                },
+                {
+                  "key": "type",
+                  "value": "docotr",
+                  "description": "doctor - hr -  receptionist - Analysis -manger - Nurse",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "email",
+                  "value": "easter54@example.net",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "12345678567",
+                  "type": "text"
+                },
+                {
+                  "key": "device_token",
+                  "value": "sdfsfsdfsdfsdfsfs",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Show profile",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMzE2NWI0ZTg4NDM4NGIyYjhiZmQ0MTZjMjkxYzNjNzQzODlkZTJkZTUwOTYxM2E5ZDZlNjVmODg5NWVhZTQ5YTE0YTcxZjUwN2Q1Njg4MmEiLCJpYXQiOjE3MjAzNzIwNjMuODgxNzQ0LCJuYmYiOjE3MjAzNzIwNjMuODgxNzQ1LCJleHAiOjE3NTE5MDgwNjMuODc3MTQxLCJzdWIiOiI0NzciLCJzY29wZXMiOltdfQ.yRJ2rklCKvxbn6iREiLuMJdzBtJ-eCvAg1oXa2Cqwf57QgGvtq3r-2jIgTwuhlDOot-HNTIvOM2gOWsoUIE-E1_lg6ElWBVn9qqEYOE_BjBiClUhxRky2-MGvfnjBM2xcj0N6LZJDZKmsbbs5VvaQ7AzOFHfGhwQuDefzXMNTjXWfXNsELgJVKDuXJMgQ89PQ_VB6pzonEOTu2Az3RLgQ_-k0ToSJ084hwSBAJlX-52AHmWZCHYSJRDyk1e-3TNCX7TJiUd4HAiTkXBv3bVXUwG8SjCGzhFgPJoeFdLAbcuM0tUeSdaAqQ_Sui2INBwz69sMX4aINmP_GUheatUT7uiD1dN1OIvif8VryS1EO8_7DaW1OlFe0AsxS2-ywmMcgO-BUU3hD13VQzCOT5A8RhysUDbQLme1VTTAynp0pkUcHpiouqvDp0kGK8DfLejjtOL1tUkMHG2pMnyWB1C3ObPW2wH2uC09idsVp5gkHW95I-LCgzwKJ37YhfSPm3vab3B6ySa07MfOyh4kqHZYFltMRg_ZK4TmeQP-9ouAWN7GRNf7u9MeiyyJwbaoCqRvDUUb6Qb7OQd-Zn5Y_FUrhx47ffLCNPVunHKJCSlprdDISwFn3P0GSyMcT-sAeomDmJjTGUlazTwy6fR1cncDiy5rvRjlEVaSxvd60vBZpPA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/show-profile?user_id=477",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "show-profile"
+              ],
+              "query": [
+                {
+                  "key": "user_id",
+                  "value": "477"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Calls",
+      "item": [
+        {
+          "name": "Display ALl Calls",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDAwNzY5MGU5ZjEzMDVjMDFkNDI1OTk0NjMwYjkzNDRiZjFkNjJhMzdlNDlhMTdkZWU3MzYxZTZhMzcxNGEwZTJiM2MyZjk1ODg1MzI4NjAiLCJpYXQiOjE2MjMxNzUwMzYuMTQ1MTEyLCJuYmYiOjE2MjMxNzUwMzYuMTQ1MTE3LCJleHAiOjE2NTQ3MTEwMzYuMTM2NzkzLCJzdWIiOiIxOCIsInNjb3BlcyI6W119.etvwMcgJZ6zBre9ssMdIKHINSrEg_jStWx_mRe58cLUAQYPUEVx31lj0boV0aayarVCIhMb6d1EfbsAO1w9OCWoZUQxX-bwsrqrVChEiqMKA09D4uo3MfPDim0f35_9doXVpLPthiTFP_0Bqz3K5B2D_9Bqq3oZNKO42bhVtNhsfufDVoc2fPrGBEpfjlsXxGzMo8GlAagnAAam_W6DqAEpjH_Pj3kQTdiVxpdemPE-0ZOgUIBOiX-gNP7ameZu2gMDCkOwVeISPCWOETYw5owoIM6pWU5TdOVbd47aSRHZ7N6AcQAs5VfRuZTekjX6071YQuElug_Rv-d8gU7djgiatJPXPzCWgCD-NP-NUvnBHjQhIEKkf2RRdZ8kXqMzCz2b34amT3uhXw3eBoK0c6BOGUN8wlsriUOPMAAUOFP-YInvVpDc1kTMB7UB8bvQvUwclkDxCSDaAkmABdTW9-eX9rsU4bSzoenQBfeyYf_QolcTjZ9ojLNgI9BzaA5iJ2mtpJ-JFUbLOePDQmiu1yFT4Ef66IH9PlypCzVVYS9Pn6LuTWQaU9uNPrs3b6s-oOZPbk5RdYU8wdxNfP49DSL4FtF_xpruqWUY-FqzO8RXESZAC2nwufcMpunCxDftz1Eu2aS3z-IxBeVBUtRj5_jJ03I5pGarWST18v3yCgKU",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/calls",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2021-05-09",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Call",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{receptionist}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "patient_name",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "doctor_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "age",
+                  "value": "23",
+                  "type": "text"
+                },
+                {
+                  "key": "phone",
+                  "value": "123123123",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "testset set estsetset",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/calls",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Show Call",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/calls/2",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout call",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/calls/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "accpet - reject",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "status",
+                  "value": "accept",
+                  "description": "accept - reject",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/calls-accept/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls-accept",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Case",
+      "item": [
+        {
+          "name": "Display All Case",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYTYxMGExMmNkMzllMzFlZDBhNDhlYzEwZDEzYjc0OTEyMGIzY2RjYjJkMGJkNDAyNGYwNjVmNGVhYzVjNmExZjAwN2FlOWMxZjExMTg0NDYiLCJpYXQiOjE2MjMxNzcwMjMuODM2NDEsIm5iZiI6MTYyMzE3NzAyMy44MzY0MTMsImV4cCI6MTY1NDcxMzAyMy44Mjg2NDEsInN1YiI6IjQiLCJzY29wZXMiOltdfQ.glsgBWukee4tBNbQ1p4-pi-VfstADqdUU9tlsIXCc6ksmNlwkf_Ediq2k6CBCRafu0kPa0pM-1nW50NA-9h4_uwARfMZjFfej6dzh8RpXjmkxcB3fnfxkxzCyMfeZvr7Xz9vNyu8EAiqrv7aVCMf8WqIRWdQ2iIE_H7PTrWprMLPtIifq9bqW7TKb8nWfoANbFSka_O5ZE4mRNNwkhbYx4IaJG7Wc9c2mjjCSp_dwZuTLTnNYhcveOXUSjaEIn_lUE445YuNHYNbmW5EmbGm6qrQY1Y2BPsadp31chj2TdGSng8hdDX-GcGKqFdTkOKG0gloOjs72rWm2rbNgD5REhmZmdp9izBPZiPibLWhhqup4Fc4w45UotzOSi54mHsRR5yVAxze_aEp0MC9aEIQCAxI8-OoFffJDuKJohoroXPCAz9cIAJjT6W95NTqaWg6wJsYBzNzWKwRe72x9pNagicBBZ9J0hawhaYQ5GZvr5Jr5xq733anfA9zNo98dmh94vGkrdNmQznAWkPBvUoFc8qCXW-8kMAPPpAZPYUsAlN3f56Miw5JX6cN-vcRbWsJiikLqhHYxgPX6YACfJrco0L9SERUAwpm1iAL1xm7QCrkulXhp2kJVlOMDGfP_NjHypXkCmdZLucmVE3oAPyJWKk_CcdrJODzRO8pf6UD_zw",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/case",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "case"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Show Case",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/case/14",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "case",
+                "14"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "logout call",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/calls/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Make Request",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{doctor}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "call_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "user_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "note",
+                  "value": "sfsf",
+                  "type": "text"
+                },
+                {
+                  "key": "types[0]",
+                  "value": "sdfsdf",
+                  "type": "text"
+                },
+                {
+                  "key": "types[1]",
+                  "value": "rewrwe",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/make-request",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "make-request"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Nurse",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{doctor}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "call_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "user_id",
+                  "value": "2",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/add-nurse",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "add-nurse"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Task",
+      "item": [
+        {
+          "name": "Create Task",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "user_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "task_name",
+                  "value": "ttestset",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/C:/Users/User/Desktop/1.PNG"
+                },
+                {
+                  "key": "description",
+                  "value": "etstsetsetset",
+                  "type": "text"
+                },
+                {
+                  "key": "todos[0]",
+                  "value": "etset",
+                  "type": "text"
+                },
+                {
+                  "key": "todos[1]",
+                  "value": "setsetestset",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "execution",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "note",
+                  "value": "test ",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Display All Tasks",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": ".eyJhdWQiOiIxIiwianRpIjoiYmJlOTIzZTM4YmYxMzVmMzljMmFmYzIxNmYzNTE5OGI1M2E1ZGUyMzNlYTI3OTc0N2M5ZDM5NzRiNWJmMzE1ODMzYWM3ZTg1ZTY5Y2U2ZmIiLCJpYXQiOjE2MjM1MDc0NDYuMTA4OTQyOTg1NTM0NjY3OTY4NzUsIm5iZiI6MTYyMzUwNzQ0Ni4xMDg5NDcwMzg2NTA1MTI2OTUzMTI1LCJleHAiOjE2NTUwNDM0NDYuMDk5OTQ2OTc1NzA4MDA3ODEyNSwic3ViIjoiMiIsInNjb3BlcyI6W119.e8g8wCGnKwpYuPNVHmPTsjx3SDHoJAmA6tXFjm0AaHBPG5PH0qG3GNvf2NP1QSdMjz297R9IszVIxvtFGVxy5UWQC7A-xTNe4E0pTY5YtK327yk0OVgJzfCpImsosrW9ClLmS9-Xqq3G75Ltv_4sIp1t0jK8v8qcDxv00lAJ9JHq9YfYyQdh0mrW7uoPSH1kC5duvJnBadjXKbhIzQIN3kPMeUCwIRQTDwhpVVyfBCFMY0AnlrTwEg3ARWZeX5ymUW4VB7GD-9uJ6UrzHPCmKv8x0HjDe6IhFjwQZzEJn6fP8792sDVjlVrWi-5e5zEmGZ9naeIepaKCvMTfN9wA2Q7sjCL-1TxEqKmZncHAL4tO_1aQ9tSh4zqRgMMBn2K5QrWH25vaiOA3kAzU6ONROYFqP3IcxCSik6d6_nCvWsNEiiwXD5n6Bg83moyhqW0zISJzd36SdU5P5aMudNJuPcz8Tn_Lo4xt2_Az_hkKplaTlv1NNKyebvQpl0a9iShzuG5v9vJ7nvNIsQQLAknlL-InR4tQ8ZI22_r99_LIxNnx6nL0UjrJezIvZcaClwunmdOF-4D76NRJJxhwcIXyUWrjOgiN6i33vuk_5h5PkSQFXYsf3BT7-sF-UBVaCg1yv0yDvHoXZmfHY_W6KGxNpQgCcbr3xe3FtQDQBtj3tOM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks?date=2021-06-12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2021-06-12"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Display All Tasks Copy",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": ".eyJhdWQiOiIxIiwianRpIjoiYmJlOTIzZTM4YmYxMzVmMzljMmFmYzIxNmYzNTE5OGI1M2E1ZGUyMzNlYTI3OTc0N2M5ZDM5NzRiNWJmMzE1ODMzYWM3ZTg1ZTY5Y2U2ZmIiLCJpYXQiOjE2MjM1MDc0NDYuMTA4OTQyOTg1NTM0NjY3OTY4NzUsIm5iZiI6MTYyMzUwNzQ0Ni4xMDg5NDcwMzg2NTA1MTI2OTUzMTI1LCJleHAiOjE2NTUwNDM0NDYuMDk5OTQ2OTc1NzA4MDA3ODEyNSwic3ViIjoiMiIsInNjb3BlcyI6W119.e8g8wCGnKwpYuPNVHmPTsjx3SDHoJAmA6tXFjm0AaHBPG5PH0qG3GNvf2NP1QSdMjz297R9IszVIxvtFGVxy5UWQC7A-xTNe4E0pTY5YtK327yk0OVgJzfCpImsosrW9ClLmS9-Xqq3G75Ltv_4sIp1t0jK8v8qcDxv00lAJ9JHq9YfYyQdh0mrW7uoPSH1kC5duvJnBadjXKbhIzQIN3kPMeUCwIRQTDwhpVVyfBCFMY0AnlrTwEg3ARWZeX5ymUW4VB7GD-9uJ6UrzHPCmKv8x0HjDe6IhFjwQZzEJn6fP8792sDVjlVrWi-5e5zEmGZ9naeIepaKCvMTfN9wA2Q7sjCL-1TxEqKmZncHAL4tO_1aQ9tSh4zqRgMMBn2K5QrWH25vaiOA3kAzU6ONROYFqP3IcxCSik6d6_nCvWsNEiiwXD5n6Bg83moyhqW0zISJzd36SdU5P5aMudNJuPcz8Tn_Lo4xt2_Az_hkKplaTlv1NNKyebvQpl0a9iShzuG5v9vJ7nvNIsQQLAknlL-InR4tQ8ZI22_r99_LIxNnx6nL0UjrJezIvZcaClwunmdOF-4D76NRJJxhwcIXyUWrjOgiN6i33vuk_5h5PkSQFXYsf3BT7-sF-UBVaCg1yv0yDvHoXZmfHY_W6KGxNpQgCcbr3xe3FtQDQBtj3tOM",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/tasks?date=2021-06-12",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "tasks"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": "2021-06-12"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Attendance",
+      "item": [
+        {
+          "name": "Attendance",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "status",
+                  "value": "leavin",
+                  "description": "leaving -- attendance",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/attendance",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "attendance"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Measurement",
+      "item": [
+        {
+          "name": "Measurement",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "call_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "blood_pressure",
+                  "value": "25",
+                  "type": "text"
+                },
+                {
+                  "key": "sugar_analysis",
+                  "value": "33",
+                  "type": "text"
+                },
+                {
+                  "key": "note",
+                  "value": "etst",
+                  "type": "text"
+                },
+                {
+                  "key": "status",
+                  "value": "done",
+                  "description": "Leaving -- Attendance",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/measurement",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "measurement"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Measurement show",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/measurement/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "measurement",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Medical Record",
+      "item": [
+        {
+          "name": "Creat Medical Record",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "call_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": []
+                },
+                {
+                  "key": "note",
+                  "value": "teset",
+                  "type": "text"
+                },
+                {
+                  "key": "status",
+                  "value": "pandding",
+                  "type": "text"
+                },
+                {
+                  "key": "types[0]",
+                  "value": "test1",
+                  "type": "text"
+                },
+                {
+                  "key": "types[1]",
+                  "value": "test2",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/medical-record",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "medical-record"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Measurement show",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/measurement/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "measurement",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Calls Manger",
+      "item": [
+        {
+          "name": "Display ALl Calls Manger",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/calls-manger",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls-manger"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Call Manger",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "user_id",
+                  "value": "1",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "testset set estsetset",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/calls-manger",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls-manger"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Show Call Manger",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/calls-manger/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "calls-manger",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "all report",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2ZkMGIzZDFkZjk0Mjk3YWZiYjA2YWU4MDI3NmRjYTdkM2E4MjAxMzE3ZDQ1NzNlZmYxYzkwZjI0OTc4ODUzMWY4ZjJiY2Q3ODZlYjliNWUiLCJpYXQiOjE2MjM1MDc1MTAuODUwOTM4MDgxNzQxMzMzMDA3ODEyNSwibmJmIjoxNjIzNTA3NTEwLjg1MDk0MTg5NjQzODU5ODYzMjgxMjUsImV4cCI6MTY1NTA0MzUxMC44NDgzMzc4ODg3MTc2NTEzNjcxODc1LCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.dpmTMl_twzaK8iMh0baUnDAb6KggoekxpSMUJOkIRusU02tflliw1913uSXdvimZrhQmlks2Zy7aLCAC2nGwApD0_yPTGl9HdilbG74FNsq-02kAwehoDc8JH_uKt5TLjWdOYTom_sdofBX5LNA8-6eqRVRp02rd9lB4EB7dfw1ouA4wPW6ZE_tBgpg_YV6iw_x4V5A5ADC8N_YqP_q-DTwIP9SupEO3_yRtSyG14ExMHWFxLTYQ0w3FyqDW3UNMBew_bPrLraAJlgU5NzCk_f9dqiczSDb-5Zt1yVe_2gnaZ013F6fuY7PcdM9yjBFOppfWHTndBPvtsmcbe3jsCx2VFhdLaj_UNJOQ0feVFvryoGWdF5Vkzo7kyxIOhtjzr5lO0QgOfyXtRw1sfqvJfDBEUSqOPl5aXnuHRz8WdT7cst6Vq-QTxbBrZHgxWTMkCZWfnjIqnNeFk_qunlpZXPg3zhvjVu6KUD8OulfUZGIG-OqJFH53L-2p638R1ihtYAhMdLiBGEFJrykVWCSJf_2Tpo1rRz3o4sSha8dhWXCVtOYOEpVES5jxrBgITIpgzi0fbrcxV0qNB22o8NC1LID93Bsr__Cu5hWRNMZ5WNFdtlvEnW_OGQMSyAce2zB4dYiOMusK5W89VqsrB2uDfIvdZqQD33--rwSVSZgIs4A",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/reports?date=",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports"
+              ],
+              "query": [
+                {
+                  "key": "date",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "show report",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": []
+            },
+            "url": {
+              "raw": "{{base_url}}/reports/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create report",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "report_name",
+                  "value": "testset",
+                  "type": "text"
+                },
+                {
+                  "key": "description",
+                  "value": "ttestset",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "type": "file",
+                  "src": "/C:/Users/User/Desktop/1.PNG"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/reports",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Answer Report By Manger",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "answer",
+                  "value": "testset",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/reports/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "End Report",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base_url}}/reports/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reports",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "all user by type",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{receptionist}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": []
+        },
+        "url": {
+          "raw": "{{base_url}}/doctors?type=doctor",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "doctors"
+          ],
+          "query": [
+            {
+              "key": "type",
+              "value": "doctor",
+              "description": "doctor - analysis - nurse"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "test send notification Copy",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{passenger_token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Accept-Language",
+            "value": "en",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "to",
+              "value": "1",
+              "description": "user_id",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "test",
+              "type": "text"
+            },
+            {
+              "key": "body",
+              "value": "test body",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{base_url}}/send-notification",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "send-notification"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
