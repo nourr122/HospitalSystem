@@ -3,7 +3,7 @@
 You can test the API using the Postman collection below.
 
 - 📄 **Download Collection**: [postman_collection.json](postman/postman_collection.json)
-- 🌐 **Base URL**: `https://your-api-url.com/api/v1/`
+- 🌐 **Base URL**: `https://hospital.elhossiny.net/api/v1`
 
 To import the collection into Postman:
 1. Open Postman
