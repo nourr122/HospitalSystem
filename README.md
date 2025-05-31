@@ -1,16 +1,12 @@
-# instant_project
+## 📮 Postman Collection
 
-A new Flutter project.
+You can test the API using the Postman collection below.
 
-## Getting Started
+- 📄 **Download Collection**: [postman_collection.json](postman/postman_collection.json)
+- 🌐 **Base URL**: `https://your-api-url.com/api/v1/`
 
-This project is a starting point for a Flutter application.
+To import the collection into Postman:
+1. Open Postman
+2. Click **Import**
+3. Choose the `postman_collection.json` file
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
